@@ -57,7 +57,8 @@ const config: Config = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			gridTemplateColumns: {
-				card: 'repeat(auto-fill, minmax(115px, 1fr))'
+				category: 'repeat(auto-fill, minmax(115px, 1fr))',
+				product: 'repeat(auto-fill, minmax(160px, 1fr))'
 			}
 		}
 	},

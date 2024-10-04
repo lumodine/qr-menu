@@ -1,35 +1,37 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from "next"
+import { settings } from "@/data"
+import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: process.env.NEXT_PUBLIC_APP_NAME!,
-    template: `%s - ${process.env.NEXT_PUBLIC_APP_NAME}`,
+    default: settings.name,
+    template: `%s - ${settings.name}`
   },
   icons: [
     {
-      rel: 'icon',
-      type: 'image/x-icon',
-      url: '/favicon.ico',
+      rel: "icon",
+      type: "image/x-icon",
+      url: "/favicon.ico"
     },
     {
-      rel: 'shortcut icon',
-      type: 'image/x-icon',
-      url: '/favicon.ico',
-    },
+      rel: "shortcut icon",
+      type: "image/x-icon",
+      url: "/favicon.ico"
+    }
   ],
-};
+  robots: "nofollow, noindex"
+}
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="tr-TR">
+    <html>
       <body>
         {children}
       </body>
     </html>
-  );
+  )
 }
