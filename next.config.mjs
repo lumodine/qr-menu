@@ -3,10 +3,10 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
-                hostname: 'placehold.co',
-            },
-        ],
-    },
-};
+                hostname: 'placehold.co'
+            }
+        ]
+    }
+}
 
-export default nextConfig;
+export default nextConfig
