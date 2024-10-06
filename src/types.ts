@@ -10,8 +10,13 @@ export type Product = {
     id: number
     title: string
     description: string
-    image: string
+    images: ProductImage
     price: number
+}
+
+export type ProductImage = {
+    list: string
+    detail: string
 }
 
 export type Settings = {

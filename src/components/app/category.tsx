@@ -41,7 +41,7 @@ export type CategoryTabProps = {
 
 export const CategoryTab = ({ categories, selectedCategoryId }: CategoryTabProps) => {
     return (
-        <div className="whitespace-nowrap overflow-x-auto p-3">
+        <div className="whitespace-nowrap overflow-x-auto p-3 no-scrollbar">
             {
                 categories.map(category => (
                     <div
