@@ -1,3 +1,5 @@
+"use client"
+
 import { VIEWS } from "@/constants"
 import { Button } from "@/components/ui/button"
 import { useViewContext } from "@/contexts/viewContext"

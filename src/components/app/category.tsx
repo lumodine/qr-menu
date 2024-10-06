@@ -1,3 +1,5 @@
+"use client"
+
 import { routes } from "@/constants"
 import { Category } from "@/types"
 import Link from "next/link"
@@ -44,10 +46,14 @@ export const CategoryTab = ({ categories, selectedCategoryId }: CategoryTabProps
     const tabContainerRef = useRef<HTMLDivElement | null>(null)
     const tabRef = useRef<(HTMLDivElement | null)[]>([])
 
-    useEffect(() => {
+    const handleTabScroll = (index: number) => {
         if (tabContainerRef.current) {
-            tabRef.current[selectedCategoryId]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" })
+            tabRef.current[index]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" })
         }
+    }
+
+    useEffect(() => {
+        handleTabScroll(selectedCategoryId)
     }, [])
 
     return (
@@ -57,7 +63,8 @@ export const CategoryTab = ({ categories, selectedCategoryId }: CategoryTabProps
                     <div
                         key={category.id}
                         className="inline-flex px-1"
-                        ref={(el) => tabRef.current[category.id] = el}>
+                        ref={(el) => tabRef.current[category.id] = el}
+                        onClick={() => handleTabScroll(category.id)}>
                         <CategoryTabItem
                             key={category.id}
                             category={category}
