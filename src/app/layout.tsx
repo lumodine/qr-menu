@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { BackToTopButton } from "@/components/app/back-to-top-button"
 import { settings } from "@/data"
 import "./globals.css"
 
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html>
       <body>
         {children}
+        <BackToTopButton />
       </body>
     </html>
   )
