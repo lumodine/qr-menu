@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useViewContext } from "@/contexts/viewContext"
 import { cn } from "@/lib/utils"
+import { useEffect, useRef } from "react"
 
 export type CategoryTabItemProps = {
     category: Category
@@ -40,13 +41,23 @@ export type CategoryTabProps = {
 }
 
 export const CategoryTab = ({ categories, selectedCategoryId }: CategoryTabProps) => {
+    const tabContainerRef = useRef<HTMLDivElement | null>(null)
+    const tabRef = useRef<(HTMLDivElement | null)[]>([])
+
+    useEffect(() => {
+        if (tabContainerRef.current) {
+            tabRef.current[selectedCategoryId]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" })
+        }
+    }, [])
+
     return (
-        <div className="whitespace-nowrap overflow-x-auto p-3 no-scrollbar">
+        <div className="whitespace-nowrap overflow-x-auto p-3 no-scrollbar" ref={tabContainerRef}>
             {
                 categories.map(category => (
                     <div
                         key={category.id}
-                        className="inline-flex px-1">
+                        className="inline-flex px-1"
+                        ref={(el) => tabRef.current[category.id] = el}>
                         <CategoryTabItem
                             key={category.id}
                             category={category}
