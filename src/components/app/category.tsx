@@ -44,17 +44,17 @@ export type CategoryTabProps = {
 
 export const CategoryTab = ({ categories, selectedCategoryId }: CategoryTabProps) => {
     const tabContainerRef = useRef<HTMLDivElement | null>(null)
-    const tabRef = useRef<(HTMLDivElement | null)[]>([])
+    const tabRefs = useRef<(HTMLDivElement | null)[]>([])
 
     const handleTabScroll = (index: number) => {
         if (tabContainerRef.current) {
-            tabRef.current[index]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" })
+            tabRefs.current[index]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" })
         }
     }
 
     useEffect(() => {
         handleTabScroll(selectedCategoryId)
-    }, [])
+    }, [selectedCategoryId])
 
     return (
         <div className="whitespace-nowrap overflow-x-auto p-3 no-scrollbar" ref={tabContainerRef}>
@@ -63,7 +63,7 @@ export const CategoryTab = ({ categories, selectedCategoryId }: CategoryTabProps
                     <div
                         key={category.id}
                         className="inline-flex px-1"
-                        ref={(el) => tabRef.current[category.id] = el}
+                        ref={(el) => { tabRefs.current[category.id] = el }}
                         onClick={() => handleTabScroll(category.id)}>
                         <CategoryTabItem
                             key={category.id}

@@ -4,9 +4,7 @@ import { VIEWS } from "@/constants"
 import { Button } from "@/components/ui/button"
 import { useViewContext } from "@/contexts/viewContext"
 
-export type ViewProps = {}
-
-export const View = ({ }: ViewProps) => {
+export const View = () => {
     const { view, setView } = useViewContext()
 
     const handleClick = (viewKey: string) => setView(viewKey)

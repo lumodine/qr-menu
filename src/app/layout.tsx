@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { BackToTopButton } from "@/components/app/back-to-top-button"
 import { settings } from "@/data"
 import "./globals.css"
+import { Suspense } from "react"
 
 export const metadata: Metadata = {
   title: {
@@ -31,8 +32,10 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        {children}
-        <BackToTopButton />
+        <Suspense fallback={<div>Loading...</div>}>
+          {children}
+          <BackToTopButton />
+        </Suspense>
       </body>
     </html>
   )

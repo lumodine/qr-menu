@@ -10,9 +10,8 @@ type ViewActions = {
     setView: (view: string) => void
 }
 
-// Todo: 
-export const useViewContext = create<ViewState & ViewActions>(
-    persist(
+export const useViewContext = create(
+    persist<ViewState & ViewActions>(
         (set) => ({
             view: DEFAULT_VIEW.key,
             setView: (view: string) => {
