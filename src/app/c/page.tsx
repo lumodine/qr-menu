@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { CategoryNotFound, CategoryTab } from "@/components/app/category"
-import { ProductList } from "@/components/app/product"
+import { ProductNotFound, ProductList } from "@/components/app/product"
 import { View } from "@/components/app/view"
 import { categories } from "@/data"
 import { routes } from "@/constants"
@@ -20,6 +20,10 @@ export default function CategoryPage() {
   }
 
   const products = findedCategory.products
+
+  if (!products) {
+    return <ProductNotFound />
+  }
 
   return (
     <>
@@ -42,7 +46,7 @@ export default function CategoryPage() {
       <div className="bg-white sticky top-0">
         <CategoryTab
           categories={categories}
-          selectedCategoryId={categoryId} />
+          selectedCategoryId={findedCategory.id} />
       </div>
 
       <ProductList products={products} />

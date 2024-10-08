@@ -13,6 +13,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
+import { formatPrice } from "@/utils/number"
 
 export type ProductListProps = {
     products: Product[]
@@ -52,11 +53,12 @@ export const ProductCard = ({ product, viewType }: ProductCardProps) => {
                 <div className={cn(
                     "rounded-xl bg-gray-50 text-card-foreground border border-gray-100",
                     "flex h-full gap-4 py-4 px-2",
+                    "cursor-pointer",
                     viewType == "list" && "justify-center items-center",
                     viewType == "grid" && "flex-col justify-center items-center"
                 )}>
                     <Image
-                        src={product.images.list}
+                        src={product.image}
                         alt={product.title}
                         width={80}
                         height={80}
@@ -77,7 +79,7 @@ export const ProductCard = ({ product, viewType }: ProductCardProps) => {
                             )
                         }
                         <p className="text-sm font-bold">
-                            ₺{product.price}
+                            {formatPrice(product.defaultUnit.price)}
                         </p>
                     </div>
                 </div>
@@ -85,14 +87,16 @@ export const ProductCard = ({ product, viewType }: ProductCardProps) => {
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>
-                        {product.title} &#x2022; ₺{product.price}
+                        {product.title}
+                        {" "}&#x2022;{" "}
+                        {formatPrice(product.defaultUnit.price)}
                     </DialogTitle>
                     <DialogDescription>
                         {product.description}
                     </DialogDescription>
                 </DialogHeader>
                 <Image
-                    src={product.images.detail}
+                    src={product.image}
                     alt={product.title}
                     width={250}
                     height={250}
@@ -112,3 +116,14 @@ export const ProductCard = ({ product, viewType }: ProductCardProps) => {
     )
 }
 ProductCard.displayName = "ProductCard"
+
+export const ProductNotFound = () => {
+    return (
+        <section>
+            <h1>
+                Ürün bulunamadı!
+            </h1>
+        </section>
+    )
+}
+ProductNotFound.displayName = "ProductNotFound"

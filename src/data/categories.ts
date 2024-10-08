@@ -1,943 +1,1459 @@
-import { type Category } from "@/types"
+import type { Category } from "@/types"
 
 export const categories: Category[] = [
     {
         id: 1,
         title: "Sıcak Kahveler",
-        description: "",
-        image: "https://placehold.co/80x80/png",
+        description: null,
+        image: "https://placehold.co/1000x1000/png",
         products: [
             {
                 id: 1,
+                categoryId: 1,
                 title: "Espresso",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 95
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 95
+                }
             },
             {
                 id: 2,
+                categoryId: 1,
                 title: "Double Espresso",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 115
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 115
+                }
             },
             {
                 id: 3,
+                categoryId: 1,
                 title: "Americano",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 125
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 125
+                }
             },
             {
                 id: 4,
+                categoryId: 1,
                 title: "Espresso Macchiato",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 125
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 125
+                }
             },
             {
                 id: 5,
+                categoryId: 1,
                 title: "Türk Kahvesi",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 95
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 95
+                }
             },
             {
                 id: 6,
+                categoryId: 1,
                 title: "Coffee Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 130
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 130
+                }
             },
             {
                 id: 7,
+                categoryId: 1,
                 title: "Filter Coffee",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 120
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 120
+                }
             },
             {
                 id: 8,
+                categoryId: 1,
                 title: "Double Türk Kahvesi",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 115
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 115
+                }
             },
             {
                 id: 9,
+                categoryId: 1,
                 title: "Cappuccino",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 130
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 130
+                }
             },
             {
                 id: 10,
+                categoryId: 1,
                 title: "Damla Sakızlı Türk Kahvesi",
                 description: "lorem ipsum dolor sir amet lorem ipsum dolor sir amet lorem ipsum dolor sir amet lorem ipsum dolor sir amet",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 110
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 110
+                }
             },
             {
                 id: 11,
+                categoryId: 1,
                 title: "Caramel Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 140
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 140
+                }
             },
             {
                 id: 12,
+                categoryId: 1,
                 title: "Vanilla Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 140
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 140
+                }
             },
             {
                 id: 13,
+                categoryId: 1,
                 title: "Pumpkin Spice Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 145
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 145
+                }
             },
             {
                 id: 14,
+                categoryId: 1,
                 title: "Mocha",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 140
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 140
+                }
             },
             {
                 id: 15,
+                categoryId: 1,
                 title: "White Chocolate Mocha",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 140
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 140
+                }
             },
             {
                 id: 16,
+                categoryId: 1,
                 title: "Chai Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 135
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 135
+                }
             },
             {
                 id: 17,
+                categoryId: 1,
                 title: "Flat White",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 145
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 145
+                }
             },
             {
                 id: 18,
+                categoryId: 1,
                 title: "Noir Blanc Mocha",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 145
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 145
+                }
             },
             {
                 id: 19,
+                categoryId: 1,
                 title: "Ballı Tarçınlı Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 145
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 145
+                }
             },
             {
                 id: 20,
+                categoryId: 1,
                 title: "Hazelnut Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 140
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 140
+                }
             },
             {
                 id: 21,
+                categoryId: 1,
                 title: "Snicker Mocha",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 145
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 145
+                }
             },
             {
                 id: 22,
+                categoryId: 1,
                 title: "Cortado",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 125
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 125
+                }
             }
         ]
     },
     {
         id: 2,
         title: "Soğuk Kahveler",
-        description: "",
-        image: "https://placehold.co/80x80/png",
+        description: null,
+        image: "https://placehold.co/1000x1000/png",
         products: [
             {
-                id: 1,
+                id: 23,
+                categoryId: 2,
                 title: "Iced Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 140
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 140
+                }
             },
             {
-                id: 2,
+                id: 24,
+                categoryId: 2,
                 title: "Iced Caramel Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 3,
+                id: 25,
+                categoryId: 2,
                 title: "Iced Vanilla Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 4,
+                id: 26,
+                categoryId: 2,
                 title: "Iced Mocha",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 5,
+                id: 27,
+                categoryId: 2,
                 title: "Iced White Mocha",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 6,
+                id: 28,
+                categoryId: 2,
                 title: "Iced Americano",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 135
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 135
+                }
             },
             {
-                id: 7,
+                id: 29,
+                categoryId: 2,
                 title: "Iced Filter Coffee",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 130
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 130
+                }
             },
             {
-                id: 8,
+                id: 30,
+                categoryId: 2,
                 title: "Iced Hazelnut Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 9,
+                id: 31,
+                categoryId: 2,
                 title: "Iced Snickers Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 155
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 155
+                }
             },
             {
-                id: 10,
+                id: 32,
+                categoryId: 2,
                 title: "Cold Brew",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             },
             {
-                id: 11,
+                id: 33,
+                categoryId: 2,
                 title: "Iced Noir Blanc Mocha",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 155
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 155
+                }
             },
             {
-                id: 12,
+                id: 34,
+                categoryId: 2,
                 title: "Iced Filter Coffee",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 130
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 130
+                }
             }
         ]
     },
     {
         id: 3,
         title: "Sıcak Çaylar",
-        description: "",
-        image: "https://placehold.co/80x80/png",
+        description: null,
+        image: "https://placehold.co/1000x1000/png",
         products: [
             {
-                id: 1,
+                id: 35,
+                categoryId: 3,
                 title: "Fincan Çay",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 65
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 65
+                }
             },
             {
-                id: 2,
+                id: 36,
+                categoryId: 3,
                 title: "Yeşil Çay",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 3,
+                id: 37,
+                categoryId: 3,
                 title: "Bardak Çay",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 40
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 40
+                }
             },
             {
-                id: 4,
+                id: 38,
+                categoryId: 3,
                 title: "Ihlamur",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 5,
+                id: 39,
+                categoryId: 3,
                 title: "Adaçayı",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 6,
+                id: 40,
+                categoryId: 3,
                 title: "Kuşburnu",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 7,
+                id: 41,
+                categoryId: 3,
                 title: "Kış Çayı",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             }
         ]
     },
     {
         id: 4,
         title: "Soğuk İçecekler",
-        description: "",
-        image: "https://placehold.co/80x80/png",
+        description: null,
+        image: "https://placehold.co/1000x1000/png",
         products: [
             {
-                id: 1,
+                id: 42,
+                categoryId: 4,
                 title: "Limonata",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 2,
+                id: 43,
+                categoryId: 4,
                 title: "Berry Hibiscus",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 3,
+                id: 44,
+                categoryId: 4,
                 title: "Karpuzlu Frozen",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             },
             {
-                id: 4,
+                id: 45,
+                categoryId: 4,
                 title: "Mangolu Frozen",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             },
             {
-                id: 5,
+                id: 46,
+                categoryId: 4,
                 title: "Çilekli Milkshake",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             },
             {
-                id: 6,
+                id: 47,
+                categoryId: 4,
                 title: "Çikolata Milkshake",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             },
             {
-                id: 7,
+                id: 48,
+                categoryId: 4,
                 title: "Çilekli Limonata",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 165
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 165
+                }
             },
             {
-                id: 8,
+                id: 49,
+                categoryId: 4,
                 title: "Naneli Limonata",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 165
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 165
+                }
             },
             {
-                id: 9,
+                id: 50,
+                categoryId: 4,
                 title: "Portakal Suyu",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 10,
+                id: 51,
+                categoryId: 4,
                 title: "Cool Lime",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 11,
+                id: 52,
+                categoryId: 4,
                 title: "Homemade Mango Iced Tea",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 165
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 165
+                }
             },
             {
-                id: 12,
+                id: 53,
+                categoryId: 4,
                 title: "Vanilya Milkshake",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             },
             {
-                id: 13,
+                id: 54,
+                categoryId: 4,
                 title: "Homemade Yeşil Elmalı Iced Tea",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             },
             {
-                id: 14,
+                id: 55,
+                categoryId: 4,
                 title: "Çilekli Frozen",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             },
             {
-                id: 15,
+                id: 56,
+                categoryId: 4,
                 title: "Homemade Karpuz Iced Tea",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             },
             {
-                id: 16,
+                id: 57,
+                categoryId: 4,
                 title: "Yeşil Elma Frozen",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             }
         ]
     },
     {
         id: 5,
         title: "Soft İçecekler",
-        description: "",
-        image: "https://placehold.co/80x80/png",
+        description: null,
+        image: "https://placehold.co/1000x1000/png",
         products: [
             {
-                id: 1,
+                id: 58,
+                categoryId: 5,
                 title: "Cappy Şeftali Suyu",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 80
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 80
+                }
             },
             {
-                id: 2,
+                id: 59,
+                categoryId: 5,
                 title: "Cappy Karışık Meyve Suyu",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 80
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 80
+                }
             },
             {
-                id: 3,
+                id: 60,
+                categoryId: 5,
                 title: "Cappy Vişneli Meyve Suyu",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 80
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 80
+                }
             },
             {
-                id: 4,
+                id: 61,
+                categoryId: 5,
                 title: "Soda",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 85
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 85
+                }
             },
             {
-                id: 5,
+                id: 62,
+                categoryId: 5,
                 title: "Su",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 40
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 40
+                }
             }
         ]
     },
     {
         id: 6,
         title: "Fırından Tatlı Lezzetler",
-        description: "",
-        image: "https://placehold.co/80x80/png",
+        description: null,
+        image: "https://placehold.co/1000x1000/png",
         products: [
             {
-                id: 1,
+                id: 63,
+                categoryId: 6,
                 title: "Beyaz Çikolatalı Brownie",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 210
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 210
+                }
             },
             {
-                id: 2,
+                id: 64,
+                categoryId: 6,
                 title: "Dondurmalı Beyaz Çikolatalı Brownie",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 235
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 235
+                }
             },
             {
-                id: 3,
+                id: 65,
+                categoryId: 6,
                 title: "Limonlu Cheesecake",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 190
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 190
+                }
             },
             {
-                id: 4,
+                id: 66,
+                categoryId: 6,
                 title: "Frambuazlı Cheesecake",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 190
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 190
+                }
             },
             {
-                id: 5,
+                id: 67,
+                categoryId: 6,
                 title: "Çikolatalı Cheesecake",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 195
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 195
+                }
             },
             {
-                id: 6,
+                id: 68,
+                categoryId: 6,
                 title: "Tiramisu",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 190
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 190
+                }
             },
             {
-                id: 7,
+                id: 69,
+                categoryId: 6,
                 title: "Cookie",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 95
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 95
+                }
             },
             {
-                id: 8,
+                id: 70,
+                categoryId: 6,
                 title: "Orman Meyveli Sebastian Cheesecake",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 210
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 210
+                }
             },
             {
-                id: 9,
+                id: 71,
+                categoryId: 6,
                 title: "Çilekli Magnolia",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 155
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 155
+                }
             }
         ]
     },
     {
         id: 7,
         title: "Atıştırmalıklar",
-        description: "",
-        image: "https://placehold.co/80x80/png",
+        description: null,
+        image: "https://placehold.co/1000x1000/png",
         products: [
             {
-                id: 1,
+                id: 72,
+                categoryId: 7,
                 title: "Ege Tost",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 185
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 185
+                }
             },
             {
-                id: 2,
+                id: 73,
+                categoryId: 7,
                 title: "Peynirli Börek",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 95
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 95
+                }
             },
             {
-                id: 3,
+                id: 74,
+                categoryId: 7,
                 title: "Ispanaklı Börek",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 95
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 95
+                }
             },
             {
-                id: 4,
+                id: 75,
+                categoryId: 7,
                 title: "Patatesli Börek",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 95
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 95
+                }
             }
         ]
     },
     {
         id: 8,
         title: "Kruvasan Çeşitleri",
-        description: "",
-        image: "https://placehold.co/80x80/png",
+        description: null,
+        image: "https://placehold.co/1000x1000/png",
         products: [
             {
-                id: 1,
+                id: 76,
+                categoryId: 8,
                 title: "Sade Kruvasan",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 95
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 95
+                }
             },
             {
-                id: 2,
+                id: 77,
+                categoryId: 8,
                 title: "Hindi Füme Kruvasan",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 185
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 185
+                }
             },
             {
-                id: 3,
+                id: 78,
+                categoryId: 8,
                 title: "Kaşarlı Kruvasan",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 115
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 115
+                }
             },
             {
-                id: 4,
+                id: 79,
+                categoryId: 8,
                 title: "Üç Peynirli Kruvasan",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             },
             {
-                id: 5,
+                id: 80,
+                categoryId: 8,
                 title: "Klasik Kruvasan",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 165
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 165
+                }
             },
             {
-                id: 6,
+                id: 81,
+                categoryId: 8,
                 title: "Tatlı Kruvasan",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 185
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 185
+                }
             }
         ]
     },
     {
         id: 9,
         title: "Ekstralar",
-        description: "",
-        image: "https://placehold.co/80x80/png",
+        description: null,
+        image: "https://placehold.co/1000x1000/png",
         products: [
             {
-                id: 1,
+                id: 82,
+                categoryId: 9,
                 title: "Ekstra Shot",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 40
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 40
+                }
             },
             {
-                id: 2,
+                id: 83,
+                categoryId: 9,
                 title: "Ekstra Şurup",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 25
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 25
+                }
             },
             {
-                id: 3,
+                id: 84,
+                categoryId: 9,
                 title: "İlave Süt",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 20
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 20
+                }
             }
         ]
     },
     {
         id: 10,
         title: "Matchalar",
-        description: "",
-        image: "https://placehold.co/80x80/png",
+        description: null,
+        image: "https://placehold.co/1000x1000/png",
         products: [
             {
-                id: 1,
+                id: 85,
+                categoryId: 10,
                 title: "Matcha Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 150
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 150
+                }
             },
             {
-                id: 2,
+                id: 86,
+                categoryId: 10,
                 title: "Ice Matcha Latte",
-                description: "",
-                images: {
-                    list: "https://placehold.co/80x80/png",
-                    detail: "https://placehold.co/1000x1000/png"
-                },
-                price: 160
+                description: null,
+                image: "https://placehold.co/1000x1000/png",
+                defaultUnit: {
+                    currency: {
+                        id: 1,
+                        name: "Türk Lirası",
+                        shortName: "TRY",
+                        symbol: "₺"
+                    },
+                    price: 160
+                }
             }
         ]
     }
