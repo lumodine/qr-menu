@@ -59,12 +59,12 @@ export const CategoryTab = ({ categories, selectedCategoryId }: CategoryTabProps
     return (
         <div className="whitespace-nowrap overflow-x-auto p-3 no-scrollbar" ref={tabContainerRef}>
             {
-                categories.map(category => (
+                categories.map((category, index) => (
                     <div
                         key={category.id}
                         className="inline-flex px-1"
-                        ref={(el) => { tabRefs.current[category.id] = el }}
-                        onClick={() => handleTabScroll(category.id)}>
+                        ref={(el) => { tabRefs.current[index + 1] = el }}
+                        onClick={() => handleTabScroll(index + 1)}>
                         <CategoryTabItem
                             key={category.id}
                             category={category}
