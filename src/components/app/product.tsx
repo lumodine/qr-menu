@@ -1,7 +1,7 @@
 "use client"
 
 import { Product } from "@/types"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/shadcn"
 import Image from "next/image"
 import { useViewContext } from "@/contexts/viewContext"
 import {

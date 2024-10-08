@@ -4,7 +4,7 @@ export const useScrollVisible = (limit: number) => {
     const [isVisible, setIsVisible] = useState(false)
 
     const toggleVisibility = useCallback(() => {
-        setIsVisible(window.scrollY >= limit)
+        setIsVisible(window.scrollY > limit)
     }, [limit])
 
     useEffect(() => {

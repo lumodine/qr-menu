@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useViewContext } from "@/contexts/viewContext"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/shadcn"
 import { useEffect, useRef } from "react"
 
 export type CategoryTabItemProps = {
