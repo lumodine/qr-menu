@@ -9,3 +9,4 @@ export const Loading = ({ title }: LoadingProps) => {
         </div>
     )
 }
+Loading.displayName = "Loading"

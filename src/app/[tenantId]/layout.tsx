@@ -2,7 +2,6 @@
 
 import { useTenantContext } from "@/contexts/tenantContext"
 import { notFound } from "next/navigation"
-import { useEffect } from "react"
 
 type TenantLayoutProps = {
     children: React.ReactNode
@@ -11,11 +10,18 @@ type TenantLayoutProps = {
     }
 }
 
+const allowedTenants = ["test"] // TODO
+
 export default function TenantLayout({ children, params }: TenantLayoutProps) {
     const tenantId = params.tenantId
 
     if (!tenantId) {
       notFound()
+    }
+
+    const hasTenant = allowedTenants.includes(tenantId)
+    if (!hasTenant) {
+        notFound()
     }
     
     const setTenantId = useTenantContext((state) => state.setTenantId)

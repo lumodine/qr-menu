@@ -1,6 +1,6 @@
 "use client"
 
-import { TenantLink } from "@/components/app/tenant-link"
+import { TenantLink } from "@/components/app/tenant"
 import { Button } from "@/components/ui/button"
 import { settings } from "@/data"
 import Image from "next/image"

@@ -1,12 +1,11 @@
 "use client"
 
-import { ArrowLeft } from "lucide-react"
 import { CategoryTab } from "@/components/app/category"
 import { ProductList } from "@/components/app/product"
 import { View } from "@/components/app/view"
 import { categories } from "@/data"
 import { notFound } from "next/navigation"
-import { TenantLink } from "@/components/app/tenant-link"
+import { TenantGroupHeader } from "@/components/app/tenant"
 
 type Params = {
   searchParams: {
@@ -32,19 +31,15 @@ export default function MenuPage({ searchParams }: Params) {
 
   return (
     <>
-      <header className="bg-background w-full">
-        <TenantLink href="/categories" className="inline-flex p-4 items-center justify-center gap-2">
-          <ArrowLeft />
-        </TenantLink>
+      <TenantGroupHeader href="/categories" />
 
-        <div className="flex justify-between items-center px-4">
-          <h1 className="font-bold text-xl">
-            Menü
-          </h1>
+      <div className="flex justify-between items-center px-4 py-1">
+        <h1 className="font-bold text-xl">
+          Menü
+        </h1>
 
-          <View />
-        </div>
-      </header>
+        <View />
+      </div>
 
       <div className="bg-white sticky top-0">
         <CategoryTab

@@ -3,10 +3,9 @@
 import { Category } from "@/types"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import { useViewContext } from "@/contexts/viewContext"
 import { cn } from "@/utils/shadcn"
 import { useEffect, useRef } from "react"
-import { TenantLink } from "./tenant-link"
+import { TenantLink } from "./tenant"
 
 export type CategoryTabItemProps = {
     category: Category
@@ -81,12 +80,9 @@ export type CategoryListProps = {
 }
 
 export const CategoryList = ({ categories }: CategoryListProps) => {
-    const activeViewType = useViewContext((state) => state.view)
-
     return (
         <section className={cn(
-            activeViewType == "grid" && "grid grid-cols-category",
-            activeViewType == "list" && "flex flex-col",
+            "grid grid-cols-category",
             "gap-2"
         )}>
             {
