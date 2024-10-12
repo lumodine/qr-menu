@@ -1,38 +1,41 @@
 "use client"
 
 import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
-import { useSearchParams } from "next/navigation"
-import { CategoryNotFound, CategoryTab } from "@/components/app/category"
-import { ProductNotFound, ProductList } from "@/components/app/product"
+import { CategoryTab } from "@/components/app/category"
+import { ProductList } from "@/components/app/product"
 import { View } from "@/components/app/view"
 import { categories } from "@/data"
-import { routes } from "@/constants"
+import { notFound } from "next/navigation"
+import { TenantLink } from "@/components/app/tenant-link"
 
-export default function CategoryPage() {
-  const searchParams = useSearchParams()
+type Params = {
+  searchParams: {
+    c: number
+  }
+}
 
-  const categoryId = parseInt(searchParams.get("i") as string)
+export default function MenuPage({ searchParams }: Params) {
+  let findedCategory = categories.find(category => category.id == searchParams.c)
+  if (!findedCategory && !searchParams.c) {
+    findedCategory = categories.at(0)
+  }
 
-  const findedCategory = categories.find(category => category.id == categoryId)
   if (!findedCategory) {
-    return <CategoryNotFound />
+    return notFound()
   }
 
   const products = findedCategory.products
 
   if (!products) {
-    return <ProductNotFound />
+    return notFound()
   }
 
   return (
     <>
       <header className="bg-background w-full">
-        <Link
-          href={routes.home.href}
-          className="inline-flex p-4 items-center justify-center gap-2">
+        <TenantLink href="/categories" className="inline-flex p-4 items-center justify-center gap-2">
           <ArrowLeft />
-        </Link>
+        </TenantLink>
 
         <div className="flex justify-between items-center px-4">
           <h1 className="font-bold text-xl">

@@ -23,6 +23,7 @@ export type Unit = {
 export type Settings = {
     name: string
     logo: string
+    background: string
 }
 
 export type Currency = {

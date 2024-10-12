@@ -18,8 +18,7 @@ export const View = () => {
                         key={index}
                         variant="secondary"
                         size="icon"
-                        className={v.key == view ? "bg-rose-500 focus:bg-rose-500 text-white" : ""}
-                        title={v.title}>
+                        className={v.key == view ? "bg-rose-500 focus:bg-rose-500 text-white" : ""}>
                         {v.icon}
                     </Button>
                 ))

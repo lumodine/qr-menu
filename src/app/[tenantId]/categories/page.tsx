@@ -5,7 +5,7 @@ import { View } from "@/components/app/view"
 import { categories, settings } from "@/data"
 import Image from "next/image"
 
-export default function HomePage() {
+export default function CategoriesPage() {
   return (
     <>
       <header className="flex items-center justify-center px-4 py-2">

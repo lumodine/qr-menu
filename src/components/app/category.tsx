@@ -1,13 +1,12 @@
 "use client"
 
-import { routes } from "@/constants"
 import { Category } from "@/types"
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useViewContext } from "@/contexts/viewContext"
 import { cn } from "@/utils/shadcn"
 import { useEffect, useRef } from "react"
+import { TenantLink } from "./tenant-link"
 
 export type CategoryTabItemProps = {
     category: Category
@@ -16,7 +15,7 @@ export type CategoryTabItemProps = {
 
 export const CategoryTabItem = ({ category, isActive }: CategoryTabItemProps) => {
     return (
-        <Link href={routes.categoryDetail.href(category.id)}>
+        <TenantLink href={`/menu/?c=${category.id}`}>
             <Button
                 variant={isActive ? "destructive" : "outline"}
                 className="h-full p-2 flex gap-2 items-center justify-center">
@@ -32,7 +31,7 @@ export const CategoryTabItem = ({ category, isActive }: CategoryTabItemProps) =>
                     {category.title}
                 </span>
             </Button>
-        </Link>
+        </TenantLink>
     )
 }
 CategoryTabItem.displayName = "CategoryTabItem"
@@ -108,7 +107,7 @@ export type CategoryCardProps = {
 
 export const CategoryCard = ({ category }: CategoryCardProps) => {
     return (
-        <Link href={routes.categoryDetail.href(category.id)}>
+        <TenantLink href={`/menu/?c=${category.id}`}>
             <div className="flex items-center justify-between flex-col text-center rounded-xl bg-gray-50 text-card-foreground border border-gray-100 h-full gap-2 p-4">
                 <Image
                     src={category.image}
@@ -127,18 +126,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
                     {category.title}
                 </p>
             </div>
-        </Link>
+        </TenantLink>
     )
 }
 CategoryCard.displayName = "CategoryCard"
-
-export const CategoryNotFound = () => {
-    return (
-        <section>
-            <h1>
-                Kategori bulunamadı!
-            </h1>
-        </section>
-    )
-}
-CategoryNotFound.displayName = "CategoryNotFound"

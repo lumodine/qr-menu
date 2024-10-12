@@ -116,14 +116,3 @@ export const ProductCard = ({ product, viewType }: ProductCardProps) => {
     )
 }
 ProductCard.displayName = "ProductCard"
-
-export const ProductNotFound = () => {
-    return (
-        <section>
-            <h1>
-                Ürün bulunamadı!
-            </h1>
-        </section>
-    )
-}
-ProductNotFound.displayName = "ProductNotFound"

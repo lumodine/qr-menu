@@ -9,6 +9,7 @@ export const useScrollVisible = (limit: number) => {
 
     useEffect(() => {
         window.addEventListener("scroll", toggleVisibility)
+        
         return () => window.removeEventListener("scroll", toggleVisibility)
     }, [limit, toggleVisibility])
 
