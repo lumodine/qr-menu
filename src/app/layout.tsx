@@ -1,14 +1,13 @@
 import type { Metadata } from "next"
 import { BackToTopButton } from "@/components/app/back-to-top-button"
-import { settings } from "@/data"
 import { Suspense } from "react"
 import { Loading } from "@/components/app/loading"
 import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: settings.name,
-    template: `%s - ${settings.name}`
+    default: process.env.NEXT_PUBLIC_APP_NAME!,
+    template: `%s - ${process.env.NEXT_PUBLIC_APP_NAME!}`
   },
   icons: [
     {
@@ -22,7 +21,6 @@ export const metadata: Metadata = {
       url: "/favicon.ico"
     }
   ],
-  robots: "nofollow, noindex"
 }
 
 export default function RootLayout({
