@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { cn } from "@/utils/shadcn"
 import { useEffect, useRef } from "react"
-import { TenantLink } from "./tenant"
+import Link from "next/link"
 
 export type CategoryTabItemProps = {
     category: Category
@@ -14,7 +14,7 @@ export type CategoryTabItemProps = {
 
 export const CategoryTabItem = ({ category, isActive }: CategoryTabItemProps) => {
     return (
-        <TenantLink href={`/menu/?c=${category.id}`}>
+        <Link href={`/menu/?c=${category.id}`}>
             <Button
                 variant={isActive ? "destructive" : "outline"}
                 className="h-full p-2 flex gap-2 items-center justify-center">
@@ -30,7 +30,7 @@ export const CategoryTabItem = ({ category, isActive }: CategoryTabItemProps) =>
                     {category.title}
                 </span>
             </Button>
-        </TenantLink>
+        </Link>
     )
 }
 CategoryTabItem.displayName = "CategoryTabItem"
@@ -103,7 +103,7 @@ export type CategoryCardProps = {
 
 export const CategoryCard = ({ category }: CategoryCardProps) => {
     return (
-        <TenantLink href={`/menu/?c=${category.id}`}>
+        <Link href={`/menu/?c=${category.id}`}>
             <div className="flex items-center justify-between flex-col text-center rounded-xl bg-gray-50 text-card-foreground border border-gray-100 h-full gap-2 p-4">
                 <Image
                     src={category.image}
@@ -122,7 +122,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
                     {category.title}
                 </p>
             </div>
-        </TenantLink>
+        </Link>
     )
 }
 CategoryCard.displayName = "CategoryCard"

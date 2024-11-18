@@ -1,6 +1,5 @@
 "use client"
 
-import { useTenantContext } from "@/contexts/tenantContext"
 import Link from "next/link"
 import { settings } from "@/data"
 import { ArrowLeft } from "lucide-react"
@@ -13,11 +12,11 @@ export type TenantGroupHeaderProps = {
 export const TenantGroupHeader = ({ href }: TenantGroupHeaderProps) => {
     return (
         <header className="bg-background w-full flex justify-between items-center px-4 py-1">
-            <TenantLink href={href} className="inline-flex items-center justify-center">
+            <Link href={href} className="inline-flex items-center justify-center">
                 <ArrowLeft />
-            </TenantLink>
+            </Link>
 
-            <TenantLink href="/">
+            <Link href="/">
                 <Image
                     src={settings.logo}
                     alt={`${settings.name} logo`}
@@ -25,9 +24,9 @@ export const TenantGroupHeader = ({ href }: TenantGroupHeaderProps) => {
                     height={55}
                     loading="lazy"
                 />
-            </TenantLink>
+            </Link>
 
-            <TenantLink href="/">
+            <Link href="/">
                 <Image
                     src={settings.logo}
                     alt={`${settings.name} logo`}
@@ -35,24 +34,8 @@ export const TenantGroupHeader = ({ href }: TenantGroupHeaderProps) => {
                     height={30}
                     loading="lazy"
                 />
-            </TenantLink>
+            </Link>
         </header>
     )
 }
 TenantGroupHeader.displayName = "TenantGroupHeader"
-
-export type TenantLinkProps = {
-    children: React.ReactNode
-    href: string
-} & React.AnchorHTMLAttributes<HTMLAnchorElement>
-
-export const TenantLink = ({ children, href, ...props }: TenantLinkProps) => {
-    const tenantId = useTenantContext((state) => state.tenantId)
-
-    return (
-        <Link href={`/${[tenantId, href].join("")}`} {...props}>
-            {children}
-        </Link>
-    )
-}
-TenantLink.displayName = "TenantLink"

@@ -1,9 +1,9 @@
 "use client"
 
-import { TenantLink } from "@/components/app/tenant"
 import { Button } from "@/components/ui/button"
 import { settings } from "@/data"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function TenantHomePage() {
     return (
@@ -27,11 +27,11 @@ export default function TenantHomePage() {
                 />
 
                 <div className="mt-10">
-                    <TenantLink href="/categories">
+                    <Link href="/categories">
                         <Button variant="secondary" className="px-8 py-6 rounded-full text-2xl">
                             Menü
                         </Button>
-                    </TenantLink>
+                    </Link>
                 </div>
             </section>
         </>
