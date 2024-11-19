@@ -21,6 +21,10 @@ export default {
 				md: "calc(var(--radius) - 2px)",
 				sm: "calc(var(--radius) - 4px)"
 			},
+			gridTemplateColumns: {
+				category: "repeat(auto-fill, minmax(115px, 1fr))",
+				product: "repeat(auto-fill, minmax(160px, 1fr))"
+			},
 			colors: {
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",

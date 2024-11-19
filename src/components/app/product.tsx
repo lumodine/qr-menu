@@ -3,7 +3,6 @@
 import { Product } from "@/types"
 import { cn } from "@/utils/shadcn"
 import Image from "next/image"
-import { useViewContext } from "@/contexts/viewContext"
 import {
     Dialog,
     DialogContent,
@@ -17,22 +16,21 @@ import { formatPrice } from "@/utils/number"
 
 export type ProductListProps = {
     products: Product[]
+    viewType: string
 }
 
-export const ProductList = ({ products }: ProductListProps) => {
-    const activeViewType = useViewContext((state) => state.view)
-
+export const ProductList = ({ products, viewType }: ProductListProps) => {
     return (
         <section className={cn(
             "p-4",
-            activeViewType == "list" && "flex flex-col gap-2",
-            activeViewType == "grid" && "grid grid-cols-product gap-2"
+            viewType == "list" && "flex flex-col gap-2",
+            viewType == "grid" && "grid grid-cols-product gap-2"
         )}>
             {
                 products.map(product => (
                     <ProductCard
                         key={product.id}
-                        viewType={activeViewType}
+                        viewType={viewType}
                         product={product} />
                 ))
             }

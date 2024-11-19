@@ -1,28 +1,30 @@
-"use client"
-
 import { VIEWS } from "@/constants"
 import { Button } from "@/components/ui/button"
-import { useViewContext } from "@/contexts/viewContext"
 
-export const View = () => {
-    const { view, setView } = useViewContext()
+export type ViewProps = {
+    views: typeof VIEWS;
+    activeView: string;
+    formAction: (formData: FormData) => void;
+};
 
-    const handleClick = (viewKey: string) => setView(viewKey)
-
+export const View = ({ views, activeView, formAction }: ViewProps) => {
     return (
         <div className="flex gap-1 items-center justify-end">
-            {
-                Object.entries(VIEWS).map(([index, v]) => (
-                    <Button
-                        onClick={() => handleClick(v.key)}
-                        key={index}
-                        variant="secondary"
-                        size="icon"
-                        className={v.key == view ? "bg-rose-500 focus:bg-rose-500 text-white" : ""}>
-                        {v.icon}
-                    </Button>
-                ))
-            }
+            <form action={formAction}>
+                {
+                    Object.entries(views).map(([index, view]) => (
+                        <Button
+                            key={index}
+                            name="viewType"
+                            value={view.key}
+                            variant="secondary"
+                            size="icon"
+                            className={view.key == activeView ? "bg-rose-500 focus:bg-rose-500 text-white" : ""}>
+                            <view.icon />
+                        </Button>
+                    ))
+                }
+            </form>
         </div>
     )
 }

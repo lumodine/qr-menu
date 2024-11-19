@@ -3,11 +3,11 @@ import { Grid2X2, TableProperties } from "lucide-react"
 export const VIEWS = {
     list: {
         key: "list",
-        icon: <TableProperties />
+        icon: TableProperties
     },
     grid: {
         key: "grid",
-        icon: <Grid2X2 />
+        icon: Grid2X2
     }
 }
 

@@ -4,6 +4,8 @@ import { View } from "@/components/app/view"
 import { categories } from "@/data"
 import { notFound } from "next/navigation"
 import { TenantGroupHeader } from "@/components/app/tenant"
+import { VIEWS } from "@/constants"
+import viewService from "@/services/view.service"
 
 type Params = {
   searchParams: {
@@ -29,6 +31,16 @@ export default async function MenuPage({ searchParams }: Params) {
     return notFound()
   }
 
+  const activeView = await viewService.getView();
+
+  const viewFormAction = async (formData: FormData) => {
+    "use server";
+
+    const viewType = formData.get("viewType") as string;
+
+    await viewService.setView(viewType);
+  };
+
   return (
     <>
       <TenantGroupHeader href="/categories" />
@@ -38,7 +50,11 @@ export default async function MenuPage({ searchParams }: Params) {
           Menü
         </h1>
 
-        <View />
+        <View
+          views={VIEWS}
+          activeView={activeView}
+          formAction={viewFormAction}
+        />
       </div>
 
       <div className="bg-white sticky top-0">
@@ -47,7 +63,10 @@ export default async function MenuPage({ searchParams }: Params) {
           selectedCategoryId={findedCategory.id} />
       </div>
 
-      <ProductList products={products} />
+      <ProductList
+        products={products}
+        viewType={activeView}
+      />
     </>
   )
 }
