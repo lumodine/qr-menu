@@ -2,10 +2,10 @@ import { VIEWS } from "@/constants"
 import { Button } from "@/components/ui/button"
 
 export type ViewProps = {
-    views: typeof VIEWS;
-    activeView: string;
-    formAction: (formData: FormData) => void;
-};
+    views: typeof VIEWS
+    activeView: string
+    formAction: (formData: FormData) => void
+}
 
 export const View = ({ views, activeView, formAction }: ViewProps) => {
     return (

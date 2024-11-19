@@ -1,14 +1,27 @@
 import { Button } from "@/components/ui/button"
-import { settings } from "@/data"
+import qrMenuService from "@/services/qr-menu.service"
+import { getTranslations } from "next-intl/server"
 import Image from "next/image"
 import Link from "next/link"
 
-export default function TenantHomePage() {
+type TenantHomePageProps = {
+    params: Promise<{
+        tenantAlias: string
+    }>
+}
+
+export default async function TenantHomePage({ params }: TenantHomePageProps) {
+    const t = await getTranslations();
+
+    const { tenantAlias } = await params
+
+    const { data: tenant } = await qrMenuService.getDetail(tenantAlias)
+
     return (
         <>
             <Image
-                src={settings.background}
-                alt={`${settings.name} image`}
+                src={tenant.background}
+                alt={`${tenant.name} image`}
                 width={800}
                 height={1200}
                 loading="lazy"
@@ -17,17 +30,22 @@ export default function TenantHomePage() {
 
             <section className="fixed top-0 left-0 w-screen h-screen flex flex-col items-center justify-center">
                 <Image
-                    src={settings.logo}
-                    alt={`${settings.name} logo`}
+                    src={tenant.logo}
+                    alt={`${tenant.name} logo`}
                     width={150}
                     height={80}
                     loading="lazy"
                 />
 
                 <div className="mt-10">
-                    <Link href="/categories">
-                        <Button variant="secondary" className="px-8 py-6 rounded-full text-2xl">
-                            Menü
+                    <Link
+                        href="/categories"
+                    >
+                        <Button
+                            variant="secondary"
+                            className="px-8 py-6 rounded-full text-2xl"
+                        >
+                            {t("menu")}
                         </Button>
                     </Link>
                 </div>

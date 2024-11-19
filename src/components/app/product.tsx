@@ -1,6 +1,5 @@
 "use client"
 
-import { Product } from "@/types"
 import { cn } from "@/utils/shadcn"
 import Image from "next/image"
 import {
@@ -13,13 +12,17 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { formatPrice } from "@/utils/number"
+import { NotFound } from "./error"
+import { useLocale, useTranslations } from "next-intl"
 
 export type ProductListProps = {
-    products: Product[]
+    products: any[]
     viewType: string
 }
 
 export const ProductList = ({ products, viewType }: ProductListProps) => {
+    const t = useTranslations();
+
     return (
         <section className={cn(
             "p-4",
@@ -27,9 +30,14 @@ export const ProductList = ({ products, viewType }: ProductListProps) => {
             viewType == "grid" && "grid grid-cols-product gap-2"
         )}>
             {
+                products.length === 0 && (
+                    <NotFound title={t("product_not_found")} />
+                )
+            }
+            {
                 products.map(product => (
                     <ProductCard
-                        key={product.id}
+                        key={product._id}
                         viewType={viewType}
                         product={product} />
                 ))
@@ -40,11 +48,20 @@ export const ProductList = ({ products, viewType }: ProductListProps) => {
 ProductList.displayName = "ProductList"
 
 export type ProductCardProps = {
-    product: Product
+    product: any
     viewType: string
 }
 
 export const ProductCard = ({ product, viewType }: ProductCardProps) => {
+    const locale = useLocale();
+    const t = useTranslations();
+
+    const translationData = product.translations.find(translation => translation.languageId.culture === locale);
+
+    if (!translationData) {
+        return null;
+    }
+
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -57,7 +74,7 @@ export const ProductCard = ({ product, viewType }: ProductCardProps) => {
                 )}>
                     <Image
                         src={product.image}
-                        alt={product.title}
+                        alt={translationData.name}
                         width={80}
                         height={80}
                         loading="lazy"
@@ -69,7 +86,7 @@ export const ProductCard = ({ product, viewType }: ProductCardProps) => {
                         viewType == "grid" && "text-center",
                     )}>
                         <p className="text-md font-semibold">
-                            {product.title}
+                            {translationData.name}
                         </p>
                         {
                             product.description && (
@@ -77,7 +94,7 @@ export const ProductCard = ({ product, viewType }: ProductCardProps) => {
                             )
                         }
                         <p className="text-sm font-bold">
-                            {formatPrice(product.defaultUnit.price)}
+                            {formatPrice(product.prices[0].price)}
                         </p>
                     </div>
                 </div>
@@ -85,9 +102,9 @@ export const ProductCard = ({ product, viewType }: ProductCardProps) => {
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>
-                        {product.title}
+                        {translationData.name}
                         {" "}&#x2022;{" "}
-                        {formatPrice(product.defaultUnit.price)}
+                        {formatPrice(product.prices[0].price)}
                     </DialogTitle>
                     <DialogDescription>
                         {product.description}
@@ -95,7 +112,7 @@ export const ProductCard = ({ product, viewType }: ProductCardProps) => {
                 </DialogHeader>
                 <Image
                     src={product.image}
-                    alt={product.title}
+                    alt={translationData.name}
                     width={250}
                     height={250}
                     loading="lazy"
@@ -105,7 +122,7 @@ export const ProductCard = ({ product, viewType }: ProductCardProps) => {
                 <div className="text-center">
                     <DialogTrigger asChild>
                         <Button variant="secondary" size="lg" className="mt-4 w-full">
-                            Kapat
+                            {t("close")}
                         </Button>
                     </DialogTrigger>
                 </div>

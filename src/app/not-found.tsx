@@ -1,20 +1,26 @@
 import { Metadata } from "next"
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Sayfa Bulunamadı",
-  robots: "noindex, nofollow"
+export async function generateMetadata() {
+  const t = await getTranslations("pagenotfound.seo");
+ 
+  return {
+    title: t("title")
+  };
 }
 
-export default function NotFoundPage() {
+export default async function NotFoundPage() {
+  const t = await getTranslations("pagenotfound");
+
   return (
     <div className="grid h-screen px-4 place-content-center">
       <div className="text-center">
         <h1 className="font-black text-4xl">
-          Sayfa Bulunamadı!
+          {t("title")}
         </h1>
 
         <p className="mt-4 text-muted-foreground">
-          Üzgünüz, gitmeye çalıştığınız sayfayı bulamadık.
+          {t("description")}
         </p>
       </div>
     </div>

@@ -1,38 +1,34 @@
 import type { Metadata } from "next"
 import { BackToTopButton } from "@/components/app/back-to-top-button"
+import { NextIntlClientProvider } from "next-intl"
+import { getLocale, getMessages } from "next-intl/server"
 import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
     default: process.env.NEXT_PUBLIC_APP_NAME!,
     template: `%s - ${process.env.NEXT_PUBLIC_APP_NAME!}`
-  },
-  icons: [
-    {
-      rel: "icon",
-      type: "image/x-icon",
-      url: "/favicon.ico"
-    },
-    {
-      rel: "shortcut icon",
-      type: "image/x-icon",
-      url: "/favicon.ico"
-    }
-  ],
+  }
 }
 
 type RootLayoutProps = {
-  children: React.ReactNode;
-};
+  children: Readonly<React.ReactNode>
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<RootLayoutProps>) {
+}: RootLayoutProps) {
+  const locale = await getLocale();
+
+  const messages = await getMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body>
-        {children}
-        <BackToTopButton />
+        <NextIntlClientProvider messages={messages}>
+          {children}
+          <BackToTopButton />
+        </NextIntlClientProvider>
       </body>
     </html>
   )

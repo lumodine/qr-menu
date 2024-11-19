@@ -1,53 +1,65 @@
 import { CategoryTab } from "@/components/app/category"
 import { ProductList } from "@/components/app/product"
 import { View } from "@/components/app/view"
-import { categories } from "@/data"
 import { notFound } from "next/navigation"
 import { TenantGroupHeader } from "@/components/app/tenant"
 import { VIEWS } from "@/constants"
 import viewService from "@/services/view.service"
+import qrMenuService from "@/services/qr-menu.service"
+import { getTranslations } from "next-intl/server"
 
 type Params = {
+  params: Promise<{
+    tenantAlias: string
+  }>
   searchParams: Promise<{
-    c: number
+    c: string
   }>
 }
 
-export default async function MenuPage({ searchParams }: Params) {
-  const { c } = await searchParams;
+export default async function MenuPage({ params, searchParams }: Params) {
+  const t = await getTranslations();
 
-  let findedCategory = categories.find(category => category.id == c)
+  const { tenantAlias } = await params
+  const { c } = await searchParams
+
+  const [
+    { data: tenant },
+    { data: categories },
+    { data: products }
+  ] = await Promise.all([
+    qrMenuService.getDetail(tenantAlias),
+    qrMenuService.getCategories(tenantAlias),
+    qrMenuService.getProducts(tenantAlias)
+  ])
+
+  let findedCategory = categories.find(category => category._id == c)
   if (!findedCategory && !c) {
     findedCategory = categories.at(0)
   }
 
-  if (!findedCategory) {
-    return notFound()
-  }
-
-  const products = findedCategory.products
-
-  if (!products) {
-    return notFound()
-  }
-
-  const activeView = await viewService.getView();
+  const activeView = await viewService.getView()
 
   const viewFormAction = async (formData: FormData) => {
-    "use server";
+    "use server"
 
-    const viewType = formData.get("viewType") as string;
+    const viewType = formData.get("viewType") as string
 
-    await viewService.setView(viewType);
-  };
+    await viewService.setView(viewType)
+  }
+  
+  const filteredProducts = products.filter(product => product.categories.find(category => category._id === c));
 
   return (
     <>
-      <TenantGroupHeader href="/categories" />
+      <TenantGroupHeader
+        href="/categories"
+        tenant={tenant}
+      />
 
       <div className="flex justify-between items-center px-4 py-1">
         <h1 className="font-bold text-xl">
-          Menü
+          {t("menu")}
         </h1>
 
         <View
@@ -60,11 +72,12 @@ export default async function MenuPage({ searchParams }: Params) {
       <div className="bg-white sticky top-0">
         <CategoryTab
           categories={categories}
-          selectedCategoryId={findedCategory.id} />
+          selectedCategoryId={findedCategory._id}
+        />
       </div>
 
       <ProductList
-        products={products}
+        products={filteredProducts}
         viewType={activeView}
       />
     </>
