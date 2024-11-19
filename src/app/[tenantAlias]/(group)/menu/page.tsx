@@ -8,9 +8,9 @@ import { VIEWS } from "@/constants"
 import viewService from "@/services/view.service"
 
 type Params = {
-  searchParams: {
+  searchParams: Promise<{
     c: number
-  }
+  }>
 }
 
 export default async function MenuPage({ searchParams }: Params) {

@@ -1,5 +1,3 @@
-"use client"
-
 import { CategoryList } from "@/components/app/category"
 import { categories } from "@/data"
 import { TenantGroupHeader } from "@/components/app/tenant"
