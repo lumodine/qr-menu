@@ -1,13 +1,16 @@
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
     useFileSystemPublicRoutes: true,
     images: {
         remotePatterns: [
             {
-                hostname: 'placehold.co'
-            }
-        ]
-    }
-}
+                hostname: "placehold.co",
+            },
+            {
+                hostname: "cdn.lumodine.com",
+            },
+        ],
+    },
+};
 
-export default nextConfig
+export default nextConfig;

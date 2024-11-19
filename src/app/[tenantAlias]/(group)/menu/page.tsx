@@ -1,5 +1,3 @@
-"use client"
-
 import { CategoryTab } from "@/components/app/category"
 import { ProductList } from "@/components/app/product"
 import { View } from "@/components/app/view"
@@ -13,9 +11,11 @@ type Params = {
   }
 }
 
-export default function MenuPage({ searchParams }: Params) {
-  let findedCategory = categories.find(category => category.id == searchParams.c)
-  if (!findedCategory && !searchParams.c) {
+export default async function MenuPage({ searchParams }: Params) {
+  const { c } = await searchParams;
+
+  let findedCategory = categories.find(category => category.id == c)
+  if (!findedCategory && !c) {
     findedCategory = categories.at(0)
   }
 

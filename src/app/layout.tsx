@@ -1,7 +1,5 @@
 import type { Metadata } from "next"
 import { BackToTopButton } from "@/components/app/back-to-top-button"
-import { Suspense } from "react"
-import { Loading } from "@/components/app/loading"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -23,18 +21,18 @@ export const metadata: Metadata = {
   ],
 }
 
+type RootLayoutProps = {
+  children: React.ReactNode;
+};
+
 export default function RootLayout({
-  children
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+  children,
+}: Readonly<RootLayoutProps>) {
   return (
-    <html>
+    <html lang="en">
       <body>
-        <Suspense fallback={<Loading />}>
-          {children}
-          <BackToTopButton />
-        </Suspense>
+        {children}
+        <BackToTopButton />
       </body>
     </html>
   )
