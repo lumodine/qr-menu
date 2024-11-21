@@ -1,7 +1,7 @@
 import "./globals.css"
 import qrMenuService from "@/services/qr-menu.service"
 import { Header } from "@/components/app/header"
-import { notFound } from "next/navigation"
+import { redirect } from "next/navigation"
 import { Footer } from "@/components/app/footer"
 import { BackToTopButton } from "@/components/app/button"
 
@@ -38,7 +38,7 @@ export default async function RootLayout({
   const tenantResponse = await qrMenuService.getDetail(tenantAlias);
 
   if (!tenantResponse.success) {
-    return notFound();
+    return redirect(process.env.NEXT_PUBLIC_LANDING_URL!);
   }
 
   const tenant = tenantResponse.data;
