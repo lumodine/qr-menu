@@ -1,144 +1,113 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import { cn } from "@/utils/shadcn"
-import { useEffect, useRef } from "react"
 import Link from "next/link"
-import { useLocale } from "next-intl"
+import { NotFound } from "./error"
+import { TenantLogo } from "./tenant"
+import Image from "next/image"
 
-export type CategoryTabItemProps = {
+export type CategoryHeroProps = {
+    tenant: any
     category: any
-    isActive?: boolean
 }
 
-export const CategoryTabItem = ({ category, isActive }: CategoryTabItemProps) => {
-    const locale = useLocale();
-
-    const translationData = category.translations.find(translation => translation.languageId.culture === locale);
-
-    if (!translationData) {
-        return null;
-    }
-
+export const CategoryHero = ({ tenant, category }: CategoryHeroProps) => {
     return (
-        <Link href={`/menu/?c=${category._id}`}>
-            <Button
-                variant={isActive ? "destructive" : "outline"}
-                className="h-full p-2 flex gap-2 items-center justify-center">
-                <Image
-                    src={category.image}
-                    alt={translationData.name}
-                    width={30}
-                    height={30}
-                    loading="lazy"
-                    className="rounded-full align-middle"
-                />
-                <span className="font-semibold text-sm">
-                    {translationData.name}
-                </span>
-            </Button>
-        </Link>
-    )
-}
-CategoryTabItem.displayName = "CategoryTabItem"
-
-export type CategoryTabProps = {
-    categories: any[]
-    selectedCategoryId: string
-}
-
-export const CategoryTab = ({ categories, selectedCategoryId }: CategoryTabProps) => {
-    const tabContainerRef = useRef<HTMLDivElement | null>(null)
-    const tabRefs = useRef<(HTMLDivElement | null)[]>([])
-
-    const handleTabScroll = (index: string) => {
-        if (tabContainerRef.current) {
-            tabRefs.current[index]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" })
-        }
-    }
-
-    useEffect(() => {
-        handleTabScroll(selectedCategoryId)
-    }, [selectedCategoryId])
-
-    return (
-        <div className="whitespace-nowrap overflow-x-auto p-3 no-scrollbar" ref={tabContainerRef}>
-            {
-                categories.map((category, index) => (
-                    <div
-                        key={category._id}
-                        className="inline-flex px-1"
-                        ref={(el) => { tabRefs.current[index + 1] = el }}
-                        onClick={() => handleTabScroll(index + 1)}>
-                        <CategoryTabItem
-                            key={category._id}
-                            category={category}
-                            isActive={category._id == selectedCategoryId} />
-                    </div>
-                ))
-            }
-        </div>
-    )
-}
-CategoryTab.displayName = "CategoryTab"
-
-export type CategoryListProps = {
-    categories: any[]
-}
-
-export const CategoryList = ({ categories }: CategoryListProps) => {
-    return (
-        <section className={cn(
-            "grid grid-cols-category",
-            "gap-2"
-        )}>
-            {
-                categories.map(category => (
-                    <CategoryCard
-                        key={category._id}
-                        category={category} />
-                ))
-            }
+        <section
+            style={{ '--bg-image': `url(${category.image})` }}
+            className="bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden bg-primary/50"
+        >
+            <div className="flex flex-col gap-2 items-center justify-center w-full h-[30vh] lg:h-[40vh] bg-black/50">
+                {
+                    tenant.logo && (
+                        <Link href={"/"}>
+                            <Image
+                                src={tenant.logo}
+                                alt={tenant.name}
+                                width={100}
+                                height={100}
+                                loading={"lazy"}
+                                className="rounded-full w-[100px] h-[100px] md:w-[200px] md:h-[200px]"
+                            />
+                        </Link>
+                    )
+                }
+                {
+                    category.translations[0].name && (
+                        <h1 className="text-2xl md:text-3xl lg:text-6xl font-bold text-white drop-shadow-2xl">
+                            {category.translations[0].name}
+                        </h1>
+                    )
+                }
+                {
+                    category.translations[0].description && (
+                        <p className="text-sm md:text-md lg:text-lg text-white drop-shadow-2xl">
+                            {category.translations[0].description}
+                        </p>
+                    )
+                }
+            </div>
         </section>
     )
 }
-CategoryList.displayName = "CategoryList"
+CategoryHero.displayName = "CategoryHero"
 
 export type CategoryCardProps = {
     category: any
 }
 
 export const CategoryCard = ({ category }: CategoryCardProps) => {
-    const locale = useLocale();
-
-    const translationData = category.translations.find(translation => translation.languageId.culture === locale);
-
-    if (!translationData) {
-        return null;
-    }
-    
     return (
-        <Link href={`/menu/?c=${category._id}`}>
-            <div className="flex items-center justify-between flex-col text-center rounded-xl bg-gray-50 text-card-foreground border border-gray-100 h-full gap-2 p-4">
-                <Image
-                    src={category.image}
-                    alt={translationData.name}
-                    width={80}
-                    height={80}
-                    loading="lazy"
-                    className="rounded-full"
-                />
+        <Link
+            href={`/${category._id}`}
+            style={{ '--bg-image': `url(${category.image})` }}
+            className="bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden rounded-lg transition-transform hover:scale-95 bg-primary/50"
+        >
+            <div className="flex flex-col gap-1 items-center justify-center w-full h-full bg-black/50">
+                <span className="text-lg font-bold text-white drop-shadow-2xl">
+                    {category.translations[0].name}
+                </span>
                 {
-                    category.description && (
-                        <p className="mt-2 text-xs text-gray-400">{category.description}</p>
+                    category.translations[0].description && (
+                        <p className="text-xs text-white drop-shadow-2xl">
+                            {category.translations[0].description}
+                        </p>
                     )
                 }
-                <p className="mt-2 text-sm font-semibold">
-                    {translationData.name}
-                </p>
             </div>
         </Link>
     )
 }
 CategoryCard.displayName = "CategoryCard"
+
+export type CategoryListProps = {
+    categories: any[]
+}
+
+export const CategoryList = ({ categories }: CategoryListProps) => {
+    const hasCategories = categories && categories.length !== 0;
+
+    return (
+        <section className="container py-6">
+            {
+                !hasCategories && (
+                    <NotFound
+                        title="Üzgünüz, şu anda uygun kategorimiz bulunmuyor."
+                    />
+                )
+            }
+            {
+                hasCategories && (
+                    <div className="grid grid-cols-1 gap-3 auto-rows-[10em]">
+                        {categories.map((category, categoryIndex) => (
+                            <CategoryCard
+                                key={categoryIndex}
+                                category={category}
+                            />
+                        ))}
+                    </div>
+                )
+            }
+        </section>
+    )
+}
+CategoryList.displayName = "CategoryList"

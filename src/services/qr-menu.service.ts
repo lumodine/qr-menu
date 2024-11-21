@@ -12,8 +12,15 @@ const getCategories = async (alias: string) => {
   return data
 }
 
-const getProducts = async (alias: string) => {
-  const { data } = await axios.get(`/qr-menu/${alias}/products`)
+const getCategoryById = async (alias: string, categoryId: string) => {
+  const { data } = await axios.get(`/qr-menu/${alias}/categories/${categoryId}`)
+
+  return data
+}
+
+const getProducts = async (alias: string, categoryId: string) => {
+  const url = `/qr-menu/${alias}/categories/${categoryId}/products`
+  const { data } = await axios.get(url)
 
   return data
 }
@@ -21,5 +28,6 @@ const getProducts = async (alias: string) => {
 export default {
   getDetail,
   getCategories,
+  getCategoryById,
   getProducts
 }

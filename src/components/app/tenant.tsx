@@ -1,56 +1,45 @@
 "use client"
 
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
-import Image from "next/image"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
+import Image from "next/image";
 
-export type TenantGroupHeaderProps = {
-    tenant: any
-    href: string
+export type TenantLogoProps = {
+    tenant: any;
 }
 
-export const TenantGroupHeader = ({ tenant, href }: TenantGroupHeaderProps) => {
+export const TenantLogo = ({ tenant }: TenantLogoProps) => {
+    if (!tenant.logo) {
+        return null;
+    }
+
     return (
-        <header className="bg-background w-full flex justify-between items-center px-4 py-1">
-            <Link href={href} className="inline-flex items-center justify-center">
-                <ArrowLeft />
-            </Link>
-
-            <Link href="/">
-                <Image
-                    src={tenant.logo}
-                    alt={`${tenant.name} logo`}
-                    width={100}
-                    height={55}
-                    loading="lazy"
-                />
-            </Link>
-
-            <Select value="tr-TR">
-                <SelectTrigger className="w-[150px]">
-                    <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                    {
-                        tenant.languages.map((language, languageIndex) => (
-                            <SelectItem
-                                key={languageIndex}
-                                value={language._id.culture}
-                            >
-                                {language._id.name} ({language._id.shortName})
-                            </SelectItem>
-                        ))
-                    }
-                </SelectContent>
-            </Select>
-        </header>
+        <Image
+            src={tenant.logo}
+            alt={tenant.name}
+            width={300}
+            height={300}
+            loading={"lazy"}
+            className="rounded-full w-[150px] h-[150px] md:w-[300px] md:h-[300px]"
+        />
     )
 }
-TenantGroupHeader.displayName = "TenantGroupHeader"
+TenantLogo.displayName = "TenantLogo"
+
+export type TenantHeroProps = {
+    tenant: any;
+}
+
+export const TenantHero = ({ tenant }: TenantHeroProps) => {
+    return (
+        <section
+            style={{ '--bg-image': `url(${tenant.background})` }}
+            className="bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden bg-primary/50"
+        >
+            <div className="flex items-center justify-center w-full h-[30vh] lg:h-[40vh] bg-black/50">
+                <TenantLogo
+                    tenant={tenant}
+                />
+            </div>
+        </section>
+    )
+}
+TenantHero.displayName = "TenantHero"

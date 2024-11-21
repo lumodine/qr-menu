@@ -1,133 +1,114 @@
 "use client"
 
-import { cn } from "@/utils/shadcn"
 import Image from "next/image"
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { formatPrice } from "@/utils/number"
 import { NotFound } from "./error"
-import { useLocale, useTranslations } from "next-intl"
+import { cn } from "@/utils/shadcn"
+import { formatPrice } from "@/utils/number"
+
+export type ProductCardProps = {
+    product: any
+}
+
+export const ProductCard = ({ product }: ProductCardProps) => {
+    return (
+        <div className={
+            cn(
+                "flex items-start justify-center gap-4 p-4 overflow-hidden rounded-lg",
+                product.type === "grid" && "flex-col",
+                product.status === "not_available"
+                    ? "opacity-30 cursor-no-drop select-none"
+                    : ""
+            )
+        }>
+            {
+                product.image && (
+                    <div className={
+                        cn(
+                            product.type === "row" && "h-14 w-14",
+                            product.type === "grid" && "h-full w-full"
+                        )
+                    }>
+                        <Image
+                            src={product.image}
+                            alt={product.translations[0].name}
+                            width={50}
+                            height={50}
+                            loading={"lazy"}
+                            className="h-full w-full rounded-lg"
+                        />
+                    </div>
+                )
+            }
+            <div className="flex-1 w-full flex flex-col gap-1">
+                {
+                    product.translations[0].name && (
+                        <span className="text-lg font-semibold text-primary">
+                            {product.translations[0].name}
+                        </span>
+                    )
+                }
+                {
+                    product.translations[0].description && (
+                        <p className="text-sm">
+                            {product.translations[0].description}
+                        </p>
+                    )
+                }
+                {
+                    product.prices.length > 0 && (
+                        <div className="w-full flex flex-col gap-1">
+                            {product.prices.map((productPrice, productPriceIndex) => (
+                                <div
+                                    key={productPriceIndex}
+                                    className="flex gap-2 justify-between"
+                                >
+                                    <span>
+                                        {productPrice.unitId.translations[0].name}
+                                    </span>
+                                    <span className="flex-1 w-full border-b-2 my-2 border-dotted border-primary/20" />
+                                    <span>
+                                        {productPrice.currencyId.symbol}{formatPrice(productPrice.price)}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    )
+                }
+            </div>
+        </div>
+    )
+}
+ProductCard.displayName = "ProductCard"
 
 export type ProductListProps = {
     products: any[]
-    viewType: string
 }
 
-export const ProductList = ({ products, viewType }: ProductListProps) => {
-    const t = useTranslations();
+export const ProductList = ({ products }: ProductListProps) => {
+    const hasProducts = products && products.length !== 0;
 
     return (
-        <section className={cn(
-            "p-4",
-            viewType == "list" && "flex flex-col gap-2",
-            viewType == "grid" && "grid grid-cols-product gap-2"
-        )}>
+        <section className="container py-4">
             {
-                products.length === 0 && (
-                    <NotFound title={t("product_not_found")} />
+                !hasProducts && (
+                    <NotFound
+                        title="Üzgünüz, şu anda uygun ürünümüz bulunmuyor."
+                    />
                 )
             }
             {
-                products.map(product => (
-                    <ProductCard
-                        key={product._id}
-                        viewType={viewType}
-                        product={product} />
-                ))
+                hasProducts && (
+                    <div className="grid grid-cols-1 gap-3">
+                        {products.map((product, productIndex) => (
+                            <ProductCard
+                                key={productIndex}
+                                product={product}
+                            />
+                        ))}
+                    </div>
+                )
             }
         </section>
     )
 }
 ProductList.displayName = "ProductList"
-
-export type ProductCardProps = {
-    product: any
-    viewType: string
-}
-
-export const ProductCard = ({ product, viewType }: ProductCardProps) => {
-    const locale = useLocale();
-    const t = useTranslations();
-
-    const translationData = product.translations.find(translation => translation.languageId.culture === locale);
-
-    if (!translationData) {
-        return null;
-    }
-
-    return (
-        <Dialog>
-            <DialogTrigger asChild>
-                <div className={cn(
-                    "rounded-xl bg-gray-50 text-card-foreground border border-gray-100",
-                    "flex h-full gap-4 py-4 px-2",
-                    "cursor-pointer",
-                    viewType == "list" && "justify-center items-center",
-                    viewType == "grid" && "flex-col justify-center items-center"
-                )}>
-                    <Image
-                        src={product.image}
-                        alt={translationData.name}
-                        width={80}
-                        height={80}
-                        loading="lazy"
-                        className="rounded-full"
-                    />
-                    <div className={cn(
-                        "flex flex-col w-full h-full justify-between gap-2",
-                        viewType == "list" && "text-left",
-                        viewType == "grid" && "text-center",
-                    )}>
-                        <p className="text-md font-semibold">
-                            {translationData.name}
-                        </p>
-                        {
-                            product.description && (
-                                <p className="text-xs text-gray-400 line-clamp-3">{product.description}</p>
-                            )
-                        }
-                        <p className="text-sm font-bold">
-                            {formatPrice(product.prices[0].price)}
-                        </p>
-                    </div>
-                </div>
-            </DialogTrigger>
-            <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>
-                        {translationData.name}
-                        {" "}&#x2022;{" "}
-                        {formatPrice(product.prices[0].price)}
-                    </DialogTitle>
-                    <DialogDescription>
-                        {product.description}
-                    </DialogDescription>
-                </DialogHeader>
-                <Image
-                    src={product.image}
-                    alt={translationData.name}
-                    width={250}
-                    height={250}
-                    loading="lazy"
-                    className="rounded-full w-full h-auto"
-                />
-
-                <div className="text-center">
-                    <DialogTrigger asChild>
-                        <Button variant="secondary" size="lg" className="mt-4 w-full">
-                            {t("close")}
-                        </Button>
-                    </DialogTrigger>
-                </div>
-            </DialogContent>
-        </Dialog>
-    )
-}
-ProductCard.displayName = "ProductCard"

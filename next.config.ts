@@ -1,7 +1,3 @@
-import createNextIntlPlugin from "next-intl/plugin"
- 
-const withNextIntl = createNextIntlPlugin();
-
 /** @type {import("next").NextConfig} */
 const nextConfig = {
     useFileSystemPublicRoutes: true,
@@ -11,10 +7,13 @@ const nextConfig = {
                 hostname: "placehold.co",
             },
             {
+                hostname: "picsum.photos",
+            },
+            {
                 hostname: "cdn.lumodine.com",
             },
         ],
     },
 }
 
-export default withNextIntl(nextConfig)
+export default nextConfig
