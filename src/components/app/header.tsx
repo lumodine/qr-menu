@@ -30,18 +30,18 @@ export const Header = ({
             )
         }>
             <nav className="container flex justify-end items-center p-2 gap-2 h-20">
-                <div className="flex-1">
-                    <Link
-                        href={"/"}
-                        className={
-                            cn(
-                                "gap-2 items-center hidden",
-                                isVisible && "inline-flex"
-                            )
-                        }
-                    >
-                        {
-                            tenant.logo && (
+                {
+                    tenant.logo && (
+                        <div className="flex-1">
+                            <Link
+                                href={"/"}
+                                className={
+                                    cn(
+                                        "gap-2 items-center hidden",
+                                        isVisible && "inline-flex"
+                                    )
+                                }
+                            >
                                 <Image
                                     src={tenant.logo}
                                     alt={tenant.name}
@@ -50,23 +50,27 @@ export const Header = ({
                                     loading={"lazy"}
                                     className="rounded-full"
                                 />
-                            )
-                        }
-                        {/* <span className="font-semibold text-primary-foreground">
+                                {/* <span className="font-semibold text-primary-foreground">
                             {tenant.name}
                         </span> */}
-                    </Link>
-                </div>
-                <div className="flex gap-1">
-                    <CurrencySelect
-                        currencies={tenant.currencies}
-                        defaultCurrency={defaultCurrency}
-                    />
-                    <LanguageSelect
-                        languages={tenant.languages}
-                        defaultLanguage={defaultLanguage}
-                    />
-                </div>
+                            </Link>
+                        </div>
+                    )
+                }
+                {
+                    tenant.currencies > 1 || tenant.languages > 1 && (
+                        <div className="flex gap-1">
+                            <CurrencySelect
+                                currencies={tenant.currencies}
+                                defaultCurrency={defaultCurrency}
+                            />
+                            <LanguageSelect
+                                languages={tenant.languages}
+                                defaultLanguage={defaultLanguage}
+                            />
+                        </div>
+                    )
+                }
                 {/* <div>
                     <Button
                         variant={"outline"}

@@ -48,16 +48,20 @@ export const Footer = ({
                         )
                     }
                 </div>
-                <div className="flex gap-2 max-w-32 items-center justify-center m-auto">
-                    <CurrencySelect
-                        currencies={tenant.currencies}
-                        defaultCurrency={defaultCurrency}
-                    />
-                    <LanguageSelect
-                        languages={tenant.languages}
-                        defaultLanguage={defaultLanguage}
-                    />
-                </div>
+                {
+                    tenant.currencies > 1 || tenant.languages > 1 && (
+                        <div className="flex gap-2 max-w-32 items-center justify-center m-auto">
+                            <CurrencySelect
+                                currencies={tenant.currencies}
+                                defaultCurrency={defaultCurrency}
+                            />
+                            <LanguageSelect
+                                languages={tenant.languages}
+                                defaultLanguage={defaultLanguage}
+                            />
+                        </div>
+                    )
+                }
                 <div className="flex flex-col items-center justify-center gap-6">
                     <p className="text-xs">
                         &copy; 2024 &#x2022; <Link

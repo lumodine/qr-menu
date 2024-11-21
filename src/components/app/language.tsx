@@ -9,11 +9,15 @@ import {
 } from "@/components/ui/select";
 
 export type LanguageSelectProps = {
-    languages: any
+    languages: any[]
     defaultLanguage: any
 }
 
 export const LanguageSelect = ({ languages, defaultLanguage }: LanguageSelectProps) => {
+    if (languages.length <= 1) {
+        return null;
+    }
+
     return (
         <Select defaultValue={defaultLanguage._id.culture}>
             <SelectTrigger className="rounded-full bg-primary text-primary-foreground border-primary-foreground">

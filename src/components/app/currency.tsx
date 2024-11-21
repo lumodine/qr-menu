@@ -9,11 +9,15 @@ import {
 } from "@/components/ui/select";
 
 export type CurrencySelectProps = {
-    currencies: any
+    currencies: any[]
     defaultCurrency: any
 }
 
 export const CurrencySelect = ({ currencies, defaultCurrency }: CurrencySelectProps) => {
+    if (currencies.length <= 1) {
+        return null;
+    }
+
     return (
         <Select defaultValue={defaultCurrency._id.code}>
             <SelectTrigger className="rounded-full bg-primary text-primary-foreground border-primary-foreground">
