@@ -49,7 +49,7 @@ export const Footer = ({
                     }
                 </div>
                 {
-                    tenant.currencies > 1 || tenant.languages > 1 && (
+                    (tenant.currencies.length > 1 || tenant.languages.length > 1) && (
                         <div className="flex gap-2 max-w-32 items-center justify-center m-auto">
                             <CurrencySelect
                                 currencies={tenant.currencies}

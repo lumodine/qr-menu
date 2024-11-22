@@ -58,7 +58,7 @@ export const Header = ({
                     )
                 }
                 {
-                    tenant.currencies.length > 1 || tenant.languages.length > 1 && (
+                    (tenant.currencies.length > 1 || tenant.languages.length > 1) && (
                         <div className="flex gap-1">
                             <CurrencySelect
                                 currencies={tenant.currencies}
