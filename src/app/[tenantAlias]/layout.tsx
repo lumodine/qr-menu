@@ -54,8 +54,8 @@ export default async function RootLayout({
 
   return (
     <html
-      lang={defaultLanguage._id.culture}
-      dir={defaultLanguage._id.direction}
+      lang={defaultLanguage.language.culture}
+      dir={defaultLanguage.language.direction}
       className={themeClassName}
     >
       <body>

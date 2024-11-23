@@ -19,7 +19,7 @@ export const LanguageSelect = ({ languages, defaultLanguage }: LanguageSelectPro
     }
 
     return (
-        <Select defaultValue={defaultLanguage._id.culture}>
+        <Select defaultValue={defaultLanguage.language.culture}>
             <SelectTrigger className="rounded-full bg-primary text-primary-foreground border-primary-foreground">
                 <SelectValue />
             </SelectTrigger>
@@ -27,9 +27,9 @@ export const LanguageSelect = ({ languages, defaultLanguage }: LanguageSelectPro
                 {languages.map((language, languageIndex) => (
                     <SelectItem
                         key={languageIndex}
-                        value={language._id.culture}
+                        value={language.language.culture}
                     >
-                        {language._id.name}
+                        {language.language.name}
                     </SelectItem>
                 ))}
             </SelectContent>

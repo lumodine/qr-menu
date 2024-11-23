@@ -16,6 +16,14 @@ export const Footer = ({
     defaultLanguage,
     defaultCurrency
 }: FooterProps) => {
+    const startYear = 2024;
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+
+    const year = startYear === currentYear
+        ? startYear
+        : `${startYear}-${currentYear}`;
+
     return (
         <footer className="py-8">
             <div className="container flex flex-col gap-6">
@@ -64,7 +72,7 @@ export const Footer = ({
                 }
                 <div className="flex flex-col items-center justify-center gap-6">
                     <p className="text-xs">
-                        &copy; 2024 &#x2022; <Link
+                        &copy; {year} &#x2022; <Link
                             href={process.env.NEXT_PUBLIC_LANDING_URL!}
                             target="_blank"
                             className="underline"

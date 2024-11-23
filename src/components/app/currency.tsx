@@ -19,7 +19,7 @@ export const CurrencySelect = ({ currencies, defaultCurrency }: CurrencySelectPr
     }
 
     return (
-        <Select defaultValue={defaultCurrency._id.code}>
+        <Select defaultValue={defaultCurrency.currency.code}>
             <SelectTrigger className="rounded-full bg-primary text-primary-foreground border-primary-foreground">
                 <SelectValue />
             </SelectTrigger>
@@ -27,9 +27,9 @@ export const CurrencySelect = ({ currencies, defaultCurrency }: CurrencySelectPr
                 {currencies.map((currency, currencyIndex) => (
                     <SelectItem
                         key={currencyIndex}
-                        value={currency._id.code}
+                        value={currency.currency.code}
                     >
-                        {currency._id.code} ({currency._id.symbol})
+                        {currency.currency.code} ({currency.currency.symbol})
                     </SelectItem>
                 ))}
             </SelectContent>

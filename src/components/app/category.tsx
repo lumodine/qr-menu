@@ -1,8 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { NotFound } from "./error"
-import { TenantLogo } from "./tenant"
 import Image from "next/image"
 
 export type CategoryHeroProps = {
@@ -88,13 +86,6 @@ export const CategoryList = ({ categories }: CategoryListProps) => {
 
     return (
         <section className="container py-6">
-            {
-                !hasCategories && (
-                    <NotFound
-                        title="Üzgünüz, şu anda uygun kategorimiz bulunmuyor."
-                    />
-                )
-            }
             {
                 hasCategories && (
                     <div className="grid grid-cols-1 gap-3 auto-rows-[10em]">
