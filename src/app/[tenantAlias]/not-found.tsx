@@ -1,14 +1,29 @@
-export default async function NotFoundPage() {
+import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Sayfa Bulunamadı",
+  robots: "noindex, nofollow",
+};
+
+export default function NotFoundPage() {
   return (
     <div className="grid h-screen px-4 place-content-center">
       <div className="text-center">
         <h1 className="font-black text-4xl">
-          Sayfa bulunamadı!
+          Sayfa Bulunamadı!
         </h1>
 
-        <p className="mt-4 text-muted-foreground">
-        Üzgünüz, gitmeye çalıştığınız sayfayı bulamadık.
+        <p className="my-4 text-muted-foreground">
+          Üzgünüz, gitmeye çalıştığınız sayfayı bulamadık.
         </p>
+
+        <Link href={"/"}>
+          <Button variant={"default"}>
+            Menüye dön
+          </Button>
+        </Link>
       </div>
     </div>
   )
