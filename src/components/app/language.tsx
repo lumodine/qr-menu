@@ -14,6 +14,8 @@ export type LanguageSelectProps = {
 }
 
 export const LanguageSelect = ({ languages, defaultLanguage }: LanguageSelectProps) => {
+    return null;
+
     if (languages.length <= 1) {
         return null;
     }

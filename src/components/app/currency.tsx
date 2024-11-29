@@ -14,6 +14,8 @@ export type CurrencySelectProps = {
 }
 
 export const CurrencySelect = ({ currencies, defaultCurrency }: CurrencySelectProps) => {
+    return null;
+
     if (currencies.length <= 1) {
         return null;
     }
