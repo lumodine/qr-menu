@@ -3,35 +3,43 @@
 import Image from "next/image"
 import { cn } from "@/utils/shadcn"
 import { formatPrice } from "@/utils/number"
+import { PRODUCT_STATUS, PRODUCT_TYPES } from "@/constants/product"
 
 export type ProductCardProps = {
     product: any
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
+    const isRow = product.type === PRODUCT_TYPES.ROW;
+    const isGrid = product.type === PRODUCT_TYPES.GRID;
+    const isNotAvailable = product.status === PRODUCT_STATUS.NOT_AVAILABLE;
+
+    const image = {
+        width: isRow ? 50 : 400,
+        height: isRow ? 50 : 400,
+    };
+
     return (
         <div className={
             cn(
                 "flex items-start justify-center gap-4 p-4 overflow-hidden rounded-lg",
-                product.type === "grid" && "flex-col",
-                product.status === "not_available"
-                    ? "opacity-30 cursor-no-drop select-none"
-                    : ""
+                isGrid && "flex-col",
+                isNotAvailable && "opacity-30 cursor-no-drop select-none"
             )
         }>
             {
                 product.image && (
                     <div className={
                         cn(
-                            product.type === "row" && "h-14 w-14",
-                            product.type === "grid" && "h-full w-full"
+                            isRow && "h-14 w-14",
+                            isGrid && "h-full w-full"
                         )
                     }>
                         <Image
                             src={product.image}
                             alt={product.translations[0].name}
-                            width={50}
-                            height={50}
+                            width={image.width}
+                            height={image.height}
                             loading={"lazy"}
                             className="h-full w-full rounded-lg"
                         />
