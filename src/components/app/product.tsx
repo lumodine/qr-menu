@@ -4,6 +4,7 @@ import Image from "next/image"
 import { cn } from "@/utils/shadcn"
 import { formatPrice } from "@/utils/number"
 import { PRODUCT_STATUS, PRODUCT_TYPES } from "@/constants/product"
+import { useAppContext } from "@/contexts/AppContext"
 
 export type ProductCardProps = {
     product: any
@@ -18,6 +19,34 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         width: isRow ? 50 : 400,
         height: isRow ? 50 : 400,
     };
+
+    const {
+        language,
+        defaultLanguage,
+        currency,
+        defaultCurrency
+    } = useAppContext();
+
+    let translation = product.translations
+        .find((translation: any) =>
+            translation.language._id === language.language._id
+        );
+
+    if (!translation) {
+        translation = product.translations
+            .find((translation: any) =>
+                translation.language._id === defaultLanguage.language._id
+            );
+    }
+
+    let price = product.prices.find((price: any) => price.currency._id === currency.currency._id);
+
+    if (!price) {
+        price = product.prices
+            .find((price: any) =>
+                price.currency._id === defaultCurrency.currency._id
+            );
+    }
 
     return (
         <div className={
@@ -37,7 +66,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                     }>
                         <Image
                             src={product.image}
-                            alt={product.translations[0].name}
+                            alt={translation?.name}
                             width={image.width}
                             height={image.height}
                             loading={"lazy"}
@@ -51,21 +80,21 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                     className="flex gap-2 justify-between"
                 >
                     {
-                        product.translations[0].name && (
+                        translation?.name && (
                             <span className="text-lg font-semibold text-primary">
-                                {product.translations[0].name}
+                                {translation?.name}
                             </span>
                         )
                     }
                     <span className="flex-1 w-full border-b-2 my-2 border-dotted border-primary/20" />
                     <b className="text-primary">
-                        {product.prices[0].currency.symbol}{formatPrice(product.prices[0].amount)}
+                        {price?.currency?.symbol}{formatPrice(price?.amount)}
                     </b>
                 </div>
                 {
-                    product.translations[0].description && (
+                    translation?.description && (
                         <p className="text-sm">
-                            {product.translations[0].description}
+                            {translation?.description}
                         </p>
                     )
                 }

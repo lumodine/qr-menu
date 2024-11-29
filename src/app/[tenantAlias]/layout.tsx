@@ -4,6 +4,7 @@ import { Header } from "@/components/app/header"
 import { redirect } from "next/navigation"
 import { Footer } from "@/components/app/footer"
 import { BackToTopButton } from "@/components/app/button"
+import { AppProvider } from "@/contexts/AppContext"
 
 type MetadataProps = {
   params: Promise<{
@@ -44,39 +45,40 @@ export default async function RootLayout({
   const tenant = tenantResponse.data;
 
   const defaultLanguage =
-    tenant.languages.find(language => language.isDefault)
+    tenant.languages.find((language: any) => language.isDefault)
     || tenant.languages[0];
   const defaultCurrency =
-    tenant.currencies.find(currency => currency.isDefault)
+    tenant.currencies.find((currency: any) => currency.isDefault)
     || tenant.currencies[0];
 
   const themeClassName = `theme-${tenant.theme || "zinc"}`;
 
   return (
-    <html
-      lang={defaultLanguage.language.culture}
-      dir={defaultLanguage.language.direction}
-      className={themeClassName}
+    <AppProvider
+      defaultLanguage={defaultLanguage}
+      defaultCurrency={defaultCurrency}
     >
-      <body>
-        <Header
-          tenant={tenantResponse.data}
-          defaultLanguage={defaultLanguage}
-          defaultCurrency={defaultCurrency}
-        />
-        
-        <main>
-          {children}
-        </main>
+      <html
+        lang={defaultLanguage.language.culture}
+        dir={defaultLanguage.language.direction}
+        className={themeClassName}
+      >
+        <body>
+          <Header
+            tenant={tenantResponse.data}
+          />
 
-        <BackToTopButton />
+          <main>
+            {children}
+          </main>
 
-        <Footer
-          tenant={tenantResponse.data}
-          defaultLanguage={defaultLanguage}
-          defaultCurrency={defaultCurrency}
-        />
-      </body>
-    </html>
+          <BackToTopButton />
+
+          <Footer
+            tenant={tenantResponse.data}
+          />
+        </body>
+      </html>
+    </AppProvider>
   )
 }

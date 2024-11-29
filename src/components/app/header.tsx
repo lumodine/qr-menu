@@ -11,14 +11,10 @@ import { cn } from "@/utils/shadcn"
 
 export type HeaderProps = {
     tenant: any
-    defaultLanguage: any
-    defaultCurrency: any
 }
 
 export const Header = ({
     tenant,
-    defaultLanguage,
-    defaultCurrency
 }: HeaderProps) => {
     const isVisible = useScrollVisible(200)
 
@@ -62,11 +58,9 @@ export const Header = ({
                         <div className="flex gap-1">
                             <CurrencySelect
                                 currencies={tenant.currencies}
-                                defaultCurrency={defaultCurrency}
                             />
                             <LanguageSelect
                                 languages={tenant.languages}
-                                defaultLanguage={defaultLanguage}
                             />
                         </div>
                     )

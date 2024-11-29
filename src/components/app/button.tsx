@@ -32,8 +32,11 @@ BackToTopButton.displayName = "BackToTopButton"
 
 import { CircleArrowLeft } from "lucide-react"
 import Link from "next/link"
+import { useAppContext } from "@/contexts/AppContext"
 
 export const BackToMenuButton = () => {
+    const { t } = useAppContext();
+
     return (
         <Link
             href={"/"}
@@ -44,7 +47,7 @@ export const BackToMenuButton = () => {
                 strokeWidth={1}
             />
             <span className="font-semibold">
-                Menüye geri dön
+                {t("back_to_menu")}
             </span>
         </Link>
     )

@@ -1,20 +1,15 @@
 "use client"
 
+import { useAppContext } from "@/contexts/AppContext"
 import Image from "next/image"
 import Link from "next/link"
-import { CurrencySelect } from "./currency"
-import { LanguageSelect } from "./language"
 
 export type FooterProps = {
     tenant: any
-    defaultLanguage: any
-    defaultCurrency: any
 }
 
 export const Footer = ({
-    tenant,
-    defaultLanguage,
-    defaultCurrency
+    tenant
 }: FooterProps) => {
     const startYear = 2024;
     const currentDate = new Date();
@@ -23,6 +18,8 @@ export const Footer = ({
     const year = startYear === currentYear
         ? startYear
         : `${startYear}-${currentYear}`;
+
+    const { t } = useAppContext();
 
     return (
         <footer className="py-8">
@@ -56,20 +53,6 @@ export const Footer = ({
                         )
                     }
                 </div>
-                {
-                    (tenant.currencies.length > 1 || tenant.languages.length > 1) && (
-                        <div className="flex gap-2 max-w-32 items-center justify-center m-auto">
-                            <CurrencySelect
-                                currencies={tenant.currencies}
-                                defaultCurrency={defaultCurrency}
-                            />
-                            <LanguageSelect
-                                languages={tenant.languages}
-                                defaultLanguage={defaultLanguage}
-                            />
-                        </div>
-                    )
-                }
                 <div className="flex flex-col items-center justify-center gap-6">
                     <p className="text-xs">
                         &copy; {year} &#x2022; <Link
@@ -78,7 +61,7 @@ export const Footer = ({
                             className="underline"
                         >
                             {process.env.NEXT_PUBLIC_APP_NAME}
-                        </Link> &#x2022; Tüm hakları saklıdır
+                        </Link> &#x2022; {t("all_rights_reserved")}
                     </p>
                 </div>
             </div>

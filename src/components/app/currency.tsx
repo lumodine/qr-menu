@@ -7,21 +7,35 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import { useAppContext } from "@/contexts/AppContext";
 
 export type CurrencySelectProps = {
     currencies: any[]
-    defaultCurrency: any
 }
 
-export const CurrencySelect = ({ currencies, defaultCurrency }: CurrencySelectProps) => {
-    return null;
-
+export const CurrencySelect = ({ currencies }: CurrencySelectProps) => {
     if (currencies.length <= 1) {
         return null;
     }
 
+    const {
+        currency,
+        defaultCurrency,
+        setCurrency
+    } = useAppContext();
+
+    const handleValueChange = (currencyCode: string) => {
+        const selectedCurrency = currencies
+            .find(currency => currency.currency.code === currencyCode);
+
+        setCurrency(selectedCurrency);
+    };
+
     return (
-        <Select defaultValue={defaultCurrency.currency.code}>
+        <Select
+            defaultValue={currency.currency.code || defaultCurrency.currency.code}
+            onValueChange={handleValueChange}
+        >
             <SelectTrigger className="rounded-full bg-primary text-primary-foreground border-primary-foreground">
                 <SelectValue />
             </SelectTrigger>
@@ -31,7 +45,7 @@ export const CurrencySelect = ({ currencies, defaultCurrency }: CurrencySelectPr
                         key={currencyIndex}
                         value={currency.currency.code}
                     >
-                        {currency.currency.code} ({currency.currency.symbol})
+                        {currency.currency.symbol}
                     </SelectItem>
                 ))}
             </SelectContent>

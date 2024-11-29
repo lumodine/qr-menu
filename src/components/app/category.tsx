@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import { useAppContext } from "@/contexts/AppContext"
 
 export type CategoryHeroProps = {
     tenant: any
@@ -9,6 +10,20 @@ export type CategoryHeroProps = {
 }
 
 export const CategoryHero = ({ tenant, category }: CategoryHeroProps) => {
+    const { language, defaultLanguage } = useAppContext();
+
+    let translation = category.translations
+        .find((translation: any) =>
+            translation.language._id === language.language._id
+        );
+
+    if (!translation) {
+        translation = category.translations
+            .find((translation: any) =>
+                translation.language._id === defaultLanguage.language._id
+            );
+    }
+
     return (
         <section
             style={{ '--bg-image': `url(${category.image})` }}
@@ -31,16 +46,16 @@ export const CategoryHero = ({ tenant, category }: CategoryHeroProps) => {
                         )
                     }
                     {
-                        category.translations[0].name && (
+                        translation?.name && (
                             <h1 className="text-2xl md:text-3xl lg:text-6xl font-bold text-white drop-shadow-2xl">
-                                {category.translations[0].name}
+                                {translation?.name}
                             </h1>
                         )
                     }
                     {
-                        category.translations[0].description && (
+                        translation?.description && (
                             <p className="text-sm md:text-md lg:text-lg text-white drop-shadow-2xl">
-                                {category.translations[0].description}
+                                {translation?.description}
                             </p>
                         )
                     }
@@ -56,6 +71,17 @@ export type CategoryCardProps = {
 }
 
 export const CategoryCard = ({ category }: CategoryCardProps) => {
+    const { language, defaultLanguage } = useAppContext();
+
+    let translation = category.translations.find((translation: any) => translation.language._id === language.language._id);
+
+    if (!translation) {
+        translation = category.translations
+            .find((translation: any) =>
+                translation.language._id === defaultLanguage.language._id
+            );
+    }
+
     return (
         <Link
             href={`/${category._id}`}
@@ -64,12 +90,12 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
         >
             <div className="flex flex-col gap-1 items-center justify-center w-full h-full bg-black/50">
                 <span className="text-lg font-bold text-white drop-shadow-2xl">
-                    {category.translations[0].name}
+                    {translation?.name}
                 </span>
                 {
-                    category.translations[0].description && (
+                    translation?.description && (
                         <p className="text-xs text-white drop-shadow-2xl">
-                            {category.translations[0].description}
+                            {translation?.description}
                         </p>
                     )
                 }
