@@ -1,9 +1,10 @@
 "use client"
 
+import { Tenant } from "@/types";
 import Image from "next/image";
 
 export type TenantLogoProps = {
-    tenant: any;
+    tenant: Tenant;
 }
 
 export const TenantLogo = ({ tenant }: TenantLogoProps) => {
@@ -25,13 +26,13 @@ export const TenantLogo = ({ tenant }: TenantLogoProps) => {
 TenantLogo.displayName = "TenantLogo"
 
 export type TenantHeroProps = {
-    tenant: any;
+    tenant: Tenant;
 }
 
 export const TenantHero = ({ tenant }: TenantHeroProps) => {
     return (
         <section
-            style={{ '--bg-image': `url(${tenant.background})` }}
+            style={{ ['--bg-image' as string]: `url(${tenant.background})` }}
             className="bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden bg-primary/50"
         >
             <div className="flex items-center justify-center w-full h-[30vh] lg:h-[40vh] bg-black/50">

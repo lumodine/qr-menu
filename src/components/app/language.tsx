@@ -8,27 +8,28 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { useAppContext } from "@/contexts/AppContext";
+import { LanguageGroup } from "@/types";
 
 export type LanguageSelectProps = {
-    languages: any[]
+    languages: LanguageGroup[]
 }
 
 export const LanguageSelect = ({ languages }: LanguageSelectProps) => {
-    if (languages.length <= 1) {
-        return null;
-    }
-
     const {
         language,
         defaultLanguage,
         setLanguage
     } = useAppContext();
 
+    if (languages.length <= 1) {
+        return null;
+    }
+
     const handleValueChange = (languageCulture: string) => {
         const selectedLanguage = languages
             .find(language => language.language.culture === languageCulture);
 
-        setLanguage(selectedLanguage);
+        setLanguage(selectedLanguage || defaultLanguage);
     };
 
     return (

@@ -1,6 +1,7 @@
 "use client";
 
 import messages, { type Message } from "@/messages";
+import { CurrencyGroup, LanguageGroup } from "@/types";
 import {
     createContext,
     useContext,
@@ -9,12 +10,12 @@ import {
 } from "react";
 
 type AppContextType = {
-    defaultLanguage: any;
-    language: any;
-    defaultCurrency: any;
-    currency: any;
-    setLanguage: (language: any) => void;
-    setCurrency: (currency: any) => void;
+    defaultLanguage: LanguageGroup;
+    language: LanguageGroup;
+    defaultCurrency: CurrencyGroup;
+    currency: CurrencyGroup;
+    setLanguage: (language: LanguageGroup) => void;
+    setCurrency: (currency: CurrencyGroup) => void;
     t: (key: keyof Message) => string;
 };
 
@@ -26,11 +27,11 @@ export const AppProvider = ({
     defaultCurrency,
 }: {
     children: ReactNode,
-    defaultLanguage: any,
-    defaultCurrency: any,
+    defaultLanguage: LanguageGroup,
+    defaultCurrency: CurrencyGroup,
 }) => {
-    const [language, setLanguage] = useState<any>(defaultLanguage);
-    const [currency, setCurrency] = useState<any>(defaultCurrency);
+    const [language, setLanguage] = useState<LanguageGroup>(defaultLanguage);
+    const [currency, setCurrency] = useState<CurrencyGroup>(defaultCurrency);
 
     const t = (key: keyof Message) => messages[language.language.culture][key] || key;
 

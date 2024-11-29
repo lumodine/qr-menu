@@ -4,13 +4,12 @@ import { useScrollVisible } from "@/hooks/useScrollVisible"
 import Image from "next/image"
 import { LanguageSelect } from "./language"
 import { CurrencySelect } from "./currency"
-import { Search } from "lucide-react"
-import { Button } from "../ui/button"
 import Link from "next/link"
 import { cn } from "@/utils/shadcn"
+import { Tenant } from "@/types"
 
 export type HeaderProps = {
-    tenant: any
+    tenant: Tenant
 }
 
 export const Header = ({
@@ -46,9 +45,6 @@ export const Header = ({
                                     loading={"lazy"}
                                     className="rounded-full"
                                 />
-                                {/* <span className="font-semibold text-primary-foreground">
-                            {tenant.name}
-                        </span> */}
                             </Link>
                         </div>
                     )
@@ -65,15 +61,6 @@ export const Header = ({
                         </div>
                     )
                 }
-                {/* <div>
-                    <Button
-                        variant={"outline"}
-                        size={"icon"}
-                        className="rounded-full"
-                    >
-                        <Search />
-                    </Button>
-                </div> */}
             </nav>
         </header>
     )

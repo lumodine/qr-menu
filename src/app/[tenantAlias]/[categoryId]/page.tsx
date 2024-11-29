@@ -19,7 +19,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
     const categoryResponse = await qrMenuService.getCategoryById(tenantAlias, categoryId);
 
-    if (!categoryResponse.success) {
+    if (!categoryResponse.success || !categoryResponse.data) {
         return notFound();
     }
 

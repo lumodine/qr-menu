@@ -3,30 +3,34 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useAppContext } from "@/contexts/AppContext"
+import { Categories, Category, Tenant } from "@/types"
 
 export type CategoryHeroProps = {
-    tenant: any
-    category: any
+    tenant: Tenant
+    category: Category
 }
 
 export const CategoryHero = ({ tenant, category }: CategoryHeroProps) => {
-    const { language, defaultLanguage } = useAppContext();
+    const {
+        language,
+        defaultLanguage
+    } = useAppContext();
 
     let translation = category.translations
-        .find((translation: any) =>
+        .find((translation) =>
             translation.language._id === language.language._id
         );
 
     if (!translation) {
         translation = category.translations
-            .find((translation: any) =>
+            .find((translation) =>
                 translation.language._id === defaultLanguage.language._id
             );
     }
 
     return (
         <section
-            style={{ '--bg-image': `url(${category.image})` }}
+            style={{ ['--bg-image' as string]: `url(${category.image})` }}
             className="bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden bg-primary/50"
         >
             <div className="bg-black/50">
@@ -67,17 +71,17 @@ export const CategoryHero = ({ tenant, category }: CategoryHeroProps) => {
 CategoryHero.displayName = "CategoryHero"
 
 export type CategoryCardProps = {
-    category: any
+    category: Category
 }
 
 export const CategoryCard = ({ category }: CategoryCardProps) => {
     const { language, defaultLanguage } = useAppContext();
 
-    let translation = category.translations.find((translation: any) => translation.language._id === language.language._id);
+    let translation = category.translations.find((translation) => translation.language._id === language.language._id);
 
     if (!translation) {
         translation = category.translations
-            .find((translation: any) =>
+            .find((translation) =>
                 translation.language._id === defaultLanguage.language._id
             );
     }
@@ -85,7 +89,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
     return (
         <Link
             href={`/${category._id}`}
-            style={{ '--bg-image': `url(${category.image})` }}
+            style={{ ['--bg-image' as string]: `url(${category.image})` }}
             className="bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden rounded-lg transition-transform hover:scale-95 bg-primary/50"
         >
             <div className="flex flex-col gap-1 items-center justify-center w-full h-full bg-black/50">
@@ -106,7 +110,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
 CategoryCard.displayName = "CategoryCard"
 
 export type CategoryListProps = {
-    categories: any[]
+    categories: Categories
 }
 
 export const CategoryList = ({ categories }: CategoryListProps) => {

@@ -5,6 +5,7 @@ import { redirect } from "next/navigation"
 import { Footer } from "@/components/app/footer"
 import { BackToTopButton } from "@/components/app/button"
 import { AppProvider } from "@/contexts/AppContext"
+import { CurrencyGroup, LanguageGroup } from "@/types"
 
 type MetadataProps = {
   params: Promise<{
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: MetadataProps) {
 
   const tenantResponse = await qrMenuService.getDetail(tenantAlias);
 
-  if (!tenantResponse.success) {
+  if (!tenantResponse.success || !tenantResponse.data) {
     return;
   }
 
@@ -38,17 +39,17 @@ export default async function RootLayout({
 
   const tenantResponse = await qrMenuService.getDetail(tenantAlias);
 
-  if (!tenantResponse.success) {
+  if (!tenantResponse.success || !tenantResponse.data) {
     return redirect(process.env.NEXT_PUBLIC_LANDING_URL!);
   }
 
   const tenant = tenantResponse.data;
 
   const defaultLanguage =
-    tenant.languages.find((language: any) => language.isDefault)
+    tenant.languages.find((language: LanguageGroup) => language.isDefault)
     || tenant.languages[0];
   const defaultCurrency =
-    tenant.currencies.find((currency: any) => currency.isDefault)
+    tenant.currencies.find((currency: CurrencyGroup) => currency.isDefault)
     || tenant.currencies[0];
 
   const themeClassName = `theme-${tenant.theme || "zinc"}`;
@@ -60,7 +61,7 @@ export default async function RootLayout({
     >
       <body className={themeClassName}>
         <Header
-          tenant={tenantResponse.data}
+          tenant={tenant}
         />
 
         <main>

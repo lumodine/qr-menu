@@ -5,9 +5,10 @@ import { cn } from "@/utils/shadcn"
 import { formatPrice } from "@/utils/number"
 import { PRODUCT_STATUS, PRODUCT_TYPES } from "@/constants/product"
 import { useAppContext } from "@/contexts/AppContext"
+import { Product, Products } from "@/types"
 
 export type ProductCardProps = {
-    product: any
+    product: Product
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
@@ -28,22 +29,22 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     } = useAppContext();
 
     let translation = product.translations
-        .find((translation: any) =>
+        .find((translation) =>
             translation.language._id === language.language._id
         );
 
     if (!translation) {
         translation = product.translations
-            .find((translation: any) =>
+            .find((translation) =>
                 translation.language._id === defaultLanguage.language._id
             );
     }
 
-    let price = product.prices.find((price: any) => price.currency._id === currency.currency._id);
+    let price = product.prices.find((price) => price.currency._id === currency.currency._id);
 
     if (!price) {
         price = product.prices
-            .find((price: any) =>
+            .find((price) =>
                 price.currency._id === defaultCurrency.currency._id
             );
     }
@@ -66,7 +67,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                     }>
                         <Image
                             src={product.image}
-                            alt={translation?.name}
+                            alt={translation?.name || "image"}
                             width={image.width}
                             height={image.height}
                             loading={"lazy"}
@@ -87,9 +88,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                         )
                     }
                     <span className="flex-1 w-full border-b-2 my-2 border-dotted border-primary/20" />
-                    <b className="text-primary">
-                        {price?.currency?.symbol}{formatPrice(price?.amount)}
-                    </b>
+                    {
+                        price?.amount && (
+                            <b className="text-primary">
+                                {price?.currency?.symbol}{formatPrice(price?.amount)}
+                            </b>
+                        )
+                    }
                 </div>
                 {
                     translation?.description && (
@@ -105,7 +110,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 ProductCard.displayName = "ProductCard"
 
 export type ProductListProps = {
-    products: any[]
+    products: Products
 }
 
 export const ProductList = ({ products }: ProductListProps) => {

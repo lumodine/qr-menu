@@ -1,11 +1,12 @@
 "use client"
 
 import { useAppContext } from "@/contexts/AppContext"
+import { Tenant } from "@/types"
 import Image from "next/image"
 import Link from "next/link"
 
 export type FooterProps = {
-    tenant: any
+    tenant: Tenant
 }
 
 export const Footer = ({
