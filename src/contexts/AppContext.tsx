@@ -46,7 +46,12 @@ export const AppProvider = ({
                 t,
             }}
         >
-            {children}
+            <html
+                lang={language.language.culture}
+                dir={language.language.direction}
+            >
+                {children}
+            </html>
         </AppContext.Provider>
     );
 };

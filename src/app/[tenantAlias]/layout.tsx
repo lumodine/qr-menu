@@ -58,27 +58,21 @@ export default async function RootLayout({
       defaultLanguage={defaultLanguage}
       defaultCurrency={defaultCurrency}
     >
-      <html
-        lang={defaultLanguage.language.culture}
-        dir={defaultLanguage.language.direction}
-        className={themeClassName}
-      >
-        <body>
-          <Header
-            tenant={tenantResponse.data}
-          />
+      <body className={themeClassName}>
+        <Header
+          tenant={tenantResponse.data}
+        />
 
-          <main>
-            {children}
-          </main>
+        <main>
+          {children}
+        </main>
 
-          <BackToTopButton />
+        <BackToTopButton />
 
-          <Footer
-            tenant={tenantResponse.data}
-          />
-        </body>
-      </html>
+        <Footer
+          tenant={tenantResponse.data}
+        />
+      </body>
     </AppProvider>
   )
 }
