@@ -43,7 +43,7 @@ export const Header = ({
                                     width={50}
                                     height={50}
                                     loading={"lazy"}
-                                    className="rounded-full"
+                                    className="rounded-sm"
                                 />
                             </Link>
                         </div>

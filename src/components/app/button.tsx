@@ -22,7 +22,7 @@ export const BackToTopButton = () => {
         <div className="fixed bottom-10 right-5 z-50">
             <Button
                 onClick={scrollToTop}
-                className="bg-rose-500 p-2 rounded-full w-10 h-10">
+                className="rounded-sm p-2 w-10 h-10">
                 <ChevronUp size={30} />
             </Button>
         </div>

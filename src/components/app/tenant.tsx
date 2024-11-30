@@ -19,7 +19,7 @@ export const TenantLogo = ({ tenant }: TenantLogoProps) => {
             width={300}
             height={300}
             loading={"lazy"}
-            className="rounded-full w-[150px] h-[150px] md:w-[300px] md:h-[300px]"
+            className="rounded-sm w-[150px] h-[150px] md:w-[300px] md:h-[300px]"
         />
     )
 }

@@ -46,7 +46,7 @@ export const CategoryHero = ({ tenant, category }: CategoryHeroProps) => {
                                     width={100}
                                     height={100}
                                     loading={"lazy"}
-                                    className="rounded-full w-[100px] h-[100px] md:w-[200px] md:h-[200px]"
+                                    className="rounded-sm w-[100px] h-[100px] md:w-[200px] md:h-[200px]"
                                 />
                             </Link>
                         )
@@ -94,7 +94,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
             style={{ ['--bg-image' as string]: `url(${category.image})` }}
             className={
                 cn(
-                    "bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden rounded-lg transition-transform hover:scale-95 bg-primary/50",
+                    "bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden rounded-sm transition-transform hover:scale-95 bg-primary/50",
                     CATEGORY_TYPE_CLASS[category.type]
                 )
             }

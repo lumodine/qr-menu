@@ -52,7 +52,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     return (
         <div className={
             cn(
-                "flex items-start justify-center gap-4 p-4 overflow-hidden rounded-lg",
+                "flex items-start justify-center gap-4 p-4 overflow-hidden rounded-sm",
                 isGrid && "flex-col",
                 isNotAvailable && "opacity-30 cursor-no-drop select-none"
             )
@@ -71,7 +71,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                             width={image.width}
                             height={image.height}
                             loading={"lazy"}
-                            className="h-full w-full rounded-lg"
+                            className="h-full w-full rounded-sm"
                         />
                     </div>
                 )
