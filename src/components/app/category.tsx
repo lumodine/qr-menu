@@ -4,6 +4,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { useAppContext } from "@/contexts/AppContext"
 import { Categories, Category, Tenant } from "@/types"
+import { cn } from "@/utils/shadcn"
+import { CATEGORY_TYPE_CLASS } from "@/constants/category"
 
 export type CategoryHeroProps = {
     tenant: Tenant
@@ -90,9 +92,14 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
         <Link
             href={`/${category._id}`}
             style={{ ['--bg-image' as string]: `url(${category.image})` }}
-            className="bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden rounded-lg transition-transform hover:scale-95 bg-primary/50"
+            className={
+                cn(
+                    "bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden rounded-lg transition-transform hover:scale-95 bg-primary/50",
+                    CATEGORY_TYPE_CLASS[category.type]
+                )
+            }
         >
-            <div className="flex flex-col gap-1 items-center justify-center w-full h-full bg-black/50">
+            <div className="flex flex-col gap-1 items-center justify-center w-full h-full bg-black/60">
                 <span className="text-lg font-bold text-white drop-shadow-2xl">
                     {translation?.name}
                 </span>
@@ -120,7 +127,9 @@ export const CategoryList = ({ categories }: CategoryListProps) => {
         <section className="container py-6">
             {
                 hasCategories && (
-                    <div className="grid grid-cols-1 gap-3 auto-rows-[10em]">
+                    <div
+                        className="grid gap-2 auto-rows-[10em] grid-flow-row-dense grid-cols-2"
+                    >
                         {categories.map((category, categoryIndex) => (
                             <CategoryCard
                                 key={categoryIndex}

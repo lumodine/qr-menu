@@ -23,7 +23,7 @@ export const Footer = ({
     const { t } = useAppContext();
 
     return (
-        <footer className="py-8">
+        <footer className="py-16">
             <div className="container flex flex-col gap-6">
                 <div className="flex flex-col gap-6 items-center justify-center">
                     <Link
