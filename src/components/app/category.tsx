@@ -79,7 +79,10 @@ export type CategoryCardProps = {
 export const CategoryCard = ({ category }: CategoryCardProps) => {
     const { language, defaultLanguage } = useAppContext();
 
-    let translation = category.translations.find((translation) => translation.language._id === language.language._id);
+    let translation = category.translations
+        .find((translation) =>
+            translation.language._id === language.language._id
+        );
 
     if (!translation) {
         translation = category.translations
@@ -95,7 +98,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
             className={
                 cn(
                     "bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden rounded-sm transition-transform hover:scale-95 bg-primary/50",
-                    CATEGORY_TYPE_CLASS[category.type]
+                    category.type,
                 )
             }
         >

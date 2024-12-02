@@ -40,7 +40,10 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             );
     }
 
-    let price = product.prices.find((price) => price.currency._id === currency.currency._id);
+    let price = product.prices
+        .find((price) =>
+            price.currency._id === currency.currency._id
+        );
 
     if (!price) {
         price = product.prices
