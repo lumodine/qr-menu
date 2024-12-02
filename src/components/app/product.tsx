@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { cn } from "@/utils/shadcn"
-import { formatPrice } from "@/utils/number"
+import { formatAmount } from "@/utils/number"
 import { PRODUCT_STATUS, PRODUCT_TYPES } from "@/constants/product"
 import { useAppContext } from "@/contexts/AppContext"
 import { Product, Products } from "@/types"
@@ -95,7 +95,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                             <>
                                 <span className="flex-1 w-full border-b-2 my-2 border-dotted border-primary/20" />
                                 <b className="text-primary">
-                                    {price?.currency?.symbol}{formatPrice(price?.amount)}
+                                    {price.currency.symbol}{formatAmount(language.language.culture, price.amount)}
                                 </b>
                             </>
                         )

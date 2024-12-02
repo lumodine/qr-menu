@@ -1,3 +1,5 @@
-export function formatPrice(price: number) {
-    return new Intl.NumberFormat().format(price)
+export function formatAmount(locale: string, amount: number) {
+    return new Intl.NumberFormat(locale, {
+        style: "decimal",
+    }).format(amount)
 }
