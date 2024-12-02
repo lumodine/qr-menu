@@ -90,12 +90,14 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                             </span>
                         )
                     }
-                    <span className="flex-1 w-full border-b-2 my-2 border-dotted border-primary/20" />
                     {
                         price?.amount && (
-                            <b className="text-primary">
-                                {price?.currency?.symbol}{formatPrice(price?.amount)}
-                            </b>
+                            <>
+                                <span className="flex-1 w-full border-b-2 my-2 border-dotted border-primary/20" />
+                                <b className="text-primary">
+                                    {price?.currency?.symbol}{formatPrice(price?.amount)}
+                                </b>
+                            </>
                         )
                     }
                 </div>
