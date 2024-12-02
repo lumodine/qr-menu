@@ -1,5 +1,6 @@
 "use client"
 
+import { useAppContext } from "@/contexts/AppContext";
 import { Tenant } from "@/types";
 import Image from "next/image";
 
@@ -25,11 +26,9 @@ export const TenantLogo = ({ tenant }: TenantLogoProps) => {
 }
 TenantLogo.displayName = "TenantLogo"
 
-export type TenantHeroProps = {
-    tenant: Tenant;
-}
+export const TenantHero = () => {
+    const { tenant } = useAppContext();
 
-export const TenantHero = ({ tenant }: TenantHeroProps) => {
     return (
         <section
             style={{ ['--bg-image' as string]: `url(${tenant.background})` }}

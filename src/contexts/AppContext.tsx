@@ -1,7 +1,7 @@
 "use client";
 
 import messages, { type Message } from "@/messages";
-import { CurrencyGroup, LanguageGroup } from "@/types";
+import { CurrencyGroup, LanguageGroup, Tenant } from "@/types";
 import {
     createContext,
     useContext,
@@ -10,6 +10,7 @@ import {
 } from "react";
 
 type AppContextType = {
+    tenant: Tenant;
     defaultLanguage: LanguageGroup;
     language: LanguageGroup;
     defaultCurrency: CurrencyGroup;
@@ -23,12 +24,14 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({
     children,
+    tenant,
     defaultLanguage,
     defaultCurrency,
 }: {
-    children: ReactNode,
-    defaultLanguage: LanguageGroup,
-    defaultCurrency: CurrencyGroup,
+    children: ReactNode;
+    tenant: Tenant;
+    defaultLanguage: LanguageGroup;
+    defaultCurrency: CurrencyGroup;
 }) => {
     const [language, setLanguage] = useState<LanguageGroup>(defaultLanguage);
     const [currency, setCurrency] = useState<CurrencyGroup>(defaultCurrency);
@@ -38,6 +41,7 @@ export const AppProvider = ({
     return (
         <AppContext.Provider
             value={{
+                tenant,
                 defaultLanguage,
                 language,
                 defaultCurrency,

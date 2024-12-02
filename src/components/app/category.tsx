@@ -5,15 +5,14 @@ import Image from "next/image"
 import { useAppContext } from "@/contexts/AppContext"
 import { Categories, Category, Tenant } from "@/types"
 import { cn } from "@/utils/shadcn"
-import { CATEGORY_TYPE_CLASS } from "@/constants/category"
 
 export type CategoryHeroProps = {
-    tenant: Tenant
     category: Category
 }
 
-export const CategoryHero = ({ tenant, category }: CategoryHeroProps) => {
+export const CategoryHero = ({ category }: CategoryHeroProps) => {
     const {
+        tenant,
         language,
         defaultLanguage
     } = useAppContext();

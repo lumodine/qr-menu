@@ -11,19 +11,11 @@ type TenantHomePageProps = {
 export default async function TenantHomePage({ params }: TenantHomePageProps) {
     const { tenantAlias } = await params
 
-    const [
-        { data: tenant },
-        { data: categories }
-    ] = await Promise.all([
-        qrMenuService.getDetail(tenantAlias),
-        qrMenuService.getCategories(tenantAlias)
-    ])
+    const { data: categories } = await qrMenuService.getCategories(tenantAlias);
 
     return (
         <>
-            <TenantHero
-                tenant={tenant}
-            />
+            <TenantHero />
             
             <CategoryList
                 categories={categories}

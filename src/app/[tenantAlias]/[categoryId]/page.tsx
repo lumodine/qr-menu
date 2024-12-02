@@ -23,22 +23,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         return notFound();
     }
 
-    const [
-        { data: tenant },
-        { data: products }
-    ] = await Promise.all([
-        qrMenuService.getDetail(tenantAlias),
-        qrMenuService.getProducts(tenantAlias, categoryId)
-    ]);
+    const { data: products } = await qrMenuService.getProducts(tenantAlias, categoryId);
 
     const category = categoryResponse.data;
 
     return (
         <>
-            <CategoryHero
-                tenant={tenant}
-                category={category}
-            />
+            <CategoryHero category={category} />
 
             <section className="container">
                 <div className="py-2">

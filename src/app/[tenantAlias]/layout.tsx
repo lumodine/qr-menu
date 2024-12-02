@@ -6,30 +6,22 @@ import { Footer } from "@/components/app/footer"
 import { BackToTopButton } from "@/components/app/button"
 import { AppProvider } from "@/contexts/AppContext"
 import { CurrencyGroup, LanguageGroup } from "@/types"
+import { Metadata } from "next"
 
-type MetadataProps = {
+export const metadata: Metadata = {
+  title: {
+    default: process.env.NEXT_PUBLIC_APP_NAME!,
+    template: `%s - ${process.env.NEXT_PUBLIC_APP_NAME}`,
+  },
+  robots: "nofollow, noindex",
+};
+
+type RootLayoutProps = {
+  children: Readonly<React.ReactNode>
   params: Promise<{
     tenantAlias: string
   }>
 }
-
-export async function generateMetadata({ params }: MetadataProps) {
-  const { tenantAlias } = await params
-
-  const tenantResponse = await qrMenuService.getDetail(tenantAlias);
-
-  if (!tenantResponse.success || !tenantResponse.data) {
-    return;
-  }
-
-  return {
-    title: `${tenantResponse.data.name} - ${process.env.NEXT_PUBLIC_APP_NAME!}`
-  };
-}
-
-type RootLayoutProps = {
-  children: Readonly<React.ReactNode>
-} & MetadataProps
 
 export default async function RootLayout({
   children,
@@ -56,6 +48,7 @@ export default async function RootLayout({
 
   return (
     <AppProvider
+      tenant={tenant}
       defaultLanguage={defaultLanguage}
       defaultCurrency={defaultCurrency}
     >
