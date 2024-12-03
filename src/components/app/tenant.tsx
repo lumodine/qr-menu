@@ -26,7 +26,7 @@ export const TenantLogo = ({ tenant }: TenantLogoProps) => {
             }
             {
                 !tenant.logo && (
-                    <h1 className="text-4xl text-primary-foreground font-bold">
+                    <h1 className="text-center text-4xl text-primary-foreground font-bold">
                         {tenant.name}
                     </h1>
                 )
@@ -55,7 +55,7 @@ export const TenantHero = () => {
                 )
             }
         >
-            <div className="flex items-center justify-center w-full h-[30vh] lg:h-[40vh] bg-black/50">
+            <div className="flex items-center justify-center w-full h-[30vh] lg:h-[40vh] bg-black/50 p-2">
                 <TenantLogo
                     tenant={tenant}
                 />
