@@ -46,13 +46,6 @@ export const Footer = ({
                             {tenant.name}
                         </span>
                     </Link>
-                    {
-                        tenant.address && (
-                            <p className="text-sm">
-                                {tenant.address}
-                            </p>
-                        )
-                    }
                 </div>
                 <div className="flex flex-col items-center justify-center gap-6">
                     <p className="text-xs">

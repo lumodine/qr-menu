@@ -46,7 +46,6 @@ export type Tenant = {
     currencies: CurrencyGroup[];
     logo?: string;
     background?: string;
-    address?: string;
     createdAt: string;
     updateAt?: string;
 };
