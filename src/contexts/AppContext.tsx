@@ -1,7 +1,12 @@
 "use client";
 
-import messages, { type Message } from "@/messages";
-import { CurrencyGroup, LanguageGroup, Tenant } from "@/types";
+import messages from "@/messages";
+import type {
+    CurrencyGroup,
+    LanguageGroup,
+    Tenant,
+    Message,
+} from "@/types";
 import {
     createContext,
     useContext,

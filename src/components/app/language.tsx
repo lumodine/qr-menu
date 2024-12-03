@@ -8,7 +8,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { useAppContext } from "@/contexts/AppContext";
-import { LanguageGroup } from "@/types";
+import type { LanguageGroup } from "@/types";
 
 export type LanguageSelectProps = {
     languages: LanguageGroup[]

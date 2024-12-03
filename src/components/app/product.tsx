@@ -5,7 +5,7 @@ import { cn } from "@/utils/shadcn"
 import { formatAmount } from "@/utils/number"
 import { PRODUCT_STATUS, PRODUCT_TYPES } from "@/constants/product"
 import { useAppContext } from "@/contexts/AppContext"
-import { Product, Products } from "@/types"
+import type { Product, Products } from "@/types"
 
 export type ProductCardProps = {
     product: Product

@@ -6,7 +6,7 @@ import { LanguageSelect } from "./language"
 import { CurrencySelect } from "./currency"
 import Link from "next/link"
 import { cn } from "@/utils/shadcn"
-import { Tenant } from "@/types"
+import type { Tenant } from "@/types"
 
 export type HeaderProps = {
     tenant: Tenant

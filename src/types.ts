@@ -95,3 +95,15 @@ export type Product = {
 };
 
 export type Products = Product[];
+
+export type Messages = {
+    [culture: string]: Message;
+};
+
+export type Message = {
+    back_to_menu: string;
+    page_not_found_title: string;
+    page_not_found_description: string;
+    page_not_found_cta_text: string;
+    all_rights_reserved: string;
+};

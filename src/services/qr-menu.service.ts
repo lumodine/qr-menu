@@ -1,5 +1,5 @@
 import axios from "@/lib/axios"
-import {
+import type {
   Categories,
   Category,
   Tenant,

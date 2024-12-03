@@ -8,7 +8,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { useAppContext } from "@/contexts/AppContext";
-import { CurrencyGroup } from "@/types";
+import type { CurrencyGroup } from "@/types";
 
 export type CurrencySelectProps = {
     currencies: CurrencyGroup[]

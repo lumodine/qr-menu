@@ -1,12 +1,15 @@
-import "./globals.css"
 import qrMenuService from "@/services/qr-menu.service"
 import { Header } from "@/components/app/header"
 import { redirect } from "next/navigation"
 import { Footer } from "@/components/app/footer"
 import { BackToTopButton } from "@/components/app/button"
 import { AppProvider } from "@/contexts/AppContext"
-import { CurrencyGroup, LanguageGroup } from "@/types"
+import type {
+  CurrencyGroup,
+  LanguageGroup
+} from "@/types"
 import { Metadata } from "next"
+import "./globals.css"
 
 export const metadata: Metadata = {
   title: {

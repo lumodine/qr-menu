@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useAppContext } from "@/contexts/AppContext"
-import { Categories, Category } from "@/types"
+import type { Categories, Category } from "@/types"
 import { cn } from "@/utils/shadcn"
 
 export type CategoryHeroProps = {

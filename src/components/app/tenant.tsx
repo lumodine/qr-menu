@@ -1,7 +1,7 @@
 "use client"
 
 import { useAppContext } from "@/contexts/AppContext";
-import { Tenant } from "@/types";
+import type { Tenant } from "@/types";
 import { cn } from "@/utils/shadcn";
 import Image from "next/image";
 
