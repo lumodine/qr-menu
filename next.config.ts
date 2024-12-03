@@ -5,12 +5,6 @@ const nextConfig: NextConfig = {
     images: {
         remotePatterns: [
             {
-                hostname: "placehold.co",
-            },
-            {
-                hostname: "picsum.photos",
-            },
-            {
                 hostname: "cdn.lumodine.com",
             },
         ],
