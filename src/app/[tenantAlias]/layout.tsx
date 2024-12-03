@@ -52,6 +52,9 @@ export default async function RootLayout({
       defaultLanguage={defaultLanguage}
       defaultCurrency={defaultCurrency}
     >
+      <head>
+        <link rel="stylesheet" href="https://cdn.lumodine.com/public/theme.css" />
+      </head>
       <body className={themeClassName}>
         <Header
           tenant={tenant}
