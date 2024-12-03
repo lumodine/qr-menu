@@ -29,10 +29,21 @@ export const CategoryHero = ({ category }: CategoryHeroProps) => {
             );
     }
 
+    const hasImage = !!category.image;
+
     return (
         <section
-            style={{ ['--bg-image' as string]: `url(${category.image})` }}
-            className="bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden bg-primary/50"
+            style={{
+                ['--bg-image' as string]: hasImage
+                    ? `url(${category.image})`
+                    : null
+            }}
+            className={
+                cn(
+                    hasImage && "bg-[image:var(--bg-image)]",
+                    "bg-center bg-no-repeat bg-cover overflow-hidden bg-primary/50",
+                )
+            }
         >
             <div className="bg-black/50">
                 <div className="container flex flex-col gap-4 items-center justify-center w-full h-[30vh] lg:h-[40vh] ">
@@ -90,13 +101,20 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
             );
     }
 
+    const hasImage = !!category.image;
+
     return (
         <Link
             href={`/${category._id}`}
-            style={{ ['--bg-image' as string]: `url(${category.image})` }}
+            style={{
+                ['--bg-image' as string]: hasImage
+                    ? `url(${category.image || ''})`
+                    : null
+            }}
             className={
                 cn(
-                    "bg-[image:var(--bg-image)] bg-center bg-no-repeat bg-cover overflow-hidden rounded-sm transition-transform hover:scale-95 bg-primary/50",
+                    hasImage && "bg-[image:var(--bg-image)] ",
+                    "bg-center bg-no-repeat bg-cover overflow-hidden rounded-sm transition-transform hover:scale-95 bg-primary/50",
                     category.type,
                 )
             }
