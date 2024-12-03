@@ -28,7 +28,7 @@ export const Footer = ({
                 <div className="flex flex-col gap-6 items-center justify-center">
                     <Link
                         href={"/"}
-                        className="flex gap-2 items-center justify-center"
+                        className="flex flex-col gap-2 items-center justify-center"
                     >
                         {
                             tenant.logo && (
