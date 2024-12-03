@@ -9,27 +9,3 @@
 body {
   @apply bg-primary/10 text-foreground;
 }
-
-.row-1-col-1 {
-  @apply row-span-1 col-span-1;
-}
-
-.row-1-col-2 {
-  @apply row-span-1 col-span-2;
-}
-
-.row-2-col-1 {
-  @apply row-span-2 col-span-1;
-}
-
-.row-2-col-2 {
-  @apply row-span-2 col-span-2;
-}
-
-.row-3-col-1 {
-  @apply row-span-3 col-span-1;
-}
-
-.row-3-col-2 {
-  @apply row-span-3 col-span-2;
-}
