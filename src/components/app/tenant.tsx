@@ -10,19 +10,28 @@ export type TenantLogoProps = {
 }
 
 export const TenantLogo = ({ tenant }: TenantLogoProps) => {
-    if (!tenant.logo) {
-        return null;
-    }
-
     return (
-        <Image
-            src={tenant.logo}
-            alt={tenant.name}
-            width={300}
-            height={300}
-            loading={"lazy"}
-            className="rounded-sm w-[150px] h-[150px] md:w-[300px] md:h-[300px]"
-        />
+        <>
+            {
+                tenant.logo && (
+                    <Image
+                        src={tenant.logo}
+                        alt={tenant.name}
+                        width={300}
+                        height={300}
+                        loading={"lazy"}
+                        className="rounded-sm w-[150px] h-[150px] md:w-[300px] md:h-[300px]"
+                    />
+                )
+            }
+            {
+                !tenant.logo && (
+                    <h1 className="text-4xl text-primary-foreground font-bold">
+                        {tenant.name}
+                    </h1>
+                )
+            }
+        </>
     )
 }
 TenantLogo.displayName = "TenantLogo"
