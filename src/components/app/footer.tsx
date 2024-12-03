@@ -47,7 +47,7 @@ export const Footer = ({
                         </span>
                     </Link>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-6">
+                <div className="flex flex-col items-center justify-center gap-6 my-8">
                     <p className="text-xs">
                         &copy; {year} &#x2022; <Link
                             href={process.env.NEXT_PUBLIC_LANDING_URL!}
