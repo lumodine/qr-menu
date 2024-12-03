@@ -37,7 +37,7 @@ export const LanguageSelect = ({ languages }: LanguageSelectProps) => {
             defaultValue={language.language.culture || defaultLanguage.language.culture}
             onValueChange={handleValueChange}
         >
-            <SelectTrigger className="rounded-sm bg-primary text-primary-foreground border-primary-foreground">
+            <SelectTrigger className="rounded-sm bg-black/50 text-white">
                 <SelectValue />
             </SelectTrigger>
             <SelectContent>
