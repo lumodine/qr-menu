@@ -17,10 +17,10 @@ export const TenantLogo = ({ tenant }: TenantLogoProps) => {
                     <Image
                         src={tenant.logo}
                         alt={tenant.name}
-                        width={300}
-                        height={300}
+                        width={100}
+                        height={100}
                         loading={"lazy"}
-                        className="rounded-sm w-[150px] h-[150px] md:w-[300px] md:h-[300px]"
+                        className="rounded-sm w-[100px] h-[100px] md:w-[200px] md:h-[200px]"
                     />
                 )
             }
