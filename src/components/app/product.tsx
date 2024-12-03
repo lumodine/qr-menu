@@ -56,7 +56,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className={
             cn(
                 "flex items-start justify-center gap-4 p-4 overflow-hidden rounded-sm",
-                isGrid && "flex-col",
+                isGrid && "flex-col bg-primary text-primary-foreground",
                 isNotAvailable && "opacity-30 cursor-no-drop select-none"
             )
         }>
@@ -85,7 +85,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                 >
                     {
                         translation?.name && (
-                            <span className="text-lg font-semibold text-primary">
+                            <span className="text-lg font-semibold">
                                 {translation?.name}
                             </span>
                         )
@@ -93,8 +93,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                     {
                         price?.amount && (
                             <>
-                                <span className="flex-1 w-full border-b-2 my-2 border-dotted border-primary/20" />
-                                <b className="text-primary">
+                                <span className={
+                                    cn(
+                                        "flex-1 w-full border-b-2 my-2 border-dotted border-primary/20",
+                                        isGrid && "border-primary-foreground"
+                                    )
+                                } />
+                                <b>
                                     {price.currency.symbol}{formatAmount(language.language.culture, price.amount)}
                                 </b>
                             </>
