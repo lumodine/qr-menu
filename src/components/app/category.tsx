@@ -46,7 +46,7 @@ export const CategoryHero = ({ category }: CategoryHeroProps) => {
             }
         >
             <div className="bg-black/50">
-                <div className="container flex flex-col gap-4 items-center justify-center w-full h-[30vh] lg:h-[40vh] text-center">
+                <div className="container flex flex-col gap-4 items-center justify-center w-full h-[30vh] lg:h-[40vh] ">
                     {
                         tenant.logo && (
                             <Link href={"/"}>
@@ -63,14 +63,14 @@ export const CategoryHero = ({ category }: CategoryHeroProps) => {
                     }
                     {
                         translation?.name && (
-                            <h1 className="text-2xl md:text-3xl lg:text-6xl font-bold text-primary-foreground drop-shadow-2xl">
+                            <h1 className="text-2xl md:text-3xl lg:text-6xl font-bold text-white drop-shadow-2xl">
                                 {translation?.name}
                             </h1>
                         )
                     }
                     {
                         translation?.description && (
-                            <p className="text-sm md:text-md lg:text-lg text-primary-foreground drop-shadow-2xl">
+                            <p className="text-sm md:text-md lg:text-lg text-white drop-shadow-2xl">
                                 {translation?.description}
                             </p>
                         )
@@ -120,7 +120,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
             }
         >
             <div className="flex flex-col gap-1 items-center justify-center w-full h-full bg-black/60 text-center">
-                <span className="text-lg font-bold text-primary-foreground drop-shadow-2xl">
+                <span className="text-lg font-bold text-white drop-shadow-2xl">
                     {translation?.name}
                 </span>
             </div>
