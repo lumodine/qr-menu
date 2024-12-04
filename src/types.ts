@@ -46,8 +46,14 @@ export type Tenant = {
     currencies: CurrencyGroup[];
     logo?: string;
     background?: string;
+    socialMedias: SocialMedia[];
     createdAt: string;
     updateAt?: string;
+};
+
+export type SocialMedia = {
+    type: string;
+    value: string;
 };
 
 export type Category = {

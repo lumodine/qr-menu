@@ -4,6 +4,7 @@ import { useAppContext } from "@/contexts/AppContext"
 import type { Tenant } from "@/types"
 import Image from "next/image"
 import Link from "next/link"
+import { TenantSocialMedia } from "./tenant"
 
 export type FooterProps = {
     tenant: Tenant
@@ -25,6 +26,9 @@ export const Footer = ({
     return (
         <footer className="py-16">
             <div className="container flex flex-col gap-6">
+                <div className="flex flex-wrap gap-2 items-center justify-center">
+                    <TenantSocialMedia />
+                </div>
                 <div className="flex flex-col gap-6 items-center justify-center">
                     <Link
                         href={"/"}
