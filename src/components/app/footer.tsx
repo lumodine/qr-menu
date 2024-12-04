@@ -26,9 +26,8 @@ export const Footer = ({
     return (
         <footer className="py-16">
             <div className="container flex flex-col gap-6">
-                <div className="flex flex-wrap gap-2 items-center justify-center">
-                    <TenantSocialMedia />
-                </div>
+                <TenantSocialMedia />
+                
                 <div className="flex flex-col gap-6 items-center justify-center">
                     <Link
                         href={"/"}

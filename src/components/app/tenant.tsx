@@ -85,7 +85,7 @@ export const TenantSocialMedia = () => {
     }
 
     return (
-        <>
+        <div className="flex flex-wrap gap-2 items-center justify-center">
             {
                 socialMedias.map((socialMedia, socialMediaIndex) => {
                     const Icon = socialMediaIcons[socialMedia.type];
@@ -105,7 +105,7 @@ export const TenantSocialMedia = () => {
                     );
                 })
             }
-        </>
+        </div>
     )
 }
 TenantSocialMedia.displayName = "TenantSocialMedia"
