@@ -26,8 +26,6 @@ export const Footer = ({
     return (
         <footer className="py-16">
             <div className="container flex flex-col gap-6">
-                <TenantSocialMedia />
-                
                 <div className="flex flex-col gap-6 items-center justify-center">
                     <Link
                         href={"/"}
@@ -50,6 +48,9 @@ export const Footer = ({
                         </span>
                     </Link>
                 </div>
+                
+                <TenantSocialMedia />
+
                 <div className="flex flex-col items-center justify-center gap-6 my-8">
                     <p className="text-xs">
                         &copy; {year} &#x2022; <Link
