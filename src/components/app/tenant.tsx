@@ -95,6 +95,7 @@ export const TenantSocialMedia = () => {
                             key={socialMediaIndex}
                             href={socialMedia.value}
                             target="_blank"
+                            className="rounded-full border bg-primary text-primary-foreground p-2 hover:scale-90"
                         >
                             {
                                 Icon && (
