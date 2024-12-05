@@ -52,8 +52,16 @@ export type Tenant = {
 };
 
 export type SocialMedia = {
-    type: string;
+    type: SocialMediaType;
     value: string;
+};
+
+export enum SocialMediaType {
+    INSTAGRAM = 'instagram',
+    X = 'x',
+    FACEBOOK = 'facebook',
+    YOUTUBE = 'youtube',
+    WEBSITE = 'website',
 };
 
 export type Category = {
