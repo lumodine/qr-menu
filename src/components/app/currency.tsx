@@ -1,56 +1,48 @@
-"use client"
+"use client";
 
+import type {CurrencyGroup} from "@/types";
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
-import { useAppContext } from "@/contexts/AppContext";
-import type { CurrencyGroup } from "@/types";
+import {useAppContext} from "@/contexts/AppContext";
 
 export type CurrencySelectProps = {
-    currencies: CurrencyGroup[]
-}
+  currencies: CurrencyGroup[];
+};
 
-export const CurrencySelect = ({ currencies }: CurrencySelectProps) => {
-    const {
-        currency,
-        defaultCurrency,
-        setCurrency
-    } = useAppContext();
-    
-    if (currencies.length <= 1) {
-        return null;
-    }
+export const CurrencySelect = ({currencies}: CurrencySelectProps) => {
+  const {currency, defaultCurrency, setCurrency} = useAppContext();
 
-    const handleValueChange = (currencyCode: string) => {
-        const selectedCurrency = currencies
-            .find(currency => currency.currency.code === currencyCode);
+  if (currencies.length <= 1) {
+    return null;
+  }
 
-        setCurrency(selectedCurrency || defaultCurrency);
-    };
+  const handleValueChange = (currencyCode: string) => {
+    const selectedCurrency = currencies.find((currency) => currency.currency.code === currencyCode);
 
-    return (
-        <Select
-            defaultValue={currency.currency.code || defaultCurrency.currency.code}
-            onValueChange={handleValueChange}
-        >
-            <SelectTrigger className="rounded-sm bg-black/50 text-white">
-                <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-                {currencies.map((currency, currencyIndex) => (
-                    <SelectItem
-                        key={currencyIndex}
-                        value={currency.currency.code}
-                    >
-                        {currency.currency.symbol}
-                    </SelectItem>
-                ))}
-            </SelectContent>
-        </Select>
-    )
-}
-CurrencySelect.displayName = "CurrencySelect"
+    setCurrency(selectedCurrency || defaultCurrency);
+  };
+
+  return (
+    <Select
+      defaultValue={currency.currency.code || defaultCurrency.currency.code}
+      onValueChange={handleValueChange}
+    >
+      <SelectTrigger className="rounded-sm bg-black/50 text-white">
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent>
+        {currencies.map((currency, currencyIndex) => (
+          <SelectItem key={currencyIndex} value={currency.currency.code}>
+            {currency.currency.symbol}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
+};
+CurrencySelect.displayName = "CurrencySelect";

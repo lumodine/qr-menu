@@ -1,40 +1,34 @@
-import axios from "@/lib/axios"
-import type {
-  Categories,
-  Category,
-  Tenant,
-  Response,
-  Products
-} from "@/types"
+import type {Categories, Category, Tenant, Response, Products} from "@/types";
+import axios from "@/lib/axios";
 
 const getDetail = async (alias: string) => {
-  const { data } = await axios.get<Response<Tenant>>(`/qr-menu/${alias}`)
+  const {data} = await axios.get<Response<Tenant>>(`/qr-menu/${alias}`);
 
-  return data
-}
+  return data;
+};
 
 const getCategories = async (alias: string) => {
-  const { data } = await axios.get<Response<Categories>>(`/qr-menu/${alias}/categories`)
+  const {data} = await axios.get<Response<Categories>>(`/qr-menu/${alias}/categories`);
 
-  return data
-}
+  return data;
+};
 
 const getCategoryById = async (alias: string, categoryId: string) => {
-  const { data } = await axios.get<Response<Category>>(`/qr-menu/${alias}/categories/${categoryId}`)
+  const {data} = await axios.get<Response<Category>>(`/qr-menu/${alias}/categories/${categoryId}`);
 
-  return data
-}
+  return data;
+};
 
 const getProducts = async (alias: string, categoryId: string) => {
-  const url = `/qr-menu/${alias}/categories/${categoryId}/products`
-  const { data } = await axios.get<Response<Products>>(url)
+  const url = `/qr-menu/${alias}/categories/${categoryId}/products`;
+  const {data} = await axios.get<Response<Products>>(url);
 
-  return data
-}
+  return data;
+};
 
 export default {
   getDetail,
   getCategories,
   getCategoryById,
-  getProducts
-}
+  getProducts,
+};

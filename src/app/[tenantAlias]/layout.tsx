@@ -1,17 +1,14 @@
-import qrMenuService from "@/services/qr-menu.service"
-import { Header } from "@/components/app/header"
-import { redirect } from "next/navigation"
-import { Footer } from "@/components/app/footer"
-import { BackToTopButton } from "@/components/app/button"
-import { AppProvider } from "@/contexts/AppContext"
-import {
-  TenantStatus,
-  type CurrencyGroup,
-  type LanguageGroup
-} from "@/types"
-import { Metadata } from "next"
-import "./globals.css"
-import { TenantMaintenance } from "@/components/app/tenant"
+import {redirect} from "next/navigation";
+import {Metadata} from "next";
+import React from "react";
+import qrMenuService from "@/services/qr-menu.service";
+import {Header} from "@/components/app/header";
+import {Footer} from "@/components/app/footer";
+import {BackToTopButton} from "@/components/app/button";
+import {AppProvider} from "@/contexts/AppContext";
+import {TenantStatus, type CurrencyGroup, type LanguageGroup} from "@/types";
+import "./globals.css";
+import {TenantMaintenance} from "@/components/app/tenant";
 
 export const metadata: Metadata = {
   title: {
@@ -22,17 +19,14 @@ export const metadata: Metadata = {
 };
 
 type RootLayoutProps = {
-  children: Readonly<React.ReactNode>
+  children: Readonly<React.ReactNode>;
   params: Promise<{
-    tenantAlias: string
-  }>
-}
+    tenantAlias: string;
+  }>;
+};
 
-export default async function RootLayout({
-  children,
-  params
-}: RootLayoutProps) {
-  const { tenantAlias } = await params
+export default async function RootLayout({children, params}: RootLayoutProps) {
+  const {tenantAlias} = await params;
 
   const tenantResponse = await qrMenuService.getDetail(tenantAlias);
 
@@ -43,48 +37,32 @@ export default async function RootLayout({
   const tenant = tenantResponse.data;
 
   const defaultLanguage =
-    tenant.languages.find((language: LanguageGroup) => language.isDefault)
-    || tenant.languages[0];
+    tenant.languages.find((language: LanguageGroup) => language.isDefault) || tenant.languages[0];
   const defaultCurrency =
-    tenant.currencies.find((currency: CurrencyGroup) => currency.isDefault)
-    || tenant.currencies[0];
+    tenant.currencies.find((currency: CurrencyGroup) => currency.isDefault) || tenant.currencies[0];
 
   const themeClassName = `theme-${tenant.theme || "zinc"}`;
 
   return (
     <AppProvider
-      tenant={tenant}
-      defaultLanguage={defaultLanguage}
       defaultCurrency={defaultCurrency}
+      defaultLanguage={defaultLanguage}
+      tenant={tenant}
     >
       <head>
-        <link rel="stylesheet" href="https://cdn.lumodine.com/public/type.css" />
-        <link rel="stylesheet" href="https://cdn.lumodine.com/public/theme.css" />
+        <link href="https://cdn.lumodine.com/public/type.css" rel="stylesheet" />
+        <link href="https://cdn.lumodine.com/public/theme.css" rel="stylesheet" />
       </head>
       <body className={themeClassName}>
-        <Header
-          tenant={tenant}
-        />
+        <Header tenant={tenant} />
 
-        {
-          tenant.status === TenantStatus.PUBLISHED && (
-            <main>
-              {children}
-            </main>
-          )
-        }
-        {
-          tenant.status === TenantStatus.MAINTENANCE && (
-            <TenantMaintenance />
-          )
-        }
+        {tenant.status === TenantStatus.PUBLISHED && <main>{children}</main>}
+        {tenant.status === TenantStatus.MAINTENANCE && <TenantMaintenance />}
 
         <BackToTopButton />
 
-        <Footer
-          tenant={tenantResponse.data}
-        />
+        <Footer tenant={tenantResponse.data} />
       </body>
     </AppProvider>
-  )
+  );
 }
