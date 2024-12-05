@@ -4,12 +4,14 @@ import { redirect } from "next/navigation"
 import { Footer } from "@/components/app/footer"
 import { BackToTopButton } from "@/components/app/button"
 import { AppProvider } from "@/contexts/AppContext"
-import type {
-  CurrencyGroup,
-  LanguageGroup
+import {
+  TenantStatus,
+  type CurrencyGroup,
+  type LanguageGroup
 } from "@/types"
 import { Metadata } from "next"
 import "./globals.css"
+import { TenantMaintenance } from "@/components/app/tenant"
 
 export const metadata: Metadata = {
   title: {
@@ -64,9 +66,18 @@ export default async function RootLayout({
           tenant={tenant}
         />
 
-        <main>
-          {children}
-        </main>
+        {
+          tenant.status === TenantStatus.PUBLISHED && (
+            <main>
+              {children}
+            </main>
+          )
+        }
+        {
+          tenant.status === TenantStatus.MAINTENANCE && (
+            <TenantMaintenance />
+          )
+        }
 
         <BackToTopButton />
 

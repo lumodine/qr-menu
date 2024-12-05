@@ -3,7 +3,7 @@
 import { useAppContext } from "@/contexts/AppContext";
 import type { Tenant } from "@/types";
 import { cn } from "@/utils/shadcn";
-import { Facebook, Globe, Instagram, X, Youtube } from "lucide-react";
+import { Facebook, Globe, Instagram, Wrench, X, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -110,3 +110,25 @@ export const TenantSocialMedia = () => {
     )
 }
 TenantSocialMedia.displayName = "TenantSocialMedia"
+
+export const TenantMaintenance = () => {
+    const { t } = useAppContext();
+
+    return (
+        <div className="container pt-16">
+            <div className="flex flex-col w-full items-center justify-center gap-6 text-center">
+                <Wrench
+                    size={46}
+                    className="text-primary"
+                />
+                <h1 className="text-3xl font-semibold text-primary">
+                    {t("maintenance_title")}
+                </h1>
+                <p className="font-semibold">
+                    {t("maintenance_description")}
+                </p>
+            </div>
+        </div>
+    )
+}
+TenantMaintenance.displayName = "TenantMaintenance"

@@ -47,8 +47,14 @@ export type Tenant = {
     logo?: string;
     background?: string;
     socialMedias: SocialMedia[];
+    status: TenantStatus;
     createdAt: string;
     updateAt?: string;
+};
+
+export enum TenantStatus {
+    MAINTENANCE = 'maintenance',
+    PUBLISHED = 'published',
 };
 
 export type SocialMedia = {
@@ -101,11 +107,20 @@ export type Product = {
     category: Category;
     prices: PriceGroup[];
     image: string;
-    type: string;
-    status: string;
+    type: ProductType;
+    status: ProductStatus;
     sort: number;
     createdAt: string;
     updateAt?: string;
+};
+
+export enum ProductType {
+    GRID = 'grid',
+    ROW = 'row',
+};
+
+export enum ProductStatus {
+    NOT_AVAILABLE = 'not_available',
 };
 
 export type Products = Product[];
@@ -120,4 +135,6 @@ export type Message = {
     page_not_found_description: string;
     page_not_found_cta_text: string;
     all_rights_reserved: string;
+    maintenance_title: string;
+    maintenance_description: string;
 };

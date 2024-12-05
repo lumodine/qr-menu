@@ -3,18 +3,17 @@
 import Image from "next/image"
 import { cn } from "@/utils/shadcn"
 import { formatAmount } from "@/utils/number"
-import { PRODUCT_STATUS, PRODUCT_TYPES } from "@/constants/product"
 import { useAppContext } from "@/contexts/AppContext"
-import type { Product, Products } from "@/types"
+import { ProductStatus, ProductType, type Product, type Products } from "@/types"
 
 export type ProductCardProps = {
     product: Product
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-    const isRow = product.type === PRODUCT_TYPES.ROW;
-    const isGrid = product.type === PRODUCT_TYPES.GRID;
-    const isNotAvailable = product.status === PRODUCT_STATUS.NOT_AVAILABLE;
+    const isRow = product.type === ProductType.ROW;
+    const isGrid = product.type === ProductType.GRID;
+    const isNotAvailable = product.status === ProductStatus.NOT_AVAILABLE;
 
     const image = {
         width: isRow ? 50 : 400,
