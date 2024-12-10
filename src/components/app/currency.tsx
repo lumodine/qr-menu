@@ -32,12 +32,12 @@ export const CurrencySelect = ({currencies}: CurrencySelectProps) => {
       defaultValue={currency.currency.code || defaultCurrency.currency.code}
       onValueChange={handleValueChange}
     >
-      <SelectTrigger className="rounded-sm bg-black/50 text-white">
+      <SelectTrigger className="rounded-sm bg-black/50 text-white text-xs">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
         {currencies.map((currency, currencyIndex) => (
-          <SelectItem key={currencyIndex} value={currency.currency.code}>
+          <SelectItem key={currencyIndex} value={currency.currency.code} className="text-xs">
             {currency.currency.symbol}
           </SelectItem>
         ))}

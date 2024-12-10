@@ -34,12 +34,12 @@ export const LanguageSelect = ({languages}: LanguageSelectProps) => {
       defaultValue={language.language.culture || defaultLanguage.language.culture}
       onValueChange={handleValueChange}
     >
-      <SelectTrigger className="rounded-sm bg-black/50 text-white">
+      <SelectTrigger className="rounded-sm bg-black/50 text-white text-xs">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
         {languages.map((language, languageIndex) => (
-          <SelectItem key={languageIndex} value={language.language.culture}>
+          <SelectItem key={languageIndex} value={language.language.culture} className="text-xs">
             {language.language.name}
           </SelectItem>
         ))}
