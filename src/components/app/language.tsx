@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {useAppContext} from "@/contexts/AppContext";
+import { Globe } from "lucide-react";
 
 export type LanguageSelectProps = {
   languages: LanguageGroup[];
@@ -34,8 +35,8 @@ export const LanguageSelect = ({languages}: LanguageSelectProps) => {
       defaultValue={language.language.culture || defaultLanguage.language.culture}
       onValueChange={handleValueChange}
     >
-      <SelectTrigger className="rounded-sm bg-black/50 text-white text-xs">
-        <SelectValue />
+      <SelectTrigger className="flex items-center gap-[3px] rounded-sm bg-black/50 text-white text-xs">
+        <Globe size={14} /> <SelectValue />
       </SelectTrigger>
       <SelectContent>
         {languages.map((language, languageIndex) => (
