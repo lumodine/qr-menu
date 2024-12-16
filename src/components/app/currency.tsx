@@ -37,7 +37,7 @@ export const CurrencySelect = ({currencies}: CurrencySelectProps) => {
       </SelectTrigger>
       <SelectContent>
         {currencies.map((currency, currencyIndex) => (
-          <SelectItem key={currencyIndex} value={currency.currency.code} className="text-xs">
+          <SelectItem key={currencyIndex} className="text-xs" value={currency.currency.code}>
             {currency.currency.symbol}
           </SelectItem>
         ))}

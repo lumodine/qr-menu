@@ -1,6 +1,7 @@
 "use client";
 
 import type {LanguageGroup} from "@/types";
+import {Globe} from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -9,7 +10,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {useAppContext} from "@/contexts/AppContext";
-import { Globe } from "lucide-react";
 
 export type LanguageSelectProps = {
   languages: LanguageGroup[];
@@ -40,7 +40,7 @@ export const LanguageSelect = ({languages}: LanguageSelectProps) => {
       </SelectTrigger>
       <SelectContent>
         {languages.map((language, languageIndex) => (
-          <SelectItem key={languageIndex} value={language.language.culture} className="text-xs">
+          <SelectItem key={languageIndex} className="text-xs" value={language.language.culture}>
             {language.language.name}
           </SelectItem>
         ))}
