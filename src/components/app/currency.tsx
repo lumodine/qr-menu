@@ -1,6 +1,7 @@
 "use client";
 
 import type {CurrencyGroup} from "@/types";
+import {Banknote} from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -32,13 +33,13 @@ export const CurrencySelect = ({currencies}: CurrencySelectProps) => {
       defaultValue={currency.currency.code || defaultCurrency.currency.code}
       onValueChange={handleValueChange}
     >
-      <SelectTrigger className="rounded-sm bg-black/50 text-white text-xs">
-        <SelectValue />
+      <SelectTrigger className="flex items-center gap-[3px] rounded-sm bg-black/50 text-white text-xs">
+        <Banknote size={14} /> <SelectValue />
       </SelectTrigger>
       <SelectContent>
         {currencies.map((currency, currencyIndex) => (
           <SelectItem key={currencyIndex} className="text-xs" value={currency.currency.code}>
-            {currency.currency.symbol}
+            {currency.currency.code}
           </SelectItem>
         ))}
       </SelectContent>
