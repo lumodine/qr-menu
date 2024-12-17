@@ -6,7 +6,7 @@ import {Header} from "@/components/app/header";
 import {Footer} from "@/components/app/footer";
 import {BackToTopButton} from "@/components/app/button";
 import {AppProvider} from "@/contexts/AppContext";
-import {TenantStatus, type CurrencyGroup, type LanguageGroup} from "@/types";
+import {HeaderPosition, TenantStatus, type CurrencyGroup, type LanguageGroup} from "@/types";
 import "./globals.css";
 import {TenantMaintenance} from "@/components/app/tenant";
 
@@ -24,6 +24,8 @@ type RootLayoutProps = {
     tenantAlias: string;
   }>;
 };
+
+const headerPosition: HeaderPosition = HeaderPosition.BOTTOM;
 
 export default async function RootLayout({children, params}: RootLayoutProps) {
   const {tenantAlias} = await params;
@@ -54,12 +56,12 @@ export default async function RootLayout({children, params}: RootLayoutProps) {
         <link href="https://cdn.lumodine.com/public/theme.css" rel="stylesheet" />
       </head>
       <body className={themeClassName}>
-        <Header tenant={tenant} />
-
         {tenant.status === TenantStatus.PUBLISHED && <main>{children}</main>}
         {tenant.status === TenantStatus.MAINTENANCE && <TenantMaintenance />}
 
-        <BackToTopButton />
+        <Header position={headerPosition} tenant={tenant} />
+
+        <BackToTopButton headerPosition={headerPosition} />
 
         <Footer tenant={tenantResponse.data} />
       </body>

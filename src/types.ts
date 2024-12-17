@@ -138,3 +138,8 @@ export type Message = {
   maintenance_title: string;
   maintenance_description: string;
 };
+
+export enum HeaderPosition {
+  TOP = "top",
+  BOTTOM = "bottom",
+}

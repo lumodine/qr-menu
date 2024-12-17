@@ -2,13 +2,7 @@
 
 import type {LanguageGroup} from "@/types";
 import {Globe} from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import {Select, SelectContent, SelectItem, SelectTrigger} from "@/components/ui/select";
 import {useAppContext} from "@/contexts/AppContext";
 
 export type LanguageSelectProps = {
@@ -35,8 +29,8 @@ export const LanguageSelect = ({languages}: LanguageSelectProps) => {
       defaultValue={language.language.culture || defaultLanguage.language.culture}
       onValueChange={handleValueChange}
     >
-      <SelectTrigger className="flex items-center gap-[3px] rounded-sm bg-black/50 text-white text-xs">
-        <Globe size={14} /> <SelectValue />
+      <SelectTrigger className="border-none flex items-center gap-[3px] rounded-sm bg-black/50 text-white text-xs p-2 hover:bg-black/70">
+        <Globe size={14} />
       </SelectTrigger>
       <SelectContent>
         {languages.map((language, languageIndex) => (

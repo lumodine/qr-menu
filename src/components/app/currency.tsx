@@ -2,13 +2,7 @@
 
 import type {CurrencyGroup} from "@/types";
 import {Banknote} from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import {Select, SelectContent, SelectItem, SelectTrigger} from "@/components/ui/select";
 import {useAppContext} from "@/contexts/AppContext";
 
 export type CurrencySelectProps = {
@@ -33,8 +27,8 @@ export const CurrencySelect = ({currencies}: CurrencySelectProps) => {
       defaultValue={currency.currency.code || defaultCurrency.currency.code}
       onValueChange={handleValueChange}
     >
-      <SelectTrigger className="flex items-center gap-[3px] rounded-sm bg-black/50 text-white text-xs">
-        <Banknote size={14} /> <SelectValue />
+      <SelectTrigger className="border-none flex items-center gap-[3px] rounded-sm bg-black/50 text-white text-xs p-2 hover:bg-black/70">
+        <Banknote size={14} />
       </SelectTrigger>
       <SelectContent>
         {currencies.map((currency, currencyIndex) => (

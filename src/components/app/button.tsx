@@ -6,9 +6,15 @@ import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {useScrollVisible} from "@/hooks/useScrollVisible";
 import {useAppContext} from "@/contexts/AppContext";
+import {HeaderPosition} from "@/types";
+import {cn} from "@/utils/shadcn";
 
-export const BackToTopButton = () => {
-  const isVisible = useScrollVisible(500);
+export type BackToTopButtonProps = {
+  headerPosition: HeaderPosition;
+};
+
+export const BackToTopButton = ({headerPosition}: BackToTopButtonProps) => {
+  const isVisible = useScrollVisible(300);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -21,8 +27,17 @@ export const BackToTopButton = () => {
     return null;
   }
 
+  const isHeaderTop = headerPosition === HeaderPosition.TOP;
+  const isHeaderBottom = headerPosition === HeaderPosition.BOTTOM;
+
   return (
-    <div className="fixed bottom-10 right-5 z-50">
+    <div
+      className={cn(
+        "fixed right-2 z-50",
+        isHeaderTop && "bottom-4",
+        isHeaderBottom && "bottom-16",
+      )}
+    >
       <Button className="rounded-sm p-2 w-10 h-10" onClick={scrollToTop}>
         <ChevronUp size={30} />
       </Button>
