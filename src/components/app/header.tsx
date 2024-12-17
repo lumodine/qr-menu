@@ -15,6 +15,8 @@ export type HeaderProps = {
   position: HeaderPosition;
 };
 
+const showSearch = false;
+
 export const Header = ({tenant, position}: HeaderProps) => {
   const isVisible = useScrollVisible(175);
 
@@ -61,9 +63,11 @@ export const Header = ({tenant, position}: HeaderProps) => {
           </div>
         )}
         <div className="flex justify-end">
-          <Button className="border-none rounded-sm bg-black/50 text-white text-xs py-2 px-3 hover:bg-black/70">
-            <Search size={14} />
-          </Button>
+          {showSearch && (
+            <Button className="border-none rounded-sm bg-black/50 text-white text-xs py-2 px-3 hover:bg-black/70">
+              <Search size={14} />
+            </Button>
+          )}
         </div>
       </nav>
     </header>

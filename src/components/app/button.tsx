@@ -32,11 +32,7 @@ export const BackToTopButton = ({headerPosition}: BackToTopButtonProps) => {
 
   return (
     <div
-      className={cn(
-        "fixed right-2 z-50",
-        isHeaderTop && "bottom-4",
-        isHeaderBottom && "bottom-16",
-      )}
+      className={cn("fixed right-2 z-50", isHeaderTop && "bottom-4", isHeaderBottom && "bottom-16")}
     >
       <Button className="rounded-sm p-2 w-10 h-10" onClick={scrollToTop}>
         <ChevronUp size={30} />
