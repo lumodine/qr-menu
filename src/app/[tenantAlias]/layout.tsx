@@ -15,6 +15,18 @@ export const metadata: Metadata = {
     default: process.env.NEXT_PUBLIC_APP_NAME!,
     template: `%s - ${process.env.NEXT_PUBLIC_APP_NAME}`,
   },
+  icons: [
+    {
+      rel: "icon",
+      type: "image/x-icon",
+      url: "https://cdn.lumodine.com/public/favicon.ico?v=1",
+    },
+    {
+      rel: "shortcut icon",
+      type: "image/x-icon",
+      url: "https://cdn.lumodine.com/public/favicon.ico?v=1",
+    },
+  ],
   robots: "nofollow, noindex",
 };
 
