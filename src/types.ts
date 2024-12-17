@@ -37,11 +37,15 @@ export type LanguageGroup = {
   _id: string;
 };
 
+export type TenantTheme = {
+  color: string;
+};
+
 export type Tenant = {
   _id: string;
   alias: string;
   name: string;
-  theme: string;
+  theme: TenantTheme;
   languages: LanguageGroup[];
   currencies: CurrencyGroup[];
   logo?: string;

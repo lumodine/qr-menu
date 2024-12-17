@@ -43,7 +43,7 @@ export default async function RootLayout({children, params}: RootLayoutProps) {
   const defaultCurrency =
     tenant.currencies.find((currency: CurrencyGroup) => currency.isDefault) || tenant.currencies[0];
 
-  const themeClassName = `theme-${tenant.theme || "zinc"}`;
+  const themeClassName = `theme-${tenant.theme.color || "zinc"}`;
 
   return (
     <AppProvider
