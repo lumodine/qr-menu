@@ -5,11 +5,11 @@ import {Globe} from "lucide-react";
 import {Select, SelectContent, SelectItem, SelectTrigger} from "@/components/ui/select";
 import {useAppContext} from "@/contexts/AppContext";
 
-export type LanguageSelectProps = {
+export type LanguageSwitcherProps = {
   languages: LanguageGroup[];
 };
 
-export const LanguageSelect = ({languages}: LanguageSelectProps) => {
+export const LanguageSwitcher = ({languages}: LanguageSwitcherProps) => {
   const {language, defaultLanguage, setLanguage} = useAppContext();
 
   if (languages.length <= 1) {
@@ -42,4 +42,4 @@ export const LanguageSelect = ({languages}: LanguageSelectProps) => {
     </Select>
   );
 };
-LanguageSelect.displayName = "LanguageSelect";
+LanguageSwitcher.displayName = "LanguageSwitcher";

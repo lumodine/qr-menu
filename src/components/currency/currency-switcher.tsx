@@ -5,11 +5,11 @@ import {Banknote} from "lucide-react";
 import {Select, SelectContent, SelectItem, SelectTrigger} from "@/components/ui/select";
 import {useAppContext} from "@/contexts/AppContext";
 
-export type CurrencySelectProps = {
+export type CurrencySwitcherProps = {
   currencies: CurrencyGroup[];
 };
 
-export const CurrencySelect = ({currencies}: CurrencySelectProps) => {
+export const CurrencySwitcher = ({currencies}: CurrencySwitcherProps) => {
   const {currency, defaultCurrency, setCurrency} = useAppContext();
 
   if (currencies.length <= 1) {
@@ -40,4 +40,4 @@ export const CurrencySelect = ({currencies}: CurrencySelectProps) => {
     </Select>
   );
 };
-CurrencySelect.displayName = "CurrencySelect";
+CurrencySwitcher.displayName = "CurrencySwitcher";

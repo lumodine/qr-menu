@@ -4,13 +4,13 @@ import Image from "next/image";
 import {cn} from "@/utils/shadcn";
 import {formatAmount} from "@/utils/number";
 import {useAppContext} from "@/contexts/AppContext";
-import {ProductStatus, ProductType, type Product, type Products} from "@/types";
+import {ProductStatus, ProductType, type Product} from "@/types";
 
-export type ProductCardProps = {
+export type ProductItemProps = {
   product: Product;
 };
 
-export const ProductCard = ({product}: ProductCardProps) => {
+export const ProductItem = ({product}: ProductItemProps) => {
   const isRow = product.type === ProductType.ROW;
   const isGrid = product.type === ProductType.GRID;
   const isNotAvailable = product.status === ProductStatus.NOT_AVAILABLE;
@@ -81,25 +81,4 @@ export const ProductCard = ({product}: ProductCardProps) => {
     </div>
   );
 };
-ProductCard.displayName = "ProductCard";
-
-export type ProductListProps = {
-  products: Products;
-};
-
-export const ProductList = ({products}: ProductListProps) => {
-  const hasProducts = products && products.length !== 0;
-
-  return (
-    <section className="container py-4">
-      {hasProducts && (
-        <div className="grid grid-cols-1 gap-3">
-          {products.map((product, productIndex) => (
-            <ProductCard key={productIndex} product={product} />
-          ))}
-        </div>
-      )}
-    </section>
-  );
-};
-ProductList.displayName = "ProductList";
+ProductItem.displayName = "ProductItem";

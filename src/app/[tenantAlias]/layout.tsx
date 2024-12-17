@@ -2,13 +2,13 @@ import {redirect} from "next/navigation";
 import {Metadata} from "next";
 import React from "react";
 import qrMenuService from "@/services/qr-menu.service";
-import {Header} from "@/components/app/header";
-import {Footer} from "@/components/app/footer";
-import {BackToTopButton} from "@/components/app/button";
 import {AppProvider} from "@/contexts/AppContext";
 import {HeaderPosition, TenantStatus, type CurrencyGroup, type LanguageGroup} from "@/types";
 import "./globals.css";
-import {TenantMaintenance} from "@/components/app/tenant";
+import {TenantMaintenance} from "@/components/tenant/tenant-maintenance";
+import {Header} from "@/components/common/header";
+import {BackToTopButton} from "@/components/common/back-to-top-button";
+import {Footer} from "@/components/common/footer";
 
 export const metadata: Metadata = {
   title: {

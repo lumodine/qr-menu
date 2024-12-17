@@ -3,8 +3,8 @@
 import type {Tenant} from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-import {TenantSocialMedia} from "./tenant";
 import {useAppContext} from "@/contexts/AppContext";
+import {TenantSocialMediaList} from "@/components/tenant/tenant-social-media-list";
 
 export type FooterProps = {
   tenant: Tenant;
@@ -38,7 +38,7 @@ export const Footer = ({tenant}: FooterProps) => {
           </Link>
         </div>
 
-        <TenantSocialMedia />
+        <TenantSocialMediaList />
 
         <div className="flex flex-col items-center justify-center gap-6 my-8">
           <p className="text-xs">

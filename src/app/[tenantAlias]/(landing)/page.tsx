@@ -1,6 +1,6 @@
+import {CategoryList} from "@/components/category/category-list";
+import {TenantHero} from "@/components/tenant/tenant-hero";
 import qrMenuService from "@/services/qr-menu.service";
-import {CategoryList} from "@/components/app/category";
-import {TenantHero} from "@/components/app/tenant";
 
 type TenantHomePageProps = {
   params: Promise<{

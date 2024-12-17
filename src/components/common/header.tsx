@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import {Search} from "lucide-react";
 import {Button} from "../ui/button";
-import {LanguageSelect} from "./language";
-import {CurrencySelect} from "./currency";
+import {CurrencySwitcher} from "../currency/currency-switcher";
+import {LanguageSwitcher} from "../language/language-switcher";
 import {HeaderPosition, Tenant} from "@/types";
 import {cn} from "@/utils/shadcn";
 import {useScrollVisible} from "@/hooks/useScrollVisible";
@@ -58,8 +58,8 @@ export const Header = ({tenant, position}: HeaderProps) => {
         </div>
         {(tenant.currencies.length > 1 || tenant.languages.length > 1) && (
           <div className="flex gap-1">
-            <CurrencySelect currencies={tenant.currencies} />
-            <LanguageSelect languages={tenant.languages} />
+            <CurrencySwitcher currencies={tenant.currencies} />
+            <LanguageSwitcher languages={tenant.languages} />
           </div>
         )}
         <div className="flex justify-end">

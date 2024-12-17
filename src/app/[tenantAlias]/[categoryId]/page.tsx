@@ -1,8 +1,8 @@
 import {notFound} from "next/navigation";
 import qrMenuService from "@/services/qr-menu.service";
-import {CategoryHero} from "@/components/app/category";
-import {ProductList} from "@/components/app/product";
-import {BackToMenuButton} from "@/components/app/button";
+import {BackToMenuButton} from "@/components/common/back-to-menu-button";
+import {ProductList} from "@/components/product/product-list";
+import {CategoryHero} from "@/components/category/category-hero";
 
 type CategoryPageProps = {
   params: Promise<{
