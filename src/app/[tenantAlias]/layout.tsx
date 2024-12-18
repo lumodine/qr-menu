@@ -37,8 +37,6 @@ type RootLayoutProps = {
   }>;
 };
 
-const headerPosition: HeaderPosition = HeaderPosition.BOTTOM;
-
 export default async function RootLayout({children, params}: RootLayoutProps) {
   const {tenantAlias} = await params;
 
@@ -56,6 +54,7 @@ export default async function RootLayout({children, params}: RootLayoutProps) {
     tenant.currencies.find((currency: CurrencyGroup) => currency.isDefault) || tenant.currencies[0];
 
   const themeClassName = `theme-${tenant.theme.color || "zinc"}`;
+  const headerPosition = tenant.theme.headerPosition || HeaderPosition.BOTTOM;
 
   return (
     <AppProvider

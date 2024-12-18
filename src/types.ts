@@ -39,6 +39,7 @@ export type LanguageGroup = {
 
 export type TenantTheme = {
   color: string;
+  headerPosition: HeaderPosition;
 };
 
 export type Tenant = {
