@@ -7,26 +7,26 @@ import {CategoryHero} from "@/components/category/category-hero";
 type CategoryPageProps = {
   params: Promise<{
     tenantAlias: string;
-    categoryId: string;
+    itemId: string;
   }>;
 };
 
 export default async function CategoryPage({params}: CategoryPageProps) {
-  const {tenantAlias, categoryId} = await params;
+  const {tenantAlias, itemId} = await params;
 
-  const categoryResponse = await qrMenuService.getCategoryById(tenantAlias, categoryId);
+  const itemResponse = await qrMenuService.getItemById(tenantAlias, itemId);
 
-  if (!categoryResponse.success || !categoryResponse.data) {
+  if (!itemResponse.success || !itemResponse.data) {
     return notFound();
   }
 
-  const {data: products} = await qrMenuService.getProducts(tenantAlias, categoryId);
+  const {data: items} = await qrMenuService.getSubItems(tenantAlias, itemId);
 
-  const category = categoryResponse.data;
+  const item = itemResponse.data;
 
   return (
     <>
-      <CategoryHero category={category} />
+      <CategoryHero category={item} />
 
       <section className="container">
         <div className="py-2">
@@ -34,7 +34,7 @@ export default async function CategoryPage({params}: CategoryPageProps) {
         </div>
       </section>
 
-      <ProductList products={products} />
+      <ProductList products={items} />
     </>
   );
 }

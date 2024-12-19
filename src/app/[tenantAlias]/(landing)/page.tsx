@@ -11,7 +11,7 @@ type TenantHomePageProps = {
 export default async function TenantHomePage({params}: TenantHomePageProps) {
   const {tenantAlias} = await params;
 
-  const {data: categories} = await qrMenuService.getCategories(tenantAlias);
+  const {data: categories} = await qrMenuService.getItems(tenantAlias);
 
   return (
     <>
