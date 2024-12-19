@@ -1,4 +1,4 @@
-import {CategoryList} from "@/components/category/category-list";
+import {ItemList} from "@/components/item/item-list";
 import {TenantHero} from "@/components/tenant/tenant-hero";
 import qrMenuService from "@/services/qr-menu.service";
 
@@ -11,13 +11,13 @@ type TenantHomePageProps = {
 export default async function TenantHomePage({params}: TenantHomePageProps) {
   const {tenantAlias} = await params;
 
-  const {data: categories} = await qrMenuService.getItems(tenantAlias);
+  const {data: items} = await qrMenuService.getItems(tenantAlias);
 
   return (
     <>
       <TenantHero />
 
-      <CategoryList categories={categories} />
+      <ItemList items={items} />
     </>
   );
 }

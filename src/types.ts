@@ -134,6 +134,25 @@ export enum ProductStatus {
 
 export type Products = Product[];
 
+export type Tag = {
+  _id: string;
+  tenant: string;
+  translations: {
+    _id: string;
+    language: Language;
+    name: string;
+    description: string;
+  }[];
+  type: string;
+  status: string;
+  sort: number;
+  theme?: Theme;
+  createdAt: string;
+  updateAt?: string;
+};
+
+export type Tags = Tag[];
+
 export type Messages = {
   [culture: string]: Message;
 };

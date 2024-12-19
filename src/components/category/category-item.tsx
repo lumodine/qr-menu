@@ -37,7 +37,7 @@ export const CategoryItem = ({category}: CategoryItemProps) => {
         ["--bg-image" as string]: hasImage ? `url(${category.image || ""})` : null,
       }}
     >
-      <div className="flex flex-col gap-1 items-center justify-center w-full h-full bg-black/60 text-center">
+      <div className="flex flex-col gap-1 items-center justify-center w-full h-full bg-black/60 text-center p-2">
         <span className="text-lg font-bold text-white drop-shadow-2xl">{translation?.name}</span>
       </div>
     </Link>
