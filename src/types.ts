@@ -37,8 +37,11 @@ export type LanguageGroup = {
   _id: string;
 };
 
-export type TenantTheme = {
+export type Theme = {
   color: string;
+};
+
+export type TenantTheme = Theme & {
   headerPosition: HeaderPosition;
 };
 
@@ -88,6 +91,7 @@ export type Category = {
   type: string;
   status: string;
   sort: number;
+  theme?: Theme;
   createdAt: string;
   updateAt?: string;
 };

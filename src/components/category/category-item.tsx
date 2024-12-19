@@ -27,6 +27,7 @@ export const CategoryItem = ({category}: CategoryItemProps) => {
   return (
     <Link
       className={cn(
+        `theme-${category.theme?.color}`,
         hasImage && "bg-[image:var(--bg-image)] ",
         "bg-center bg-no-repeat bg-cover overflow-hidden rounded-sm transition-transform hover:scale-95 bg-primary/50",
         category.type,
