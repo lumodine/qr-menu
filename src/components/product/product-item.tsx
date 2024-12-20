@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import {ProductTagItem} from "./product-tag-item";
 import {cn} from "@/utils/shadcn";
 import {formatAmount} from "@/utils/number";
 import {useAppContext} from "@/contexts/AppContext";
-import {ProductStatus, ProductType, type Product} from "@/types";
+import {ProductStatus, ProductTag, ProductType, type Product} from "@/types";
 
 export type ProductItemProps = {
   product: Product;
@@ -38,6 +39,8 @@ export const ProductItem = ({product}: ProductItemProps) => {
     price = product.prices.find((price) => price.currency._id === defaultCurrency.currency._id);
   }
 
+  const tags = product.parentItems.filter((item) => item.kind === "tag");
+
   return (
     <div
       className={cn(
@@ -59,6 +62,13 @@ export const ProductItem = ({product}: ProductItemProps) => {
         </div>
       )}
       <div className="flex-1 w-full flex flex-col gap-1">
+        {tags.length > 0 && (
+          <div className="flex gap-1">
+            {tags.map((productTag: ProductTag, productTagIndex: number) => (
+              <ProductTagItem key={productTagIndex} tag={productTag} />
+            ))}
+          </div>
+        )}
         <div className="flex gap-2 justify-between">
           {translation?.name && <span className="text-lg font-semibold">{translation?.name}</span>}
           {price?.amount && (
