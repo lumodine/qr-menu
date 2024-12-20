@@ -1,5 +1,6 @@
 "use client";
 
+import {Fragment} from "react";
 import {ProductItem} from "./product-item";
 import {type Products} from "@/types";
 import {Separator} from "@/components/ui/separator";
@@ -16,10 +17,10 @@ export const ProductList = ({products}: ProductListProps) => {
       {hasProducts && (
         <div className="grid grid-cols-1 gap-3">
           {products.map((product, productIndex) => (
-            <>
-              <ProductItem key={productIndex} product={product} />
+            <Fragment key={productIndex}>
+              <ProductItem product={product} />
               {productIndex !== products.length - 1 && <Separator className="bg-primary/10" />}
-            </>
+            </Fragment>
           ))}
         </div>
       )}

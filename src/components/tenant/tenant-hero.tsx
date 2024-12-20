@@ -13,13 +13,18 @@ export const TenantHero = () => {
     <section
       className={cn(
         hasBackground && "bg-[image:var(--bg-image)]",
-        "bg-center bg-no-repeat bg-cover overflow-hidden bg-primary/50",
+        "bg-center bg-no-repeat bg-cover overflow-hidden bg-primary text-primary-foreground",
       )}
       style={{
         ["--bg-image" as string]: hasBackground ? `url(${tenant.background})` : null,
       }}
     >
-      <div className="flex items-center justify-center w-full h-[30vh] lg:h-[40vh] bg-black/50 p-2">
+      <div
+        className={cn(
+          "flex items-center justify-center w-full h-[30vh] lg:h-[40vh] p-2",
+          hasBackground && "bg-black/50",
+        )}
+      >
         <TenantLogo tenant={tenant} />
       </div>
     </section>

@@ -29,13 +29,13 @@ export const CategoryHero = ({category}: CategoryHeroProps) => {
     <section
       className={cn(
         hasImage && "bg-[image:var(--bg-image)]",
-        "bg-center bg-no-repeat bg-cover overflow-hidden bg-primary/50",
+        "bg-center bg-no-repeat bg-cover overflow-hidden bg-primary text-primary-foreground",
       )}
       style={{
         ["--bg-image" as string]: hasImage ? `url(${category.image})` : null,
       }}
     >
-      <div className="bg-black/50 text-center">
+      <div className={cn("text-center", hasImage && "bg-black/50")}>
         <div className="container flex flex-col gap-4 items-center justify-center w-full h-[30vh] lg:h-[40vh] ">
           {tenant.logo && (
             <Link href={"/"}>
@@ -50,12 +50,12 @@ export const CategoryHero = ({category}: CategoryHeroProps) => {
             </Link>
           )}
           {translation?.name && (
-            <h1 className="text-2xl md:text-3xl lg:text-6xl font-bold text-white drop-shadow-2xl">
+            <h1 className="text-2xl md:text-3xl lg:text-6xl font-bold drop-shadow-2xl">
               {translation?.name}
             </h1>
           )}
           {translation?.description && (
-            <p className="text-sm md:text-md lg:text-lg text-white drop-shadow-2xl">
+            <p className="text-sm md:text-md lg:text-lg drop-shadow-2xl">
               {translation?.description}
             </p>
           )}

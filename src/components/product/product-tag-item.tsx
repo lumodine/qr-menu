@@ -14,12 +14,12 @@ export const ProductTagItem = ({tag}: ProductTagItemProps) => {
   const {language, defaultLanguage} = useAppContext();
 
   let translation = tag.item.translations.find(
-    (translation) => translation.language === language.language._id,
+    (translation) => translation.language._id === language.language._id,
   );
 
   if (!translation) {
     translation = tag.item.translations.find(
-      (translation) => translation.language === defaultLanguage.language._id,
+      (translation) => translation.language._id === defaultLanguage.language._id,
     );
   }
 

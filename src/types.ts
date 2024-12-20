@@ -32,7 +32,7 @@ export type Language = {
 };
 
 export type LanguageGroup = {
-  language: Language | string;
+  language: Language;
   isDefault: boolean;
   _id: string;
 };
@@ -83,7 +83,7 @@ export type Category = {
   tenant: string;
   translations: {
     _id: string;
-    language: Language | string;
+    language: Language;
     name: string;
     description: string;
   }[];
@@ -109,7 +109,7 @@ export type Product = {
   tenant: string;
   translations: {
     _id: string;
-    language: Language | string;
+    language: Language;
     name: string;
     description: string;
   }[];
@@ -139,7 +139,7 @@ export type Tag = {
   tenant: string;
   translations: {
     _id: string;
-    language: Language | string;
+    language: Language;
     name: string;
     description: string;
   }[];

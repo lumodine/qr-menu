@@ -29,7 +29,7 @@ export const CategoryItem = ({category}: CategoryItemProps) => {
       className={cn(
         `theme-${category.theme?.color}`,
         hasImage && "bg-[image:var(--bg-image)] ",
-        "bg-center bg-no-repeat bg-cover overflow-hidden rounded-sm transition-transform hover:scale-95 bg-primary/50",
+        "bg-center bg-no-repeat bg-cover overflow-hidden rounded-sm transition-transform hover:scale-95 bg-primary text-primary-foreground",
         category.type,
       )}
       href={`/${category._id}`}
@@ -37,8 +37,13 @@ export const CategoryItem = ({category}: CategoryItemProps) => {
         ["--bg-image" as string]: hasImage ? `url(${category.image || ""})` : null,
       }}
     >
-      <div className="flex flex-col gap-1 items-center justify-center w-full h-full bg-black/60 text-center p-2">
-        <span className="text-lg font-bold text-white drop-shadow-2xl">{translation?.name}</span>
+      <div
+        className={cn(
+          "flex flex-col gap-1 items-center justify-center w-full h-full text-center p-2",
+          hasImage && "bg-black/50",
+        )}
+      >
+        <span className="text-lg font-bold drop-shadow-2xl">{translation?.name}</span>
       </div>
     </Link>
   );

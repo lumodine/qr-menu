@@ -21,7 +21,7 @@ export const TenantLogo = ({tenant}: TenantLogoProps) => {
         />
       )}
       {!tenant.logo && (
-        <h1 className="text-2xl md:text-3xl lg:text-6xl font-bold text-white drop-shadow-2xl">
+        <h1 className="text-2xl md:text-3xl lg:text-6xl font-bold drop-shadow-2xl">
           {tenant.name}
         </h1>
       )}
