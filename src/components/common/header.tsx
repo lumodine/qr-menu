@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import {Search} from "lucide-react";
-import {Button} from "../ui/button";
-import {CurrencySwitcher} from "../currency/currency-switcher";
-import {LanguageSwitcher} from "../language/language-switcher";
+import {Button} from "@/components/ui/button";
+import {CurrencySwitcher} from "@/components/currency/currency-switcher";
+import {LanguageSwitcher} from "@/components/language/language-switcher";
 import {HeaderPosition, Tenant} from "@/types";
 import {cn} from "@/utils/shadcn";
 import {useScrollVisible} from "@/hooks/useScrollVisible";

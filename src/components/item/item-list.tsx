@@ -1,7 +1,7 @@
 "use client";
 
-import {CategoryItem} from "../category/category-item";
-import {TagItem} from "../tag/tag-item";
+import {CategoryItem} from "@/components/category/category-item";
+import {TagItem} from "@/components/tag/tag-item";
 import {ITEM_KINDS} from "@/constants/item";
 
 export type ItemListProps = {
