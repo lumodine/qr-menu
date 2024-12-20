@@ -3,8 +3,7 @@
 import type {ProductTag} from "@/types";
 import Link from "next/link";
 import {useAppContext} from "@/contexts/AppContext";
-import {cn} from "@/utils/shadcn";
-import {badgeVariants} from "@/components/ui/badge";
+import {Badge} from "@/components/ui/badge";
 
 export type ProductTagItemProps = {
   tag: ProductTag;
@@ -24,12 +23,11 @@ export const ProductTagItem = ({tag}: ProductTagItemProps) => {
   }
 
   return (
-    <Link
-      className={cn(`theme-${tag.item.theme?.color}`, badgeVariants({variant: "default"}), "px-1")}
-      href={`/tags/${tag.item._id}`}
-    >
-      <span>{translation?.name}</span>
-    </Link>
+    <Badge className={`theme-${tag.item.theme?.color} px-1`}>
+      <Link href={`/tags/${tag.item._id}`}>
+        <span>{translation?.name}</span>
+      </Link>
+    </Badge>
   );
 };
 ProductTagItem.displayName = "ProductTagItem";
