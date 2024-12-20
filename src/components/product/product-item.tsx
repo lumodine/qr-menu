@@ -45,7 +45,7 @@ export const ProductItem = ({product}: ProductItemProps) => {
   return (
     <div
       className={cn(
-        "flex items-start justify-center gap-4 p-4 overflow-hidden rounded-sm",
+        "flex items-start justify-center gap-2 overflow-hidden rounded-sm",
         isGrid && "flex-col bg-primary text-primary-foreground",
         isNotAvailable && "opacity-30 cursor-no-drop select-none",
       )}
@@ -54,7 +54,7 @@ export const ProductItem = ({product}: ProductItemProps) => {
         <div className={cn(isRow && "h-14 w-14", isGrid && "h-full w-full")}>
           <Image
             alt={translation?.name || "image"}
-            className="h-full w-full rounded-sm"
+            className="h-full w-full"
             height={image.height}
             loading={"lazy"}
             src={product.image}
@@ -62,7 +62,7 @@ export const ProductItem = ({product}: ProductItemProps) => {
           />
         </div>
       )}
-      <div className="flex-1 w-full flex flex-col gap-1">
+      <div className={cn("flex-1 w-full flex flex-col gap-1", isGrid && "p-2")}>
         {tags.length > 0 && (
           <div className="flex gap-1">
             {tags.map((productTag: ProductTag, productTagIndex: number) => (

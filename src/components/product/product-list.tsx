@@ -2,6 +2,7 @@
 
 import {ProductItem} from "./product-item";
 import {type Products} from "@/types";
+import {Separator} from "@/components/ui/separator";
 
 export type ProductListProps = {
   products: Products;
@@ -15,7 +16,10 @@ export const ProductList = ({products}: ProductListProps) => {
       {hasProducts && (
         <div className="grid grid-cols-1 gap-3">
           {products.map((product, productIndex) => (
-            <ProductItem key={productIndex} product={product} />
+            <>
+              <ProductItem key={productIndex} product={product} />
+              {productIndex !== products.length - 1 && <Separator className="bg-primary/10" />}
+            </>
           ))}
         </div>
       )}
