@@ -6,6 +6,7 @@ import {cn} from "@/utils/shadcn";
 import {formatAmount} from "@/utils/number";
 import {useAppContext} from "@/contexts/AppContext";
 import {ProductStatus, ProductTag, ProductType, type Product} from "@/types";
+import {ITEM_KINDS} from "@/constants/item";
 
 export type ProductItemProps = {
   product: Product;
@@ -39,7 +40,7 @@ export const ProductItem = ({product}: ProductItemProps) => {
     price = product.prices.find((price) => price.currency._id === defaultCurrency.currency._id);
   }
 
-  const tags = product.parentItems.filter((item) => item.kind === "tag");
+  const tags = product.parentItems.filter((item) => item.kind === ITEM_KINDS.TAG);
 
   return (
     <div
