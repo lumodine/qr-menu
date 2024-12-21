@@ -2,7 +2,7 @@
 
 import type {Annannouncements} from "@/types";
 import {Swiper, SwiperSlide} from "swiper/react";
-import {Pagination} from "swiper/modules";
+import {Autoplay, Pagination} from "swiper/modules";
 import {Megaphone} from "lucide-react";
 import {useAppContext} from "@/contexts/AppContext";
 
@@ -27,7 +27,7 @@ export const AnnouncementCarousel = ({annannouncements}: AnnouncementCarouselPro
       <Swiper
         autoHeight={true}
         autoplay={{delay: 5000}}
-        modules={[Pagination]}
+        modules={[Autoplay, Pagination]}
         pagination={{clickable: true}}
       >
         {annannouncements.map((annannouncement, annannouncementIndex) => {
@@ -49,7 +49,7 @@ export const AnnouncementCarousel = ({annannouncements}: AnnouncementCarouselPro
             <SwiperSlide key={annannouncementIndex}>
               <div className="bg-primary-foreground w-full text-center rounded-sm  p-2">
                 <Megaphone className="text-primary" />
-                <div className="pt-2 pb-6">
+                <div className="pt-1 pb-6">
                   <span className="text-primary font-bold text-lg">{translation.title}</span>
                   {translation.description && <p>{translation.description}</p>}
                 </div>
