@@ -159,6 +159,23 @@ export type ProductTag = {
 
 export type Tags = Tag[];
 
+export type Annannouncement = {
+  _id: string;
+  tenant: string;
+  translations: {
+    _id: string;
+    language: Language;
+    title: string;
+    description: string;
+  }[];
+  status: string;
+  sort: number;
+  createdAt: string;
+  updateAt?: string;
+};
+
+export type Annannouncements = Annannouncement[];
+
 export type Messages = {
   [culture: string]: Message;
 };

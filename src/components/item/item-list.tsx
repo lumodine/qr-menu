@@ -12,7 +12,7 @@ export const ItemList = ({items}: ItemListProps) => {
   const hasItems = items && items.length !== 0;
 
   return (
-    <section className="container py-6">
+    <section className="container pt-2">
       {hasItems && (
         <div className="grid gap-2 auto-rows-[10em] grid-flow-row-dense grid-cols-2">
           {items.map((item, itemIndex) => {

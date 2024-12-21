@@ -29,9 +29,16 @@ const getSubItems = async (alias: string, itemId: string) => {
   return data;
 };
 
+const getAllAnnouncements = async (alias: string) => {
+  const {data} = await axios.get<Response<any[]>>(`/qr-menu/${alias}/announcements`);
+
+  return data;
+};
+
 export default {
   getDetail,
   getItems,
   getItemById,
   getSubItems,
+  getAllAnnouncements,
 };
