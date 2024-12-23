@@ -42,6 +42,7 @@ export type Theme = {
 };
 
 export type TenantTheme = Theme & {
+  font: string;
   headerPosition: HeaderPosition;
 };
 

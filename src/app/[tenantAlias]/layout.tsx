@@ -9,6 +9,7 @@ import {TenantMaintenance} from "@/components/tenant/tenant-maintenance";
 import {Header} from "@/components/common/header";
 import {BackToTopButton} from "@/components/common/back-to-top-button";
 import {Footer} from "@/components/common/footer";
+import {cn} from "@/utils/shadcn";
 
 export const metadata: Metadata = {
   title: {
@@ -54,6 +55,8 @@ export default async function RootLayout({children, params}: RootLayoutProps) {
     tenant.currencies.find((currency: CurrencyGroup) => currency.isDefault) || tenant.currencies[0];
 
   const themeClassName = `theme-${tenant.theme.color || "zinc"}`;
+  const font = tenant.theme.font || "nunito";
+  const fontClassName = `font-${font}`;
   const headerPosition = tenant.theme.headerPosition || HeaderPosition.BOTTOM;
 
   return (
@@ -65,8 +68,9 @@ export default async function RootLayout({children, params}: RootLayoutProps) {
       <head>
         <link href="https://cdn.lumodine.com/public/type.css" rel="stylesheet" />
         <link href="https://cdn.lumodine.com/public/theme.css" rel="stylesheet" />
+        <link href={`https://cdn.lumodine.com/public/fonts/${font}.css`} rel="stylesheet" />
       </head>
-      <body className={themeClassName}>
+      <body className={cn(fontClassName, themeClassName)}>
         {tenant.status === TenantStatus.PUBLISHED && <main>{children}</main>}
         {tenant.status === TenantStatus.MAINTENANCE && <TenantMaintenance />}
 
