@@ -22,7 +22,7 @@ export const TenantHero = () => {
       <div
         className={cn(
           "flex items-center justify-center w-full h-[30vh] lg:h-[40vh] p-2",
-          hasBackground && "bg-black/50",
+          hasBackground && "bg-black/50 text-white",
         )}
       >
         <TenantLogo tenant={tenant} />

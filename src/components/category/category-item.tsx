@@ -40,7 +40,7 @@ export const CategoryItem = ({category}: CategoryItemProps) => {
       <div
         className={cn(
           "flex flex-col gap-1 items-center justify-center w-full h-full text-center p-2",
-          hasImage && "bg-black/50",
+          hasImage && "bg-black/50 text-white",
         )}
       >
         <span className="text-lg font-bold drop-shadow-2xl">{translation?.name}</span>

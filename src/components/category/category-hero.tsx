@@ -35,7 +35,7 @@ export const CategoryHero = ({category}: CategoryHeroProps) => {
         ["--bg-image" as string]: hasImage ? `url(${category.image})` : null,
       }}
     >
-      <div className={cn("text-center", hasImage && "bg-black/50")}>
+      <div className={cn("text-center", hasImage && "bg-black/50 text-white")}>
         <div className="container flex flex-col gap-4 items-center justify-center w-full h-[30vh] lg:h-[40vh] ">
           {tenant.logo && (
             <Link href={"/"}>
