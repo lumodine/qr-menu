@@ -3,6 +3,7 @@
 import type {Tenant} from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+import {TenantBranchList} from "../tenant/tenant-branch-list";
 import {useAppContext} from "@/contexts/AppContext";
 import {TenantSocialMediaList} from "@/components/tenant/tenant-social-media-list";
 
@@ -21,7 +22,7 @@ export const Footer = ({tenant}: FooterProps) => {
 
   return (
     <footer className="py-16">
-      <div className="container flex flex-col gap-6">
+      <div className="container flex flex-col items-center justify-center gap-6">
         <div className="flex flex-col gap-6 items-center justify-center">
           <Link className="flex flex-col gap-2 items-center justify-center" href={"/"}>
             {tenant.logo && (
@@ -39,6 +40,8 @@ export const Footer = ({tenant}: FooterProps) => {
         </div>
 
         <TenantSocialMediaList />
+
+        <TenantBranchList />
 
         <div className="flex flex-col items-center justify-center gap-6 my-8">
           <p className="text-xs">

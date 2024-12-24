@@ -46,6 +46,23 @@ export type TenantTheme = Theme & {
   headerPosition: HeaderPosition;
 };
 
+export type TenantBranch = {
+  _id: string;
+  translations: {
+    _id: string;
+    language: Language;
+    title: string;
+    description: string;
+  }[];
+  address: string;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
+  createdAt: string;
+  updateAt?: string;
+};
+
 export type Tenant = {
   _id: string;
   alias: string;
@@ -59,6 +76,7 @@ export type Tenant = {
   status: TenantStatus;
   createdAt: string;
   updateAt?: string;
+  branches: TenantBranch[];
 };
 
 export enum TenantStatus {
