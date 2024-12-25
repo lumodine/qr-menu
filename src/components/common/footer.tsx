@@ -3,7 +3,7 @@
 import type {Tenant} from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-import {TenantBranchList} from "../tenant/tenant-branch-list";
+import {TenantBranchList} from "@/components/tenant/tenant-branch-list";
 import {useAppContext} from "@/contexts/AppContext";
 import {TenantSocialMediaList} from "@/components/tenant/tenant-social-media-list";
 
