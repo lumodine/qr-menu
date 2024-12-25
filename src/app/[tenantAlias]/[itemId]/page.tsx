@@ -1,8 +1,8 @@
 import {notFound} from "next/navigation";
 import qrMenuService from "@/services/qr-menu.service";
 import {BackToMenuButton} from "@/components/common/back-to-menu-button";
-import {ProductList} from "@/components/product/product-list";
 import {CategoryHero} from "@/components/category/category-hero";
+import {ItemDetailList} from "@/components/item/item-detail-list";
 
 type CategoryPageProps = {
   params: Promise<{
@@ -34,7 +34,7 @@ export default async function CategoryPage({params}: CategoryPageProps) {
         </div>
       </section>
 
-      <ProductList products={items} />
+      <ItemDetailList items={items} />
     </>
   );
 }
