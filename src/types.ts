@@ -103,7 +103,7 @@ export type Category = {
   translations: {
     _id: string;
     language: Language;
-    name: string;
+    title: string;
     description: string;
   }[];
   image: string;
@@ -129,7 +129,7 @@ export type Product = {
   translations: {
     _id: string;
     language: Language;
-    name: string;
+    title: string;
     description: string;
   }[];
   parentItems: any[];
@@ -159,7 +159,7 @@ export type Tag = {
   translations: {
     _id: string;
     language: Language;
-    name: string;
+    title: string;
     description: string;
   }[];
   type: string;

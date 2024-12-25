@@ -43,7 +43,7 @@ export const CategoryItem = ({category}: CategoryItemProps) => {
           hasImage && "bg-black/50 text-white",
         )}
       >
-        <span className="text-lg font-bold drop-shadow-2xl">{translation?.name}</span>
+        <span className="text-lg font-bold drop-shadow-2xl">{translation?.title}</span>
       </div>
     </Link>
   );

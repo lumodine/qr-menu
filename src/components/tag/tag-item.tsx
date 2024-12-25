@@ -36,7 +36,7 @@ export const TagItem = ({tag}: TagItemProps) => {
       <div className="flex h-full w-full items-center justify-center text-center p-2">
         <span className="text-lg font-bold">
           <TagIcon className="inline-block mr-1" />
-          {translation?.name}
+          {translation?.title}
         </span>
       </div>
     </Link>

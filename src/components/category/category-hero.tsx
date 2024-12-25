@@ -49,9 +49,9 @@ export const CategoryHero = ({category}: CategoryHeroProps) => {
               />
             </Link>
           )}
-          {translation?.name && (
+          {translation?.title && (
             <h1 className="text-2xl md:text-3xl lg:text-6xl font-bold drop-shadow-2xl">
-              {translation?.name}
+              {translation?.title}
             </h1>
           )}
           {translation?.description && (

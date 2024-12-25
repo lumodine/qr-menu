@@ -53,7 +53,7 @@ export const ProductItem = ({product}: ProductItemProps) => {
       {product.image && (
         <div className={cn(isRow && "h-14 w-14", isGrid && "h-full w-full")}>
           <Image
-            alt={translation?.name || "image"}
+            alt={translation?.title || "image"}
             className="h-full w-full"
             height={image.height}
             loading={"lazy"}
@@ -71,7 +71,9 @@ export const ProductItem = ({product}: ProductItemProps) => {
           </div>
         )}
         <div className="flex gap-2 justify-between">
-          {translation?.name && <span className="text-lg font-semibold">{translation?.name}</span>}
+          {translation?.title && (
+            <span className="text-lg font-semibold">{translation?.title}</span>
+          )}
           {price?.amount && (
             <>
               <span

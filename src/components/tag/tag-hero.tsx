@@ -45,10 +45,10 @@ export const TagHero = ({tag}: TagHeroProps) => {
               />
             </Link>
           )}
-          {translation?.name && (
+          {translation?.title && (
             <h1 className="text-2xl md:text-3xl lg:text-6xl font-bold drop-shadow-2xl">
               <TagIcon className="inline-block w-6 h-6 md:w-8 md:h-8 lg:w-12 lg:h-12" />{" "}
-              {translation?.name}
+              {translation?.title}
             </h1>
           )}
           {translation?.description && (

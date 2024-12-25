@@ -25,7 +25,7 @@ export const ProductTagItem = ({tag}: ProductTagItemProps) => {
   return (
     <Badge className={`theme-${tag.item.theme?.color} px-1`}>
       <Link href={`/tags/${tag.item._id}`}>
-        <span>{translation?.name}</span>
+        <span>{translation?.title}</span>
       </Link>
     </Badge>
   );
