@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import {ProductTagItem} from "./product-tag-item";
+import {ProductVariantItem} from "./product-variant-item";
 import {cn} from "@/utils/shadcn";
 import {formatAmount} from "@/utils/number";
 import {useAppContext} from "@/contexts/AppContext";
@@ -40,7 +41,9 @@ export const ProductItem = ({product}: ProductItemProps) => {
     price = product.prices.find((price) => price.currency._id === defaultCurrency.currency._id);
   }
 
-  const tags = product.parentItems.filter((item) => item.kind === ITEM_KINDS.TAG);
+  const tags = product.parentItems.filter((item) => item.kind === ITEM_KINDS.TAG) || [];
+  const variants =
+    product?.childItems?.filter((item) => item.kind === ITEM_KINDS.PRODUCT_VARIANT) || [];
 
   return (
     <div
@@ -90,6 +93,14 @@ export const ProductItem = ({product}: ProductItemProps) => {
           )}
         </div>
         {translation?.description && <p className="text-sm">{translation?.description}</p>}
+
+        {variants.length > 0 && (
+          <div className="pl-4">
+            {variants.map((variant, index) => (
+              <ProductVariantItem key={index} productVariant={variant.item} type={product.type} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

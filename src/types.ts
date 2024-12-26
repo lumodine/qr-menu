@@ -133,6 +133,7 @@ export type Product = {
     description: string;
   }[];
   parentItems: any[];
+  childItems: any[];
   prices: PriceGroup[];
   image: string;
   type: ProductType;
@@ -152,6 +153,25 @@ export enum ProductStatus {
 }
 
 export type Products = Product[];
+
+export type ProductVariant = {
+  _id: string;
+  tenant: string;
+  translations: {
+    _id: string;
+    language: Language;
+    title: string;
+    description: string;
+  }[];
+  parentItems: any[];
+  childItems: any[];
+  prices: PriceGroup[];
+  sort: number;
+  createdAt: string;
+  updateAt?: string;
+};
+
+export type ProductVariants = ProductVariant[];
 
 export type Tag = {
   _id: string;
