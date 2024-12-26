@@ -6,7 +6,7 @@ import {ProductVariantItem} from "./product-variant-item";
 import {cn} from "@/utils/shadcn";
 import {formatAmount} from "@/utils/number";
 import {useAppContext} from "@/contexts/AppContext";
-import {ProductStatus, ProductTag, ProductType, type Product} from "@/types";
+import {ProductStatus, ProductType, Tag, type Product} from "@/types";
 import {ITEM_KINDS} from "@/constants/item";
 
 export type ProductItemProps = {
@@ -68,7 +68,7 @@ export const ProductItem = ({product}: ProductItemProps) => {
       <div className={cn("flex-1 w-full flex flex-col gap-1", isGrid && "p-2")}>
         {tags.length > 0 && (
           <div className="flex gap-1">
-            {tags.map((productTag: ProductTag, productTagIndex: number) => (
+            {tags.map((productTag: Tag, productTagIndex: number) => (
               <ProductTagItem key={productTagIndex} tag={productTag} />
             ))}
           </div>
@@ -97,7 +97,7 @@ export const ProductItem = ({product}: ProductItemProps) => {
         {variants.length > 0 && (
           <div className="pl-4">
             {variants.map((variant, index) => (
-              <ProductVariantItem key={index} productVariant={variant.item} type={product.type} />
+              <ProductVariantItem key={index} productVariant={variant} type={product.type} />
             ))}
           </div>
         )}

@@ -190,12 +190,6 @@ export type Tag = {
   updateAt?: string;
 };
 
-export type ProductTag = {
-  _id: string;
-  item: Tag;
-  sort: number;
-};
-
 export type Tags = Tag[];
 
 export type Annannouncement = {
