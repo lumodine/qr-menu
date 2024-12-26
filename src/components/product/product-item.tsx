@@ -74,9 +74,7 @@ export const ProductItem = ({product}: ProductItemProps) => {
           </div>
         )}
         <div className="flex gap-2 justify-between">
-          {translation?.title && (
-            <span className="text-lg font-semibold">{translation?.title}</span>
-          )}
+          {translation?.title && <b className="text-lg">{translation?.title}</b>}
           {price?.amount && (
             <>
               <span

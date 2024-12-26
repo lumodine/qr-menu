@@ -37,7 +37,7 @@ export const ProductVariantItem = ({productVariant, type}: ProductVariantItemPro
     <div className={cn("flex items-start justify-center gap-2 overflow-hidden rounded-sm")}>
       <div className={cn("flex-1 w-full flex flex-col gap-1")}>
         <div className="flex gap-2 justify-between">
-          {translation?.title && <span className="text-sm">{translation?.title}</span>}
+          {translation?.title && <b className="text-sm">{translation?.title}</b>}
           {price?.amount && (
             <>
               <span
