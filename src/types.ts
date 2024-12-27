@@ -117,6 +117,23 @@ export type Category = {
 
 export type Categories = Category[];
 
+export type SubCategory = {
+  _id: string;
+  tenant: string;
+  translations: {
+    _id: string;
+    language: Language;
+    title: string;
+    description: string;
+  }[];
+  status: string;
+  sort: number;
+  createdAt: string;
+  updateAt?: string;
+};
+
+export type SubCategories = SubCategory[];
+
 export type PriceGroup = {
   currency: Currency;
   amount: number;

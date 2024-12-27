@@ -1,6 +1,7 @@
 "use client";
 
 import {ProductItem} from "../product/product-item";
+import {SubCategoryItem} from "../subCategory/sub-category-item";
 import {ITEM_KINDS} from "@/constants/item";
 
 export type ItemDetailListProps = {
@@ -17,6 +18,9 @@ export const ItemDetailList = ({items}: ItemDetailListProps) => {
           {items.map((item, itemIndex) => {
             if (item.kind === ITEM_KINDS.PRODUCT) {
               return <ProductItem key={itemIndex} product={item} />;
+            }
+            if (item.kind === ITEM_KINDS.SUB_CATEGORY) {
+              return <SubCategoryItem key={itemIndex} subCategory={item} />;
             }
           })}
         </div>
