@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import {ProductTagItem} from "./product-tag-item";
-import {ProductVariantItem} from "./product-variant-item";
+import {ProductTagItem} from "@/components/product/product-tag-item";
+import {ProductVariantItem} from "@/components/product/product-variant-item";
 import {cn} from "@/utils/shadcn";
 import {formatAmount} from "@/utils/number";
 import {useAppContext} from "@/contexts/AppContext";

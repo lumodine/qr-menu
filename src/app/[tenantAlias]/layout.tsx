@@ -4,7 +4,7 @@ import React from "react";
 import qrMenuService from "@/services/qr-menu.service";
 import {AppProvider} from "@/contexts/AppContext";
 import {HeaderPosition, TenantStatus, type CurrencyGroup, type LanguageGroup} from "@/types";
-import "./globals.css";
+import "@/app/globals.css";
 import {TenantMaintenance} from "@/components/tenant/tenant-maintenance";
 import {Header} from "@/components/common/header";
 import {BackToTopButton} from "@/components/common/back-to-top-button";

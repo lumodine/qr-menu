@@ -1,6 +1,6 @@
 "use client";
 
-import {TenantSocialMediaItem} from "./tenant-social-media-item";
+import {TenantSocialMediaItem} from "@/components/tenant/tenant-social-media-item";
 import {useAppContext} from "@/contexts/AppContext";
 
 export const TenantSocialMediaList = () => {

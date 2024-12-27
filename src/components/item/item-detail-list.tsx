@@ -1,7 +1,7 @@
 "use client";
 
-import {ProductItem} from "../product/product-item";
-import {SubCategoryItem} from "../subCategory/sub-category-item";
+import {ProductItem} from "@/components/product/product-item";
+import {SubCategoryItem} from "@/components/subCategory/sub-category-item";
 import {ITEM_KINDS} from "@/constants/item";
 
 export type ItemDetailListProps = {

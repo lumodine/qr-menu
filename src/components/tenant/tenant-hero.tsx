@@ -1,6 +1,6 @@
 "use client";
 
-import {TenantLogo} from "./tenant-logo";
+import {TenantLogo} from "@/components/tenant/tenant-logo";
 import {cn} from "@/utils/shadcn";
 import {useAppContext} from "@/contexts/AppContext";
 
