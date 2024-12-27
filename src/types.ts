@@ -161,7 +161,7 @@ export type Product = {
 };
 
 export enum ProductType {
-  GRID = "grid",
+  CARD = "card",
   ROW = "row",
 }
 

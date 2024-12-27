@@ -11,7 +11,7 @@ export type ProductVariantItemProps = {
 };
 
 export const ProductVariantItem = ({productVariant, type}: ProductVariantItemProps) => {
-  const isGrid = type === ProductType.GRID;
+  const isCard = type === ProductType.CARD;
 
   const {language, defaultLanguage, currency, defaultCurrency} = useAppContext();
 
@@ -43,7 +43,7 @@ export const ProductVariantItem = ({productVariant, type}: ProductVariantItemPro
               <span
                 className={cn(
                   "flex-1 w-full border-b-2 my-2 border-dotted border-primary/20",
-                  isGrid && "border-primary-foreground",
+                  isCard && "border-primary-foreground",
                 )}
               />
               <b className="text-sm">

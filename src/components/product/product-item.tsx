@@ -15,7 +15,7 @@ export type ProductItemProps = {
 
 export const ProductItem = ({product}: ProductItemProps) => {
   const isRow = product.type === ProductType.ROW;
-  const isGrid = product.type === ProductType.GRID;
+  const isCard = product.type === ProductType.CARD;
   const isNotAvailable = product.status === ProductStatus.NOT_AVAILABLE;
 
   const image = {
@@ -49,12 +49,12 @@ export const ProductItem = ({product}: ProductItemProps) => {
     <div
       className={cn(
         "flex items-start justify-center gap-2 overflow-hidden rounded-sm",
-        isGrid && "flex-col bg-primary text-primary-foreground",
+        isCard && "flex-col bg-primary text-primary-foreground",
         isNotAvailable && "opacity-30 cursor-no-drop select-none",
       )}
     >
       {product.image && (
-        <div className={cn(isRow && "h-14 w-14", isGrid && "h-full w-full")}>
+        <div className={cn(isRow && "h-14 w-14", isCard && "h-full w-full")}>
           <Image
             alt={translation?.title || "image"}
             className="h-full w-full"
@@ -65,7 +65,7 @@ export const ProductItem = ({product}: ProductItemProps) => {
           />
         </div>
       )}
-      <div className={cn("flex-1 w-full flex flex-col gap-1", isGrid && "p-2")}>
+      <div className={cn("flex-1 w-full flex flex-col gap-1", isCard && "p-2")}>
         {tags.length > 0 && (
           <div className="flex gap-1">
             {tags.map((productTag: Tag, productTagIndex: number) => (
@@ -80,7 +80,7 @@ export const ProductItem = ({product}: ProductItemProps) => {
               <span
                 className={cn(
                   "flex-1 w-full border-b-2 my-2 border-dotted border-primary/20",
-                  isGrid && "border-primary-foreground",
+                  isCard && "border-primary-foreground",
                 )}
               />
               <b>
