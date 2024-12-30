@@ -29,7 +29,7 @@ export default async function CategoryPage({params}: CategoryPageProps) {
       <TagHero tag={item} />
 
       <section className="container">
-        <div className="py-2">
+        <div className="pt-2">
           <BackToMenuButton />
         </div>
       </section>
