@@ -23,6 +23,9 @@ export const SubCategoryItem = ({subCategory}: SubCategoryItemProps) => {
   return (
     <div>
       <h2 className="text-xl font-bold text-primary">{translation?.title}</h2>
+      {translation?.description && (
+        <p className="text-sm text-muted-foreground">{translation?.description}</p>
+      )}
     </div>
   );
 };
