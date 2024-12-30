@@ -14,7 +14,7 @@ export const ItemDetailList = ({items}: ItemDetailListProps) => {
   return (
     <section className="container py-4">
       {hasItems && (
-        <div className="grid grid-cols-1 gap-3">
+        <div className="grid grid-cols-1 gap-2">
           {items.map((item, itemIndex) => {
             if (item.kind === ITEM_KINDS.PRODUCT) {
               return <ProductItem key={itemIndex} product={item} />;
