@@ -31,7 +31,7 @@ export const TagItem = ({tag}: TagItemProps) => {
         "overflow-hidden rounded-sm transition-transform hover:scale-95",
         tag.type,
       )}
-      href={`/tags/${tag._id}`}
+      href={`/${tag._id}`}
     >
       <div className="flex h-full w-full items-center justify-center text-center p-2">
         <span className="text-lg font-bold">
