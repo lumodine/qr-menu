@@ -6,9 +6,10 @@ import {ITEM_KINDS} from "@/constants/item";
 
 export type ItemDetailListProps = {
   items: any[];
+  isShowTag?: boolean;
 };
 
-export const ItemDetailList = ({items}: ItemDetailListProps) => {
+export const ItemDetailList = ({items, isShowTag = true}: ItemDetailListProps) => {
   const hasItems = items && items.length !== 0;
 
   return (
@@ -17,7 +18,7 @@ export const ItemDetailList = ({items}: ItemDetailListProps) => {
         <div className="grid grid-cols-1 gap-2">
           {items.map((item, itemIndex) => {
             if (item.kind === ITEM_KINDS.PRODUCT) {
-              return <ProductItem key={itemIndex} product={item} />;
+              return <ProductItem key={itemIndex} isShowTag={isShowTag} product={item} />;
             }
             if (item.kind === ITEM_KINDS.SUB_CATEGORY) {
               return <SubCategoryItem key={itemIndex} subCategory={item} />;

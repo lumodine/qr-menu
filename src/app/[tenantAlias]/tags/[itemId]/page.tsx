@@ -34,7 +34,7 @@ export default async function CategoryPage({params}: CategoryPageProps) {
         </div>
       </section>
 
-      <ItemDetailList items={items} />
+      <ItemDetailList isShowTag={false} items={items} />
     </>
   );
 }

@@ -11,9 +11,10 @@ import {ITEM_KINDS} from "@/constants/item";
 
 export type ProductItemProps = {
   product: Product;
+  isShowTag?: boolean;
 };
 
-export const ProductItem = ({product}: ProductItemProps) => {
+export const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
   const isRow = product.type === ProductType.ROW;
   const isCard = product.type === ProductType.CARD;
   const isNotAvailable = product.status === ProductStatus.NOT_AVAILABLE;
@@ -66,7 +67,7 @@ export const ProductItem = ({product}: ProductItemProps) => {
         </div>
       )}
       <div className={cn("flex-1 w-full flex flex-col gap-1", isCard && "p-2")}>
-        {tags.length > 0 && (
+        {isShowTag && tags.length > 0 && (
           <div className="flex gap-1">
             {tags.map((productTag: Tag, productTagIndex: number) => (
               <ProductTagItem key={productTagIndex} tag={productTag} />
