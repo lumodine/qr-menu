@@ -91,9 +91,7 @@ export const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
             </>
           )}
         </div>
-        {translation?.description && (
-          <p className="text-muted-foreground text-sm">{translation?.description}</p>
-        )}
+        {translation?.description && <p className="text-sm">{translation?.description}</p>}
 
         {variants.length > 0 && (
           <div className="pl-4">
