@@ -12,6 +12,7 @@ export type ProductVariantItemProps = {
 
 export const ProductVariantItem = ({productVariant, type}: ProductVariantItemProps) => {
   const isCard = type === ProductType.CARD;
+  const isRow = type === ProductType.ROW;
 
   const {language, defaultLanguage, currency, defaultCurrency} = useAppContext();
 
@@ -53,7 +54,17 @@ export const ProductVariantItem = ({productVariant, type}: ProductVariantItemPro
             </>
           )}
         </div>
-        {translation?.description && <p className="text-sm">{translation?.description}</p>}
+        {translation?.description && (
+          <p
+            className={cn(
+              "text-xs",
+              isCard && "text-primary-foreground/70",
+              isRow && "text-muted-foreground",
+            )}
+          >
+            {translation?.description}
+          </p>
+        )}
       </div>
     </div>
   );

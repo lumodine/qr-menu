@@ -50,7 +50,7 @@ export const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
     <div
       className={cn(
         "flex items-start justify-center gap-2 overflow-hidden",
-        isCard && "flex-col bg-primary text-primary-foreground",
+        isCard && "flex-col bg-primary text-primary-foreground rounded-sm overflow-hidden",
         isNotAvailable && "opacity-30 cursor-no-drop select-none",
       )}
     >
@@ -58,7 +58,7 @@ export const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
         <div className={cn(isRow && "h-14 w-14", isCard && "h-full w-full")}>
           <Image
             alt={translation?.title || "image"}
-            className="h-full w-full rounded-sm"
+            className="h-full w-full"
             height={image.height}
             loading={"lazy"}
             src={product.image}
@@ -91,7 +91,17 @@ export const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
             </>
           )}
         </div>
-        {translation?.description && <p className="text-sm">{translation?.description}</p>}
+        {translation?.description && (
+          <p
+            className={cn(
+              "text-sm",
+              isCard && "text-primary-foreground/70",
+              isRow && "text-muted-foreground",
+            )}
+          >
+            {translation?.description}
+          </p>
+        )}
 
         {variants.length > 0 && (
           <div className="pl-4">
