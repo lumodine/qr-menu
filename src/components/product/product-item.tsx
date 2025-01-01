@@ -49,7 +49,7 @@ export const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
   return (
     <div
       className={cn(
-        "flex items-start justify-center gap-2 overflow-hidden rounded-sm",
+        "flex items-start justify-center gap-2 overflow-hidden",
         isCard && "flex-col bg-primary text-primary-foreground",
         isNotAvailable && "opacity-30 cursor-no-drop select-none",
       )}
@@ -58,7 +58,7 @@ export const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
         <div className={cn(isRow && "h-14 w-14", isCard && "h-full w-full")}>
           <Image
             alt={translation?.title || "image"}
-            className="h-full w-full"
+            className="h-full w-full rounded-sm"
             height={image.height}
             loading={"lazy"}
             src={product.image}
