@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import {ProductVariantItem} from "../productVariant/product-variant-item";
 import {ProductTagItem} from "@/components/product/product-tag-item";
-import {ProductVariantItem} from "@/components/product/product-variant-item";
 import {cn} from "@/utils/shadcn";
 import {formatAmount} from "@/utils/number";
 import {useAppContext} from "@/contexts/AppContext";
@@ -106,7 +106,7 @@ export const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
         {variants.length > 0 && (
           <div className="pl-4">
             {variants.map((variant, index) => (
-              <ProductVariantItem key={index} productVariant={variant} type={product.type} />
+              <ProductVariantItem key={index} type={product.type} variant={variant} />
             ))}
           </div>
         )}
