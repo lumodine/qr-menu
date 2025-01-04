@@ -63,6 +63,8 @@ export type TenantBranch = {
   updateAt?: string;
 };
 
+export type TenantBranches = TenantBranch[];
+
 export type Tenant = {
   _id: string;
   alias: string;

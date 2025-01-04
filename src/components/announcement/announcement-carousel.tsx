@@ -1,29 +1,29 @@
 "use client";
 
-import type {Annannouncements} from "@/types";
+import type {Annannouncements, Response} from "@/types";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Pagination} from "swiper/modules";
 import {Megaphone} from "lucide-react";
-import {useEffect, useState} from "react";
+import useSWR from "swr";
+import {Loading} from "../common/loading";
 import {useAppContext} from "@/contexts/AppContext";
-import qrMenuService from "@/services/qr-menu.service";
+import axios from "@/lib/axios";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
 export const AnnouncementCarousel = () => {
   const {language, defaultLanguage, tenant} = useAppContext();
-  const [annannouncements, setAnnannouncements] = useState<Annannouncements>([]);
+  const {data, isLoading} = useSWR<Response<Annannouncements>>(
+    `/qr-menu/${tenant.alias}/announcements`,
+    axios,
+  );
 
-  const fetchAnnannouncements = async () => {
-    const {data} = await qrMenuService.getAllAnnouncements(tenant.alias);
+  if (isLoading) {
+    return <Loading />;
+  }
 
-    setAnnannouncements(data);
-  };
-
-  useEffect(() => {
-    fetchAnnannouncements();
-  }, [tenant]);
+  const annannouncements = data?.data;
 
   const hasAnnannouncements = annannouncements && annannouncements.length !== 0;
 

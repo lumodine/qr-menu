@@ -2,28 +2,29 @@
 
 import {MapPin, MapPinHouse} from "lucide-react";
 import Link from "next/link";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {DialogTitle} from "@radix-ui/react-dialog";
+import useSWR from "swr";
+import {Loading} from "../common/loading";
 import {Button} from "@/components/ui/button";
 import {Separator} from "@/components/ui/separator";
 import {useAppContext} from "@/contexts/AppContext";
 import {Dialog, DialogContent, DialogHeader, DialogTrigger} from "@/components/ui/dialog";
-import {TenantBranch} from "@/types";
-import qrMenuService from "@/services/qr-menu.service";
+import {Response, TenantBranch, TenantBranches} from "@/types";
+import axios from "@/lib/axios";
 
 export const TenantBranchList = () => {
   const {language, defaultLanguage, tenant} = useAppContext();
-  const [branches, setBranches] = useState<TenantBranch[]>([]);
+  const {data, isLoading} = useSWR<Response<TenantBranches>>(
+    `/qr-menu/${tenant.alias}/branches`,
+    axios,
+  );
 
-  const fetchBranches = async () => {
-    const {data} = await qrMenuService.getTenantBranches(tenant.alias);
+  if (isLoading) {
+    return <Loading />;
+  }
 
-    setBranches(data);
-  };
-
-  useEffect(() => {
-    fetchBranches();
-  }, [tenant]);
+  const branches = data?.data;
 
   const count = branches?.length || 0;
   const hasBranches = branches && count > 0;

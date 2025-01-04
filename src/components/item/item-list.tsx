@@ -1,25 +1,23 @@
 "use client";
 
-import {useEffect, useState} from "react";
+import useSWR from "swr";
+import {Loading} from "../common/loading";
 import {CategoryItem} from "@/components/category/category-item";
 import {TagItem} from "@/components/tag/tag-item";
 import {ITEM_KINDS} from "@/constants/item";
-import qrMenuService from "@/services/qr-menu.service";
 import {useAppContext} from "@/contexts/AppContext";
+import axios from "@/lib/axios";
+import {Response} from "@/types";
 
 export const ItemList = () => {
   const {tenant} = useAppContext();
-  const [items, setItems] = useState<any[]>([]);
+  const {data, isLoading} = useSWR<Response<any[]>>(`/qr-menu/${tenant.alias}/items`, axios);
 
-  const fetchItems = async () => {
-    const {data} = await qrMenuService.getItems(tenant.alias);
+  if (isLoading) {
+    return <Loading />;
+  }
 
-    setItems(data);
-  };
-
-  useEffect(() => {
-    fetchItems();
-  }, [tenant]);
+  const items = data?.data;
 
   const hasItems = items && items.length !== 0;
 

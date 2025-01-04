@@ -1,11 +1,13 @@
 "use client";
 
-import {useEffect, useState} from "react";
+import useSWR from "swr";
+import {Loading} from "../common/loading";
 import {ProductItem} from "@/components/product/product-item";
 import {SubCategoryItem} from "@/components/subCategory/sub-category-item";
 import {ITEM_KINDS} from "@/constants/item";
 import {useAppContext} from "@/contexts/AppContext";
-import qrMenuService from "@/services/qr-menu.service";
+import axios from "@/lib/axios";
+import {Response} from "@/types";
 
 export type ItemDetailListProps = {
   itemId: string;
@@ -14,19 +16,22 @@ export type ItemDetailListProps = {
 
 export const ItemDetailList = ({itemId, isShowTag = true}: ItemDetailListProps) => {
   const {tenant} = useAppContext();
-  const [items, setItems] = useState<any[]>([]);
+  const {data, isLoading} = useSWR<Response<any[]>>(
+    `/qr-menu/${tenant.alias}/items?itemId=${itemId}`,
+    axios,
+  );
 
-  const fetchItems = async () => {
-    const {data} = await qrMenuService.getSubItems(tenant.alias, itemId);
+  if (isLoading) {
+    return <Loading />;
+  }
 
-    setItems(data);
-  };
-
-  useEffect(() => {
-    fetchItems();
-  }, [tenant, itemId]);
+  const items = data?.data;
 
   const hasItems = items && items.length !== 0;
+
+  if (!hasItems) {
+    return null;
+  }
 
   return (
     <section className="container pt-2">

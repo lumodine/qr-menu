@@ -1,11 +1,13 @@
 "use client";
 
-import {useEffect, useState} from "react";
+import useSWR from "swr";
 import {TagHero} from "../tag/tag-hero";
 import {CategoryHero} from "../category/category-hero";
-import qrMenuService from "@/services/qr-menu.service";
+import {Loading} from "../common/loading";
 import {useAppContext} from "@/contexts/AppContext";
 import {ITEM_KINDS} from "@/constants/item";
+import axios from "@/lib/axios";
+import {Response} from "@/types";
 
 type ItemHeroProps = {
   itemId: string;
@@ -13,19 +15,20 @@ type ItemHeroProps = {
 
 export const ItemHero = ({itemId}: ItemHeroProps) => {
   const {tenant} = useAppContext();
-  const [item, setItem] = useState<any>(null);
+  const {data, isLoading} = useSWR<Response<any>>(
+    `/qr-menu/${tenant.alias}/items/${itemId}`,
+    axios,
+  );
 
-  const fetchItem = async () => {
-    const {data} = await qrMenuService.getItemById(tenant.alias, itemId);
+  if (isLoading) {
+    return <Loading />;
+  }
 
-    setItem(data);
-  };
+  const item = data?.data;
 
-  useEffect(() => {
-    fetchItem();
-  }, [tenant, itemId]);
-
-  if (!item) return null;
+  if (!item) {
+    return null;
+  }
 
   return (
     <>
