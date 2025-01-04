@@ -1,6 +1,6 @@
 import {useState, useEffect, useCallback} from "react";
 
-export const useScrollVisible = (limit: number) => {
+const useScrollVisible = (limit: number) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = useCallback(() => {
@@ -15,3 +15,5 @@ export const useScrollVisible = (limit: number) => {
 
   return isVisible;
 };
+
+export {useScrollVisible};

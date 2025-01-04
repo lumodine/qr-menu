@@ -9,7 +9,7 @@ export type CurrencySwitcherProps = {
   currencies: CurrencyGroup[];
 };
 
-export const CurrencySwitcher = ({currencies}: CurrencySwitcherProps) => {
+const CurrencySwitcher = ({currencies}: CurrencySwitcherProps) => {
   const {currency, defaultCurrency, setCurrency} = useAppContext();
 
   if (currencies.length <= 1) {
@@ -40,4 +40,7 @@ export const CurrencySwitcher = ({currencies}: CurrencySwitcherProps) => {
     </Select>
   );
 };
+
 CurrencySwitcher.displayName = "CurrencySwitcher";
+
+export {CurrencySwitcher};

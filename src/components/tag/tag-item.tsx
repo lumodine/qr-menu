@@ -10,7 +10,7 @@ export type TagItemProps = {
   tag: Tag;
 };
 
-export const TagItem = ({tag}: TagItemProps) => {
+const TagItem = ({tag}: TagItemProps) => {
   const {language, defaultLanguage} = useAppContext();
 
   let translation = tag.translations.find(
@@ -42,4 +42,7 @@ export const TagItem = ({tag}: TagItemProps) => {
     </Link>
   );
 };
+
 TagItem.displayName = "TagItem";
+
+export {TagItem};

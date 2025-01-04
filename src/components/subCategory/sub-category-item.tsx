@@ -7,7 +7,7 @@ export type SubCategoryItemProps = {
   subCategory: SubCategory;
 };
 
-export const SubCategoryItem = ({subCategory}: SubCategoryItemProps) => {
+const SubCategoryItem = ({subCategory}: SubCategoryItemProps) => {
   const {language, defaultLanguage} = useAppContext();
 
   let translation = subCategory.translations.find(
@@ -29,4 +29,7 @@ export const SubCategoryItem = ({subCategory}: SubCategoryItemProps) => {
     </div>
   );
 };
+
 SubCategoryItem.displayName = "SubCategoryItem";
+
+export {SubCategoryItem};

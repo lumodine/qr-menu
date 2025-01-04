@@ -9,7 +9,7 @@ export type CategoryItemProps = {
   category: Category;
 };
 
-export const CategoryItem = ({category}: CategoryItemProps) => {
+const CategoryItem = ({category}: CategoryItemProps) => {
   const {language, defaultLanguage} = useAppContext();
 
   let translation = category.translations.find(
@@ -48,4 +48,7 @@ export const CategoryItem = ({category}: CategoryItemProps) => {
     </Link>
   );
 };
+
 CategoryItem.displayName = "CategoryItem";
+
+export {CategoryItem};

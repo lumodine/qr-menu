@@ -3,7 +3,7 @@
 import {Wrench} from "lucide-react";
 import {useAppContext} from "@/contexts/AppContext";
 
-export const TenantMaintenance = () => {
+const TenantMaintenance = () => {
   const {t} = useAppContext();
 
   return (
@@ -16,4 +16,7 @@ export const TenantMaintenance = () => {
     </div>
   );
 };
+
 TenantMaintenance.displayName = "TenantMaintenance";
+
+export {TenantMaintenance};

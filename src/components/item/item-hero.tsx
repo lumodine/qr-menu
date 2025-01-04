@@ -13,7 +13,7 @@ type ItemHeroProps = {
   itemId: string;
 };
 
-export const ItemHero = ({itemId}: ItemHeroProps) => {
+const ItemHero = ({itemId}: ItemHeroProps) => {
   const {tenant} = useAppContext();
   const {data, isLoading} = useSWR<Response<any>>(
     `/qr-menu/${tenant.alias}/items/${itemId}`,
@@ -37,4 +37,7 @@ export const ItemHero = ({itemId}: ItemHeroProps) => {
     </>
   );
 };
+
 ItemHero.displayName = "ItemHero";
+
+export {ItemHero};

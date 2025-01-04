@@ -16,7 +16,7 @@ export type TenantSocialMediaItemProps = {
   socialMedia: SocialMedia;
 };
 
-export const TenantSocialMediaItem = ({socialMedia}: TenantSocialMediaItemProps) => {
+const TenantSocialMediaItem = ({socialMedia}: TenantSocialMediaItemProps) => {
   const Icon = socialMediaIcons[socialMedia.type];
 
   if (!Icon) {
@@ -33,4 +33,7 @@ export const TenantSocialMediaItem = ({socialMedia}: TenantSocialMediaItemProps)
     </Link>
   );
 };
+
 TenantSocialMediaItem.displayName = "TenantSocialMediaItem";
+
+export {TenantSocialMediaItem};

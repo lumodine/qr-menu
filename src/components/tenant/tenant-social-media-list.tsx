@@ -3,7 +3,7 @@
 import {TenantSocialMediaItem} from "@/components/tenant/tenant-social-media-item";
 import {useAppContext} from "@/contexts/AppContext";
 
-export const TenantSocialMediaList = () => {
+const TenantSocialMediaList = () => {
   const {tenant} = useAppContext();
 
   const socialMedias = tenant.socialMedias.filter((socialMedia) => !!socialMedia.value);
@@ -20,4 +20,7 @@ export const TenantSocialMediaList = () => {
     </div>
   );
 };
+
 TenantSocialMediaList.displayName = "TenantSocialMediaList";
+
+export {TenantSocialMediaList};

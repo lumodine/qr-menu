@@ -10,7 +10,7 @@ export type ProductVariantItemProps = {
   type: string;
 };
 
-export const ProductVariantItem = ({variant, type}: ProductVariantItemProps) => {
+const ProductVariantItem = ({variant, type}: ProductVariantItemProps) => {
   const isCard = type === ProductType.CARD;
   const isRow = type === ProductType.ROW;
 
@@ -67,4 +67,7 @@ export const ProductVariantItem = ({variant, type}: ProductVariantItemProps) => 
     </div>
   );
 };
+
 ProductVariantItem.displayName = "ProductVariantItem";
+
+export {ProductVariantItem};

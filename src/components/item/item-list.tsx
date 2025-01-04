@@ -9,7 +9,7 @@ import {useAppContext} from "@/contexts/AppContext";
 import axios from "@/lib/axios";
 import {Response} from "@/types";
 
-export const ItemList = () => {
+const ItemList = () => {
   const {tenant} = useAppContext();
   const {data, isLoading} = useSWR<Response<any[]>>(`/qr-menu/${tenant.alias}/items`, axios);
 
@@ -38,4 +38,7 @@ export const ItemList = () => {
     </section>
   );
 };
+
 ItemList.displayName = "ItemList";
+
+export {ItemList};

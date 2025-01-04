@@ -9,7 +9,7 @@ export type ProductTagItemProps = {
   tag: Tag;
 };
 
-export const ProductTagItem = ({tag}: ProductTagItemProps) => {
+const ProductTagItem = ({tag}: ProductTagItemProps) => {
   const {language, defaultLanguage} = useAppContext();
 
   let translation = tag.translations.find(
@@ -30,4 +30,7 @@ export const ProductTagItem = ({tag}: ProductTagItemProps) => {
     </Badge>
   );
 };
+
 ProductTagItem.displayName = "ProductTagItem";
+
+export {ProductTagItem};

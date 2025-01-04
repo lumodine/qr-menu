@@ -11,7 +11,7 @@ export type TagHeroProps = {
   tag: Tag;
 };
 
-export const TagHero = ({tag}: TagHeroProps) => {
+const TagHero = ({tag}: TagHeroProps) => {
   const {tenant, language, defaultLanguage} = useAppContext();
 
   let translation = tag.translations.find(
@@ -60,4 +60,7 @@ export const TagHero = ({tag}: TagHeroProps) => {
     </section>
   );
 };
+
 TagHero.displayName = "TagHero";
+
+export {TagHero};

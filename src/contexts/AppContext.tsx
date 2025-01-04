@@ -17,7 +17,7 @@ type AppContextType = {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-export const AppProvider = ({
+const AppProvider = ({
   children,
   tenant,
   defaultLanguage,
@@ -53,7 +53,7 @@ export const AppProvider = ({
   );
 };
 
-export const useAppContext = () => {
+const useAppContext = () => {
   const context = useContext(AppContext);
 
   if (!context) {
@@ -62,3 +62,5 @@ export const useAppContext = () => {
 
   return context;
 };
+
+export {AppProvider, useAppContext};

@@ -10,7 +10,7 @@ export type BackToTopButtonProps = {
   headerPosition: HeaderPosition;
 };
 
-export const BackToTopButton = ({headerPosition}: BackToTopButtonProps) => {
+const BackToTopButton = ({headerPosition}: BackToTopButtonProps) => {
   const isVisible = useScrollVisible(300);
 
   const scrollToTop = () => {
@@ -37,4 +37,7 @@ export const BackToTopButton = ({headerPosition}: BackToTopButtonProps) => {
     </div>
   );
 };
+
 BackToTopButton.displayName = "BackToTopButton";
+
+export {BackToTopButton};

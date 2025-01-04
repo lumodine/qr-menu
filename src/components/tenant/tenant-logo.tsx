@@ -7,7 +7,7 @@ export type TenantLogoProps = {
   tenant: Tenant;
 };
 
-export const TenantLogo = ({tenant}: TenantLogoProps) => {
+const TenantLogo = ({tenant}: TenantLogoProps) => {
   return (
     <>
       {tenant.logo && (
@@ -27,4 +27,7 @@ export const TenantLogo = ({tenant}: TenantLogoProps) => {
     </>
   );
 };
+
 TenantLogo.displayName = "TenantLogo";
+
+export {TenantLogo};

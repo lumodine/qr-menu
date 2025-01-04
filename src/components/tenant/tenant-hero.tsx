@@ -4,7 +4,7 @@ import {TenantLogo} from "@/components/tenant/tenant-logo";
 import {cn} from "@/utils/shadcn";
 import {useAppContext} from "@/contexts/AppContext";
 
-export const TenantHero = () => {
+const TenantHero = () => {
   const {tenant} = useAppContext();
 
   const hasBackground = !!tenant.background;
@@ -30,4 +30,7 @@ export const TenantHero = () => {
     </section>
   );
 };
+
 TenantHero.displayName = "TenantHero";
+
+export {TenantHero};

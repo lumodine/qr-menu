@@ -14,7 +14,7 @@ export type ItemDetailListProps = {
   isShowTag?: boolean;
 };
 
-export const ItemDetailList = ({itemId, isShowTag = true}: ItemDetailListProps) => {
+const ItemDetailList = ({itemId, isShowTag = true}: ItemDetailListProps) => {
   const {tenant} = useAppContext();
   const {data, isLoading} = useSWR<Response<any[]>>(
     `/qr-menu/${tenant.alias}/items?itemId=${itemId}`,
@@ -50,4 +50,7 @@ export const ItemDetailList = ({itemId, isShowTag = true}: ItemDetailListProps) 
     </section>
   );
 };
+
 ItemDetailList.displayName = "ItemDetailList";
+
+export {ItemDetailList};

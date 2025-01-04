@@ -17,7 +17,7 @@ export type HeaderProps = {
 
 const showSearch = false;
 
-export const Header = ({tenant, position}: HeaderProps) => {
+const Header = ({tenant, position}: HeaderProps) => {
   const isVisible = useScrollVisible(175);
 
   const isTop = position === HeaderPosition.TOP;
@@ -72,4 +72,7 @@ export const Header = ({tenant, position}: HeaderProps) => {
     </header>
   );
 };
+
 Header.displayName = "Header";
+
+export {Header};

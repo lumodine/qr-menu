@@ -12,7 +12,7 @@ import axios from "@/lib/axios";
 import "swiper/css";
 import "swiper/css/pagination";
 
-export const AnnouncementCarousel = () => {
+const AnnouncementCarousel = () => {
   const {language, defaultLanguage, tenant} = useAppContext();
   const {data, isLoading} = useSWR<Response<Annannouncements>>(
     `/qr-menu/${tenant.alias}/announcements`,
@@ -70,4 +70,7 @@ export const AnnouncementCarousel = () => {
     </div>
   );
 };
+
 AnnouncementCarousel.displayName = "AnnouncementCarousel";
+
+export {AnnouncementCarousel};

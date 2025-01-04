@@ -11,7 +11,7 @@ export type FooterProps = {
   tenant: Tenant;
 };
 
-export const Footer = ({tenant}: FooterProps) => {
+const Footer = ({tenant}: FooterProps) => {
   const startYear = 2024;
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
@@ -55,4 +55,7 @@ export const Footer = ({tenant}: FooterProps) => {
     </footer>
   );
 };
+
 Footer.displayName = "Footer";
+
+export {Footer};

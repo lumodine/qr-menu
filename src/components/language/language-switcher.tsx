@@ -9,7 +9,7 @@ export type LanguageSwitcherProps = {
   languages: LanguageGroup[];
 };
 
-export const LanguageSwitcher = ({languages}: LanguageSwitcherProps) => {
+const LanguageSwitcher = ({languages}: LanguageSwitcherProps) => {
   const {language, defaultLanguage, setLanguage} = useAppContext();
 
   if (languages.length <= 1) {
@@ -42,4 +42,7 @@ export const LanguageSwitcher = ({languages}: LanguageSwitcherProps) => {
     </Select>
   );
 };
+
 LanguageSwitcher.displayName = "LanguageSwitcher";
+
+export {LanguageSwitcher};

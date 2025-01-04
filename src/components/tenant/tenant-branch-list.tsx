@@ -13,7 +13,7 @@ import {Dialog, DialogContent, DialogHeader, DialogTrigger} from "@/components/u
 import {Response, TenantBranch, TenantBranches} from "@/types";
 import axios from "@/lib/axios";
 
-export const TenantBranchList = () => {
+const TenantBranchList = () => {
   const {language, defaultLanguage, tenant} = useAppContext();
   const {data, isLoading} = useSWR<Response<TenantBranches>>(
     `/qr-menu/${tenant.alias}/branches`,
@@ -98,4 +98,7 @@ export const TenantBranchList = () => {
     </Dialog>
   );
 };
+
 TenantBranchList.displayName = "TenantBranchList";
+
+export {TenantBranchList};

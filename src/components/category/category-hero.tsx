@@ -10,7 +10,7 @@ export type CategoryHeroProps = {
   category: Category;
 };
 
-export const CategoryHero = ({category}: CategoryHeroProps) => {
+const CategoryHero = ({category}: CategoryHeroProps) => {
   const {tenant, language, defaultLanguage} = useAppContext();
 
   let translation = category.translations.find(
@@ -63,4 +63,7 @@ export const CategoryHero = ({category}: CategoryHeroProps) => {
     </section>
   );
 };
+
 CategoryHero.displayName = "CategoryHero";
+
+export {CategoryHero};

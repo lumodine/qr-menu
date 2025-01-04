@@ -4,7 +4,7 @@ import {CircleArrowLeft} from "lucide-react";
 import Link from "next/link";
 import {useAppContext} from "@/contexts/AppContext";
 
-export const BackToMenuButton = () => {
+const BackToMenuButton = () => {
   const {t} = useAppContext();
 
   return (
@@ -14,4 +14,7 @@ export const BackToMenuButton = () => {
     </Link>
   );
 };
+
 BackToMenuButton.displayName = "BackToMenuButton";
+
+export {BackToMenuButton};

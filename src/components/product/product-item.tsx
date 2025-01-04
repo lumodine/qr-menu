@@ -14,7 +14,7 @@ export type ProductItemProps = {
   isShowTag?: boolean;
 };
 
-export const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
+const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
   const isRow = product.type === ProductType.ROW;
   const isCard = product.type === ProductType.CARD;
   const isNotAvailable = product.status === ProductStatus.NOT_AVAILABLE;
@@ -113,4 +113,7 @@ export const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
     </div>
   );
 };
+
 ProductItem.displayName = "ProductItem";
+
+export {ProductItem};
