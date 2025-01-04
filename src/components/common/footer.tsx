@@ -30,7 +30,6 @@ export const Footer = ({tenant}: FooterProps) => {
                 alt={tenant.name}
                 className="rounded-sm w-[50px] h-[50px]"
                 height={50}
-                loading={"lazy"}
                 src={tenant.logo}
                 width={50}
               />

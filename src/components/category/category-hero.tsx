@@ -43,7 +43,6 @@ export const CategoryHero = ({category}: CategoryHeroProps) => {
                 alt={tenant.name}
                 className="rounded-sm w-[100px] h-[100px] md:w-[200px] md:h-[200px]"
                 height={100}
-                loading={"lazy"}
                 src={tenant.logo}
                 width={100}
               />

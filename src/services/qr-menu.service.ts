@@ -1,8 +1,14 @@
-import type {Tenant, Response} from "@/types";
+import type {Tenant, Response, TenantBranch} from "@/types";
 import axios from "@/lib/axios";
 
 const getDetail = async (alias: string) => {
   const {data} = await axios.get<Response<Tenant>>(`/qr-menu/${alias}`);
+
+  return data;
+};
+
+const getTenantBranches = async (alias: string) => {
+  const {data} = await axios.get<Response<TenantBranch[]>>(`/qr-menu/${alias}/branches`);
 
   return data;
 };
@@ -37,6 +43,7 @@ const getAllAnnouncements = async (alias: string) => {
 
 export default {
   getDetail,
+  getTenantBranches,
   getItems,
   getItemById,
   getSubItems,

@@ -4,17 +4,26 @@ import type {Annannouncements} from "@/types";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Pagination} from "swiper/modules";
 import {Megaphone} from "lucide-react";
+import {useEffect, useState} from "react";
 import {useAppContext} from "@/contexts/AppContext";
+import qrMenuService from "@/services/qr-menu.service";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
-export type AnnouncementCarouselProps = {
-  annannouncements: Annannouncements;
-};
+export const AnnouncementCarousel = () => {
+  const {language, defaultLanguage, tenant} = useAppContext();
+  const [annannouncements, setAnnannouncements] = useState<Annannouncements>([]);
 
-export const AnnouncementCarousel = ({annannouncements}: AnnouncementCarouselProps) => {
-  const {language, defaultLanguage} = useAppContext();
+  const fetchAnnannouncements = async () => {
+    const {data} = await qrMenuService.getAllAnnouncements(tenant.alias);
+
+    setAnnannouncements(data);
+  };
+
+  useEffect(() => {
+    fetchAnnannouncements();
+  }, [tenant]);
 
   const hasAnnannouncements = annannouncements && annannouncements.length !== 0;
 

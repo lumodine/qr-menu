@@ -1,15 +1,31 @@
 "use client";
 
+import {useEffect, useState} from "react";
 import {ProductItem} from "@/components/product/product-item";
 import {SubCategoryItem} from "@/components/subCategory/sub-category-item";
 import {ITEM_KINDS} from "@/constants/item";
+import {useAppContext} from "@/contexts/AppContext";
+import qrMenuService from "@/services/qr-menu.service";
 
 export type ItemDetailListProps = {
-  items: any[];
+  itemId: string;
   isShowTag?: boolean;
 };
 
-export const ItemDetailList = ({items, isShowTag = true}: ItemDetailListProps) => {
+export const ItemDetailList = ({itemId, isShowTag = true}: ItemDetailListProps) => {
+  const {tenant} = useAppContext();
+  const [items, setItems] = useState<any[]>([]);
+
+  const fetchItems = async () => {
+    const {data} = await qrMenuService.getSubItems(tenant.alias, itemId);
+
+    setItems(data);
+  };
+
+  useEffect(() => {
+    fetchItems();
+  }, [tenant, itemId]);
+
   const hasItems = items && items.length !== 0;
 
   return (

@@ -1,14 +1,26 @@
 "use client";
 
+import {useEffect, useState} from "react";
 import {CategoryItem} from "@/components/category/category-item";
 import {TagItem} from "@/components/tag/tag-item";
 import {ITEM_KINDS} from "@/constants/item";
+import qrMenuService from "@/services/qr-menu.service";
+import {useAppContext} from "@/contexts/AppContext";
 
-export type ItemListProps = {
-  items: any[];
-};
+export const ItemList = () => {
+  const {tenant} = useAppContext();
+  const [items, setItems] = useState<any[]>([]);
 
-export const ItemList = ({items}: ItemListProps) => {
+  const fetchItems = async () => {
+    const {data} = await qrMenuService.getItems(tenant.alias);
+
+    setItems(data);
+  };
+
+  useEffect(() => {
+    fetchItems();
+  }, [tenant]);
+
   const hasItems = items && items.length !== 0;
 
   return (

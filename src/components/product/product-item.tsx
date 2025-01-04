@@ -60,7 +60,6 @@ export const ProductItem = ({product, isShowTag = true}: ProductItemProps) => {
             alt={translation?.title || "image"}
             className="h-full w-full"
             height={image.height}
-            loading={"lazy"}
             src={product.image}
             width={image.width}
           />

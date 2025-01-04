@@ -2,19 +2,30 @@
 
 import {MapPin, MapPinHouse} from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {DialogTitle} from "@radix-ui/react-dialog";
 import {Button} from "@/components/ui/button";
 import {Separator} from "@/components/ui/separator";
 import {useAppContext} from "@/contexts/AppContext";
 import {Dialog, DialogContent, DialogHeader, DialogTrigger} from "@/components/ui/dialog";
 import {TenantBranch} from "@/types";
+import qrMenuService from "@/services/qr-menu.service";
 
 export const TenantBranchList = () => {
   const {language, defaultLanguage, tenant} = useAppContext();
+  const [branches, setBranches] = useState<TenantBranch[]>([]);
 
-  const count = tenant.branches.length;
-  const branches = tenant.branches;
+  const fetchBranches = async () => {
+    const {data} = await qrMenuService.getTenantBranches(tenant.alias);
+
+    setBranches(data);
+  };
+
+  useEffect(() => {
+    fetchBranches();
+  }, [tenant]);
+
+  const count = branches?.length || 0;
   const hasBranches = branches && count > 0;
 
   if (!hasBranches) {

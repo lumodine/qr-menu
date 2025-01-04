@@ -48,7 +48,6 @@ export const Header = ({tenant, position}: HeaderProps) => {
                 alt={tenant.name}
                 className="rounded-sm"
                 height={30}
-                loading={"lazy"}
                 src={tenant.logo}
                 width={30}
               />
