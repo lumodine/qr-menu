@@ -1,13 +1,11 @@
 "use client";
 
-import useSWR from "swr";
 import {TagHero} from "../tag/tag-hero";
 import {CategoryHero} from "../category/category-hero";
 import {Loading} from "../common/loading";
 import {useAppContext} from "@/contexts/AppContext";
 import {ITEM_KINDS} from "@/constants/item";
-import axios from "@/lib/axios";
-import {Response} from "@/types";
+import {useItem} from "@/hooks/useItem";
 
 type ItemHeroProps = {
   itemId: string;
@@ -15,16 +13,11 @@ type ItemHeroProps = {
 
 const ItemHero = ({itemId}: ItemHeroProps) => {
   const {tenant} = useAppContext();
-  const {data, isLoading} = useSWR<Response<any>>(
-    `/qr-menu/${tenant.alias}/items/${itemId}`,
-    axios,
-  );
+  const {item, isLoading} = useItem(tenant.alias, itemId);
 
   if (isLoading) {
     return <Loading />;
   }
-
-  const item = data?.data;
 
   if (!item) {
     return null;

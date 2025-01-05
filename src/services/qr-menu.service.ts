@@ -1,7 +1,7 @@
 import axios from "@/lib/axios";
 
 const getDetail = async (alias: string) => {
-  const data = await axios.get(`/qr-menu/${alias}`);
+  const {data} = await axios.get(`/qr-menu/${alias}`);
 
   return data;
 };

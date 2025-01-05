@@ -1,31 +1,25 @@
 "use client";
 
-import type {Annannouncements, Response} from "@/types";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Pagination} from "swiper/modules";
 import {Megaphone} from "lucide-react";
-import useSWR from "swr";
 import {Loading} from "../common/loading";
 import {useAppContext} from "@/contexts/AppContext";
-import axios from "@/lib/axios";
+import {useAnnannouncements} from "@/hooks/useAnnannouncements";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
 const AnnouncementCarousel = () => {
   const {language, defaultLanguage, tenant} = useAppContext();
-  const {data, isLoading} = useSWR<Response<Annannouncements>>(
-    `/qr-menu/${tenant.alias}/announcements`,
-    axios,
-  );
+  const {annannouncements, isLoading} = useAnnannouncements(tenant.alias);
 
   if (isLoading) {
     return <Loading />;
   }
 
-  const annannouncements = data?.data;
-
-  const hasAnnannouncements = annannouncements && annannouncements.length !== 0;
+  const count = annannouncements?.length || 0;
+  const hasAnnannouncements = annannouncements && count > 0;
 
   if (!hasAnnannouncements) {
     return null;

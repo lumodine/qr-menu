@@ -1,25 +1,22 @@
 "use client";
 
-import useSWR from "swr";
 import {Loading} from "../common/loading";
 import {CategoryItem} from "@/components/category/category-item";
 import {TagItem} from "@/components/tag/tag-item";
 import {ITEM_KINDS} from "@/constants/item";
 import {useAppContext} from "@/contexts/AppContext";
-import axios from "@/lib/axios";
-import {Response} from "@/types";
+import {useItems} from "@/hooks/useItems";
 
 const ItemList = () => {
   const {tenant} = useAppContext();
-  const {data, isLoading} = useSWR<Response<any[]>>(`/qr-menu/${tenant.alias}/items`, axios);
+  const {items, isLoading} = useItems(tenant.alias);
 
   if (isLoading) {
     return <Loading />;
   }
 
-  const items = data?.data;
-
-  const hasItems = items && items.length !== 0;
+  const count = items?.length || 0;
+  const hasItems = items && count > 0;
 
   return (
     <section className="container pt-2">

@@ -8,7 +8,10 @@ const TenantSocialMediaList = () => {
 
   const socialMedias = tenant.socialMedias.filter((socialMedia) => !!socialMedia.value);
 
-  if (!socialMedias || socialMedias.length === 0) {
+  const count = socialMedias?.length || 0;
+  const hasSocialMedias = socialMedias && count > 0;
+
+  if (!hasSocialMedias) {
     return null;
   }
 

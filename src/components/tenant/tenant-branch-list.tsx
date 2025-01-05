@@ -4,27 +4,21 @@ import {MapPin, MapPinHouse} from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import {DialogTitle} from "@radix-ui/react-dialog";
-import useSWR from "swr";
 import {Loading} from "../common/loading";
 import {Button} from "@/components/ui/button";
 import {Separator} from "@/components/ui/separator";
 import {useAppContext} from "@/contexts/AppContext";
 import {Dialog, DialogContent, DialogHeader, DialogTrigger} from "@/components/ui/dialog";
-import {Response, TenantBranch, TenantBranches} from "@/types";
-import axios from "@/lib/axios";
+import {TenantBranch} from "@/types";
+import {useTenantBranches} from "@/hooks/useTenantBranches";
 
 const TenantBranchList = () => {
   const {language, defaultLanguage, tenant} = useAppContext();
-  const {data, isLoading} = useSWR<Response<TenantBranches>>(
-    `/qr-menu/${tenant.alias}/branches`,
-    axios,
-  );
+  const {branches, isLoading} = useTenantBranches(tenant.alias);
 
   if (isLoading) {
     return <Loading />;
   }
-
-  const branches = data?.data;
 
   const count = branches?.length || 0;
   const hasBranches = branches && count > 0;

@@ -1,13 +1,11 @@
 "use client";
 
-import useSWR from "swr";
 import {Loading} from "../common/loading";
 import {ProductItem} from "@/components/product/product-item";
 import {SubCategoryItem} from "@/components/subCategory/sub-category-item";
 import {ITEM_KINDS} from "@/constants/item";
 import {useAppContext} from "@/contexts/AppContext";
-import axios from "@/lib/axios";
-import {Response} from "@/types";
+import {useItems} from "@/hooks/useItems";
 
 export type ItemDetailListProps = {
   itemId: string;
@@ -16,18 +14,14 @@ export type ItemDetailListProps = {
 
 const ItemDetailList = ({itemId, isShowTag = true}: ItemDetailListProps) => {
   const {tenant} = useAppContext();
-  const {data, isLoading} = useSWR<Response<any[]>>(
-    `/qr-menu/${tenant.alias}/items?itemId=${itemId}`,
-    axios,
-  );
+  const {items, isLoading} = useItems(tenant.alias, itemId);
 
   if (isLoading) {
     return <Loading />;
   }
 
-  const items = data?.data;
-
-  const hasItems = items && items.length !== 0;
+  const count = items?.length || 0;
+  const hasItems = items && count > 0;
 
   if (!hasItems) {
     return null;

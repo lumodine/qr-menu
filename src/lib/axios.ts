@@ -16,11 +16,17 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   (response) => {
-    return response.data;
+    return response;
   },
   (error) => {
     return Promise.reject(error);
   },
 );
+
+export const fetcher = async (url: string) => {
+  const {data} = await api.get(url);
+
+  return data;
+};
 
 export default api;
