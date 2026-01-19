@@ -1,7 +1,16 @@
 import axios, {AxiosInstance} from "axios";
 
+// Server-side uses API_URL (for Docker internal network)
+// Client-side uses NEXT_PUBLIC_API_URL (for browser access)
+const getBaseURL = () => {
+  if (typeof window === "undefined") {
+    return process.env.API_URL || process.env.NEXT_PUBLIC_API_URL;
+  }
+  return process.env.NEXT_PUBLIC_API_URL;
+};
+
 const api: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: getBaseURL(),
   timeout: 5000,
 });
 
