@@ -28,7 +28,7 @@ const CategoryItem = ({category}: CategoryItemProps) => {
     <Link
       className={cn(
         `theme-${category.theme?.color}`,
-        hasImage && "bg-[image:var(--bg-image)] ",
+        hasImage && "bg-(image:--bg-image) ",
         "bg-center bg-no-repeat bg-cover overflow-hidden rounded-sm transition-transform hover:scale-95 bg-primary text-primary-foreground",
         category.type,
       )}

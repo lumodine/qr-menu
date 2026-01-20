@@ -12,7 +12,7 @@ const TenantHero = () => {
   return (
     <section
       className={cn(
-        hasBackground && "bg-[image:var(--bg-image)]",
+        hasBackground && "bg-(image:--bg-image)",
         "bg-center bg-no-repeat bg-cover overflow-hidden bg-primary text-primary-foreground",
       )}
       style={{

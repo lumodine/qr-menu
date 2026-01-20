@@ -5,6 +5,10 @@ export async function proxy(request: NextRequest) {
   const url = request.nextUrl;
   const host = request.headers.get("host");
 
+  if (host?.indexOf('localhost') !== -1) {
+    return NextResponse.next();
+  }
+
   const [scheme, domain] = process.env.NEXT_PUBLIC_QR_MENU_URL!.split("{alias}");
 
   const tenantAlias = host?.replaceAll(scheme, "")?.replaceAll(domain, "");

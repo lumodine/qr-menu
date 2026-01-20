@@ -28,7 +28,7 @@ const CategoryHero = ({category}: CategoryHeroProps) => {
   return (
     <section
       className={cn(
-        hasImage && "bg-[image:var(--bg-image)]",
+        hasImage && "bg-(image:--bg-image)",
         "bg-center bg-no-repeat bg-cover overflow-hidden bg-primary text-primary-foreground",
       )}
       style={{
